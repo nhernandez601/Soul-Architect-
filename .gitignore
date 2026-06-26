@@ -11,3 +11,4 @@ data/saves/*.sqlite
 *.tmp
 coverage/
 .vite/
+*.tsbuildinfo
