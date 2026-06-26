@@ -1,0 +1,16 @@
+{
+  "id": "example-mod",
+  "name": "The Forgotten Path",
+  "version": "1.0.0",
+  "author": "Soul Architect Community",
+  "description": "An example mod demonstrating the mod system. Adds a short bonus scene and custom character encounter after Chapter 1.",
+  "engineVersion": "1.0.0",
+  "scenes": ["scenes/forgotten_path_01.sasl"],
+  "characters": [],
+  "music": [],
+  "backgrounds": [],
+  "localization": ["localization/en.json"],
+  "entryScene": "forgotten_path_01",
+  "dependencies": [],
+  "tags": ["example", "bonus-content", "chapter-1"]
+}

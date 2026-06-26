@@ -1,0 +1,138 @@
+{
+  "ui": {
+    "menu": {
+      "new_game": "Begin Journey",
+      "continue": "Continue",
+      "load": "Load",
+      "gallery": "Gallery",
+      "settings": "Settings",
+      "quit": "Depart",
+      "resume": "Resume",
+      "save": "Save",
+      "main_menu": "Main Menu"
+    },
+    "dialogue": {
+      "advance": "Click to advance",
+      "skip": "Skip",
+      "auto": "Auto",
+      "log": "Log",
+      "back": "Back"
+    },
+    "hud": {
+      "save": "Save",
+      "log": "Log",
+      "menu": "Menu",
+      "chapter": "Chapter {{chapter}}",
+      "auto_on": "Auto: ON",
+      "auto_off": "Auto: OFF"
+    },
+    "save_load": {
+      "title_save": "Save Game",
+      "title_load": "Load Game",
+      "empty_slot": "Empty slot",
+      "overwrite": "Overwrite?",
+      "confirm_yes": "Yes",
+      "confirm_no": "No",
+      "chapter": "Ch.{{chapter}}",
+      "delete": "Delete"
+    },
+    "settings": {
+      "title": "Settings",
+      "audio": "Audio",
+      "text": "Text",
+      "display": "Display",
+      "accessibility": "Accessibility",
+      "master_volume": "Master Volume",
+      "music_volume": "Music Volume",
+      "sfx_volume": "SFX Volume",
+      "voice_volume": "Voice Volume",
+      "ambient_volume": "Ambient Volume",
+      "text_speed": "Text Speed",
+      "speed_slow": "Slow",
+      "speed_normal": "Normal",
+      "speed_fast": "Fast",
+      "speed_instant": "Instant",
+      "skip_read": "Skip Read Text",
+      "auto_save": "Auto-Save",
+      "show_soul_meter": "Show Soul Meter",
+      "show_relationship_wheel": "Show Relationship Wheel",
+      "language": "Language",
+      "high_contrast": "High Contrast",
+      "large_text": "Large Text",
+      "reduced_motion": "Reduced Motion",
+      "closed_captions": "Closed Captions",
+      "dyslexic_font": "Dyslexia-Friendly Font",
+      "screen_reader": "Screen Reader Hints"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "cg_art": "CG Art ({{count}})",
+      "music": "Music ({{count}})",
+      "scenes": "Scenes ({{count}})",
+      "new": "NEW",
+      "secret": "???",
+      "replay": "Replay",
+      "unlock_count": "{{unlocked}}/{{total}} unlocked"
+    },
+    "codex": {
+      "title": "Codex",
+      "search": "Search entries…",
+      "all": "All",
+      "no_entries": "No entries found",
+      "see_also": "See Also",
+      "select_prompt": "Select an entry to read"
+    },
+    "journal": {
+      "title": "Journal",
+      "search": "Search journal…",
+      "filter_all": "All",
+      "filter_unread": "Unread",
+      "no_entries": "No entries"
+    },
+    "quest": {
+      "title": "Quest Log",
+      "active": "Active",
+      "completed": "Completed",
+      "failed": "Failed",
+      "objectives": "Objectives",
+      "notes": "Notes",
+      "no_quests": "No {{filter}} quests",
+      "select_prompt": "Select a quest to view details",
+      "progress": "{{done}}/{{total}}"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "unlocked_count": "{{unlocked}}/{{total}} unlocked",
+      "points": "{{points}} pts",
+      "secret": "Secret achievement",
+      "hide_locked": "Hide locked",
+      "show_locked": "Show locked"
+    },
+    "notification": {
+      "cg_unlocked": "New artwork unlocked!",
+      "language_changed": "Language changed",
+      "mod_loaded": "Mod loaded: {{name}}",
+      "save_complete": "Game saved",
+      "load_complete": "Game loaded",
+      "auto_save": "Auto-saved"
+    },
+    "soul_meter": {
+      "title": "Soul",
+      "collapse": "Collapse",
+      "expand": "Expand"
+    },
+    "pause": {
+      "title": "Paused"
+    },
+    "loading": {
+      "title": "Soul Architect",
+      "subtitle": "A journey into darkness and self",
+      "loading": "Loading…"
+    },
+    "errors": {
+      "scene_not_found": "Scene not found: {{id}}",
+      "load_failed": "Failed to load save data",
+      "generic": "Something went wrong"
+    }
+  }
+}

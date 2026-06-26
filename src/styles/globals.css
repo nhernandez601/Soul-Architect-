@@ -1,0 +1,185 @@
+/* Soul Architect — Global Styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   CSS Custom Properties — Dark Fantasy Theme
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* Colors */
+  --color-void:        #050508;
+  --color-abyss:       #0a0a12;
+  --color-dark:        #12121e;
+  --color-deep:        #1a1a2e;
+  --color-mid:         #252545;
+  --color-muted:       #3a3a6e;
+  --color-accent-gold: #c9a227;
+  --color-accent-dim:  #8b7022;
+  --color-light-gold:  #f0d060;
+  --color-white:       #e8e0d0;
+  --color-text:        #d0c8b8;
+  --color-text-dim:    #8a8070;
+  --color-soul-hope:   #ffd700;
+  --color-soul-faith:  #c0abff;
+  --color-soul-fear:   #ff4444;
+  --color-soul-love:   #ff69b4;
+  --color-soul-light:  #fffde7;
+  --color-soul-shadow: #2a2a3e;
+
+  /* Fonts */
+  --font-display: 'Cinzel', 'Playfair Display', serif;
+  --font-body:    'EB Garamond', 'Georgia', serif;
+  --font-ui:      'Raleway', 'Inter', sans-serif;
+  --font-mono:    'Fira Code', 'Courier New', monospace;
+
+  /* Spacing */
+  --spacing-dialogue-padding: 2rem;
+  --dialogue-box-height: 220px;
+
+  /* Glassmorphism */
+  --glass-bg:      rgba(10, 10, 20, 0.75);
+  --glass-border:  rgba(201, 162, 39, 0.25);
+  --glass-blur:    12px;
+  --glass-shadow:  0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------------------------------------------------------------------------
+   Reset & Base
+   --------------------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-void);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------------------------------------------------------------------------
+   Typography
+   --------------------------------------------------------------------------- */
+
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-ui      { font-family: var(--font-ui); }
+
+/* ---------------------------------------------------------------------------
+   Glassmorphism utilities
+   --------------------------------------------------------------------------- */
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-gold {
+  background: rgba(10, 10, 20, 0.8);
+  border: 1px solid var(--color-accent-gold);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 20px rgba(201, 162, 39, 0.15), var(--glass-shadow);
+}
+
+/* ---------------------------------------------------------------------------
+   Scrollbars
+   --------------------------------------------------------------------------- */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dim);
+  border-radius: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   Animations
+   --------------------------------------------------------------------------- */
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 8px rgba(201, 162, 39, 0.3); }
+  50%       { box-shadow: 0 0 20px rgba(201, 162, 39, 0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float      { animation: float 3s ease-in-out infinite; }
+.animate-pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+.animate-fade-in    { animation: fade-in 0.5s ease forwards; }
+.animate-slide-up   { animation: slide-up 0.4s ease forwards; }
+
+/* ---------------------------------------------------------------------------
+   Dialogue / Choice layer
+   --------------------------------------------------------------------------- */
+
+.dialogue-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--dialogue-box-height);
+  padding: var(--spacing-dialogue-padding);
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.choice-container {
+  position: absolute;
+  bottom: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 480px;
+  max-width: 720px;
+}
+
+/* ---------------------------------------------------------------------------
+   Soul Meter
+   --------------------------------------------------------------------------- */
+
+.soul-meter-bar {
+  height: 6px;
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Cursor
+   --------------------------------------------------------------------------- */
+
+* { cursor: default; }
+button, [role="button"], [tabindex="0"] { cursor: pointer; }

@@ -1,0 +1,48 @@
+{
+  "id": "nyx",
+  "displayName": "Nyx",
+  "shortName": "Nyx",
+  "pronouns": { "subject": "she", "object": "her", "possessive": "her" },
+  "biography": {
+    "age": "appears early 20s; true age unknown",
+    "origin": "The Shattered Mirror District",
+    "occupation": "Shadow weaver, smuggler of secrets",
+    "personality": "Sharp-tongued, fiercely independent, laughs at danger and weeps only alone",
+    "background": "Nyx was born without a shadow. Where others cast darkness behind them in the Abyss's half-light, she absorbs it. She trades in secrets the way others trade in coin — and she has been watching you since before you arrived."
+  },
+  "portraits": [
+    { "id": "nyx_default", "path": "/assets/characters/nyx/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "nyx_smirk", "path": "/assets/characters/nyx/smirk.png", "emotion": "amused", "variant": "smirk" },
+    { "id": "nyx_serious", "path": "/assets/characters/nyx/serious.png", "emotion": "determined", "variant": "serious" },
+    { "id": "nyx_hurt", "path": "/assets/characters/nyx/hurt.png", "emotion": "sad", "variant": "hurt" },
+    { "id": "nyx_furious", "path": "/assets/characters/nyx/furious.png", "emotion": "angry", "variant": "furious" },
+    { "id": "nyx_soft", "path": "/assets/characters/nyx/soft.png", "emotion": "tender", "variant": "soft" }
+  ],
+  "defaultPortrait": "nyx_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 15,
+    "tension": 20,
+    "mysteryLevel": 60,
+    "corruptionLevel": 40,
+    "divineLevel": 10
+  },
+  "cgRefs": ["cg_nyx_midnight", "cg_nyx_shadowdance", "cg_nyx_confession"],
+  "secrets": [
+    {
+      "id": "nyx_birthmark",
+      "hint": "Her left wrist is always covered.",
+      "revealCondition": "trust_nyx >= 60",
+      "revealText": "The mark is a brand — the sigil of the Abyss Court. She was sold to them as a child. She escaped. She has been running ever since."
+    },
+    {
+      "id": "nyx_the_price",
+      "hint": "Every secret she sells costs her something.",
+      "revealCondition": "trust_nyx >= 85 and knowledge >= 50",
+      "revealText": "Absorbing shadows means absorbing the emotions attached to them. Every secret she carries is a wound. She is running out of room."
+    }
+  ],
+  "themeColor": "#6d28d9",
+  "voiceSamplePath": null,
+  "tags": ["romance", "morally-grey", "shadow-affinity", "chapter-1"]
+}

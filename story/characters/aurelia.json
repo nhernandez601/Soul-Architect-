@@ -1,0 +1,132 @@
+{
+  "id": "aurelia",
+  "biography": {
+    "fullName": "Aurelia Vayne",
+    "title": "The Light Bringer",
+    "age": "Appears 24. True age unknown.",
+    "origin": "The Luminous Veil — a plane that exists between waking and dreaming",
+    "occupation": "Guide. Witness. Keeper of Thresholds.",
+    "archetype": "The Devoted Radiant",
+    "summary": "Aurelia appears as warmth made flesh — golden-eyed, impossibly calm, with a voice that carries the weight of a thousand gentle goodbyes. She has guided countless Seekers through the Soul Architect's trials. She believes in you even before you believe in yourself.",
+    "secretSummary": "Aurelia was once a Seeker herself, centuries ago. She chose to remain after reaching the final threshold, becoming a permanent guide. She does not remember her original name, only the feeling of what she gave up. She watches you with the eyes of someone who knows exactly how this can end.",
+    "voiceDescription": "Warm, melodic, slightly formal. Cadence like slowly flowing water. Never rushed."
+  },
+  "stats": {
+    "affinity": 0,
+    "trust": 30,
+    "tension": 0,
+    "mysteryLevel": 60,
+    "corruptionLevel": 0,
+    "divineLevel": 75
+  },
+  "portraits": [
+    {
+      "id": "aurelia_neutral",
+      "emotion": "neutral",
+      "tags": [],
+      "path": "/assets/characters/aurelia/portraits/neutral.png",
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 1.0
+    },
+    {
+      "id": "aurelia_smile",
+      "emotion": "smile",
+      "tags": [],
+      "path": "/assets/characters/aurelia/portraits/smile.png",
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 1.0
+    },
+    {
+      "id": "aurelia_sad",
+      "emotion": "sad",
+      "tags": [],
+      "path": "/assets/characters/aurelia/portraits/sad.png",
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 1.0
+    },
+    {
+      "id": "aurelia_determined",
+      "emotion": "determined",
+      "tags": [],
+      "path": "/assets/characters/aurelia/portraits/determined.png",
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 1.0
+    },
+    {
+      "id": "aurelia_pensive",
+      "emotion": "pensive",
+      "tags": [],
+      "path": "/assets/characters/aurelia/portraits/pensive.png",
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 1.0
+    },
+    {
+      "id": "aurelia_loving",
+      "emotion": "loving",
+      "tags": [],
+      "path": "/assets/characters/aurelia/portraits/loving.png",
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 1.0
+    },
+    {
+      "id": "aurelia_transcendent",
+      "emotion": "transcendent",
+      "tags": ["divine", "revealed"],
+      "path": "/assets/characters/aurelia/portraits/transcendent.png",
+      "offsetX": 0,
+      "offsetY": 0,
+      "scale": 1.05
+    }
+  ],
+  "defaultPortrait": "neutral",
+  "flags": [],
+  "secrets": [
+    {
+      "id": "aurelia_secret_01",
+      "title": "The Name She Forgot",
+      "content": "Before she was Aurelia, she had another name. She has not spoken it in three hundred years. She no longer remembers what it felt like to want things for herself.",
+      "unlockCondition": [
+        { "attribute": "affinity", "operator": ">=", "value": 75 },
+        { "attribute": "aurelia_trusted", "operator": "==", "value": true }
+      ],
+      "unlocksAt": "affinity",
+      "referenceId": "aurelia",
+      "discovered": false
+    },
+    {
+      "id": "aurelia_secret_02",
+      "title": "Why She Stayed",
+      "content": "She stayed because at the final threshold, she saw what lay beyond — and it was beautiful and terrible and completely silent. She was afraid of the silence. She still is.",
+      "unlockCondition": [
+        { "attribute": "knowledge", "operator": ">=", "value": 70 },
+        { "attribute": "aurelia_secret_01_known", "operator": "==", "value": true }
+      ],
+      "unlocksAt": "soul",
+      "referenceId": "aurelia",
+      "discovered": false
+    }
+  ],
+  "cgReferences": [
+    {
+      "id": "cg_aurelia_01",
+      "title": "Light in the Cathedral",
+      "path": "/assets/characters/aurelia/cg/cg_01.png",
+      "unlockCondition": [],
+      "characters": ["aurelia", "seeker"],
+      "sceneId": "prologue_01",
+      "isSecret": false
+    }
+  ],
+  "themeMusic": "aurelia_theme",
+  "animationSet": "standard_female",
+  "isPlayable": false,
+  "isNarrator": false,
+  "displayPosition": "right",
+  "zIndex": 10
+}

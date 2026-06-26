@@ -1,0 +1,86 @@
+{
+  "story": {
+    "characters": {
+      "seeker": "The Seeker",
+      "voice": "The Voice",
+      "aurelia": "Aurelia",
+      "nyx": "Nyx",
+      "seraphine": "Seraphine",
+      "mira": "Mira",
+      "echo": "Echo",
+      "elian": "Elian",
+      "watcher": "The Watcher",
+      "light": "Light",
+      "shadow": "Shadow",
+      "narrator": ""
+    },
+    "chapters": {
+      "prologue": "Prologue",
+      "chapter_01": "Chapter One: The Shattered Mirror District",
+      "chapter_02": "Chapter Two: The Cathedral of Echoing Light",
+      "chapter_03": "Chapter Three: The Edge of Everything"
+    },
+    "soul": {
+      "hope": "Hope",
+      "faith": "Faith",
+      "fear": "Fear",
+      "love": "Love",
+      "knowledge": "Knowledge",
+      "compassion": "Compassion",
+      "pride": "Pride",
+      "regret": "Regret",
+      "memory": "Memory",
+      "purpose": "Purpose",
+      "light": "Light",
+      "shadow": "Shadow"
+    },
+    "archetypes": {
+      "seeker": "The Seeker",
+      "enlightened": "The Enlightened",
+      "fallen": "The Fallen",
+      "devoted": "The Devoted",
+      "sovereign": "The Sovereign",
+      "haunted": "The Haunted",
+      "radiant": "The Radiant",
+      "void": "The Void",
+      "transcendent": "The Transcendent",
+      "forgotten": "The Forgotten"
+    },
+    "codex": {
+      "the_abyss": {
+        "title": "The Abyss",
+        "summary": "The space between the waking world and whatever lies beyond it.",
+        "content": "The Abyss is not a place in any conventional sense. It does not have coordinates. It cannot be mapped — though many have tried, and a few have come close. It is best described as the negative space of existence: the gap between what is real and what is remembered, between what is alive and what has ended.\n\nSouls pass through the Abyss without knowing it. Most transit in seconds. A few get caught. The ones who get caught either find their way through, are absorbed into the ambient texture of the place, or change into something that is no longer entirely themselves.\n\nThe Abyss is not malicious. It does not hunger. It simply is — vast, patient, and structurally indifferent to human concerns."
+      },
+      "the_voice": {
+        "title": "The Voice",
+        "summary": "An entity of uncertain nature and uncertain intention.",
+        "content": "The Voice predates recorded Abyss history. It speaks to new arrivals. It claims to be a guide. Whether this is true depends entirely on what you mean by guide — it will show you the path, but it is not required to tell you where the path goes.\n\nThe Voice communicates in whatever language the listener knows best. It is never cruel. It is not always kind. Those who have spent significant time with it report a gradual shift in their perception of it — from ominous to familiar, or from welcoming to deeply unsettling, depending on who they were to begin with."
+      },
+      "soul_architecture": {
+        "title": "Soul Architecture",
+        "summary": "The structure of a self, rendered visible in the Abyss.",
+        "content": "In the waking world, the soul is metaphor. In the Abyss, it is engineering.\n\nEvery soul that enters the Abyss carries a structure — a framework of twelve interlocking attributes that define how they relate to the world, to others, and to themselves. Hope and fear pull against each other. Knowledge and faith balance like opposing weights. Light and shadow are not opposites but complements.\n\nThe Abyss makes these structures visible. It responds to them. A soul heavy with regret moves differently through certain corridors than a soul burning with purpose. This is not metaphysical poetry. It is, as nearly as anyone can determine, physics."
+      },
+      "the_shattered_mirror_district": {
+        "title": "The Shattered Mirror District",
+        "summary": "A labyrinthine quarter of the Abyss where reflections behave incorrectly.",
+        "content": "The Shattered Mirror District is where most new arrivals end up. This is not by accident. The District has a particular affinity for confused souls — it draws them in the way a drain draws water.\n\nThe architecture is mostly recognizable: streets, buildings, doors that open. The problem is the reflections. Mirrors in the District do not show you as you are. They show you as you were, as you will be, as you fear you are, as you hope you are not. Navigating by reflection will get you lost. Navigating by instinct will get you somewhere, though not necessarily where you meant to go.\n\nNyx knows every unbroken mirror in the District. She uses this knowledge the way other people use maps."
+      }
+    },
+    "items": {
+      "threshold_key": {
+        "name": "Threshold Key",
+        "description": "A key that opens doors that have no locks. Where it came from, you don't know."
+      },
+      "memory_fragment": {
+        "name": "Memory Fragment",
+        "description": "A shard of something remembered so intensely it crystallized. It hums with the emotional weight of its origin."
+      },
+      "abyss_compass": {
+        "name": "Abyss Compass",
+        "description": "Does not point north. Points toward whatever you want most, which is frequently not the same thing as what you need."
+      }
+    }
+  }
+}
