@@ -7,7 +7,7 @@
 import { Container } from 'pixi.js';
 import { gsap } from 'gsap';
 import { BaseService } from '../core/BaseService';
-import type { CameraEffect } from '@types/scene';
+import type { CameraEffect } from '@t/scene';
 
 export class CameraManager extends BaseService {
   private viewport: Container | null = null;

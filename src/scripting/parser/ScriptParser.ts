@@ -30,12 +30,12 @@
  *     goto cathedral_end
  */
 
-import type { SceneDefinition, SceneNode, DialogueNode, ChoiceNode, Choice, CharacterShowNode, GotoNode, SoulChangeNode, WaitNode, BackgroundChangeNode, MusicChangeNode, NarratorNode } from '@types/scene';
-import type { SoulAttribute, SoulDelta } from '@types/soul';
-import type { CharacterID, EmotionTag } from '@types/character';
-import type { ID } from '@types/core';
-import { SOUL_ATTRIBUTES } from '@types/soul';
-import { CHARACTER_IDS } from '@types/character';
+import type { SceneDefinition, SceneNode, DialogueNode, ChoiceNode, Choice, CharacterShowNode, GotoNode, SoulChangeNode, WaitNode, BackgroundChangeNode, MusicChangeNode, NarratorNode } from '@t/scene';
+import type { SoulAttribute, SoulDelta } from '@t/soul';
+import type { CharacterID, EmotionTag } from '@t/character';
+import type { ID } from '@t/core';
+import { SOUL_ATTRIBUTES } from '@t/soul';
+import { CHARACTER_IDS } from '@t/character';
 
 // ---------------------------------------------------------------------------
 // Token types

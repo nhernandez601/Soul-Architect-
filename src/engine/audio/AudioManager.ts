@@ -7,8 +7,8 @@
 
 import { Howl, Howler } from 'howler';
 import { BaseService } from '../core/BaseService';
-import type { AudioConfig, ID } from '@types/core';
-import type { MusicSpec } from '@types/scene';
+import type { AudioConfig, ID } from '@t/core';
+import type { MusicSpec } from '@t/scene';
 
 interface TrackEntry {
   id: ID;

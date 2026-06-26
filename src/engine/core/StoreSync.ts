@@ -7,7 +7,8 @@
 
 import { engineBus } from './EventBus';
 import { useGameStore } from './GameStore';
-import { CHARACTER_IDS } from '@types/character';
+import { registry } from './ServiceRegistry';
+import { CHARACTER_IDS } from '@t/character';
 
 export function initStoreSync(): void {
   const store = useGameStore.getState();
@@ -66,7 +67,7 @@ export function initStoreSync(): void {
   });
 
   engineBus.on('soul:archetype_change', ({ newArchetype }) => {
-    store.setSoulArchetype(newArchetype as import('@types/soul').SoulArchetype);
+    store.setSoulArchetype(newArchetype as import('@t/soul').SoulArchetype);
   });
 
   // ---------------------------------------------------------------------------
@@ -120,6 +121,39 @@ export function initStoreSync(): void {
       const { menuOpen, openMenu, closeMenu } = useGameStore.getState();
       menuOpen ? closeMenu() : openMenu('main');
     }
+  });
+
+  // ---------------------------------------------------------------------------
+  // Phase 2 badge counts
+  // ---------------------------------------------------------------------------
+
+  engineBus.on('codex:unlocked', () => {
+    try {
+      const codex = registry.get<import('../../systems/codex/CodexSystem').CodexSystem>('codex');
+      store.setNewCodexCount(codex.getNewCount());
+    } catch { /* service not yet registered */ }
+  });
+
+  engineBus.on('gallery:cg_unlocked', () => {
+    try {
+      const gallery = registry.get<import('../../systems/gallery/GallerySystem').GallerySystem>('gallery');
+      store.setNewGalleryCount(gallery.getNewCount());
+    } catch { /* service not yet registered */ }
+  });
+
+  engineBus.on('quest:activated', () => {
+    try {
+      const quest = registry.get<import('../../systems/quest/QuestSystem').QuestSystem>('quest');
+      store.setActiveQuestCount(quest.getActive().length);
+    } catch { /* service not yet registered */ }
+  });
+
+  engineBus.on('achievement:unlocked', () => {
+    const current = useGameStore.getState().newAchievementCount;
+    store.setNewAchievementCount(current + 1);
+    setTimeout(() => {
+      store.setNewAchievementCount(Math.max(0, useGameStore.getState().newAchievementCount - 1));
+    }, 10000);
   });
 }
 

@@ -4,7 +4,7 @@
  * by user settings loaded from the save system.
  */
 
-import type { EngineConfig } from '@types/core';
+import type { EngineConfig } from '@t/core';
 
 export const defaultEngineConfig: EngineConfig = {
   version: '0.1.0',

@@ -6,7 +6,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../../engine/core/GameStore';
-import { SOUL_METER_DISPLAY } from '@types/soul';
+import { SOUL_METER_DISPLAY } from '@t/soul';
 
 export default function SoulMeter(): React.ReactElement {
   const soulStats = useGameStore((s) => s.soulStats);

@@ -1,0 +1,48 @@
+{
+  "id": "seraphine",
+  "displayName": "Seraphine",
+  "shortName": "Seraphine",
+  "pronouns": { "subject": "she", "object": "her", "possessive": "her" },
+  "biography": {
+    "age": "appears late 20s; has not aged in 300 years",
+    "origin": "The Cathedral of Echoing Light",
+    "occupation": "High Keeper of the Luminant Order",
+    "personality": "Composed, compassionate, carries grief like a cathedral carries silence",
+    "background": "Three centuries ago, Seraphine made a bargain to preserve her city from a cosmic tide. The city survived. Everyone she loved did not. She has spent every year since trying to find a way to undo what she wrought — and every year the bargain tightens its hold."
+  },
+  "portraits": [
+    { "id": "seraphine_default", "path": "/assets/characters/seraphine/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "seraphine_serene", "path": "/assets/characters/seraphine/serene.png", "emotion": "calm", "variant": "serene" },
+    { "id": "seraphine_grief", "path": "/assets/characters/seraphine/grief.png", "emotion": "sad", "variant": "grief" },
+    { "id": "seraphine_resolve", "path": "/assets/characters/seraphine/resolve.png", "emotion": "determined", "variant": "resolve" },
+    { "id": "seraphine_divine", "path": "/assets/characters/seraphine/divine.png", "emotion": "divine", "variant": "divine" },
+    { "id": "seraphine_broken", "path": "/assets/characters/seraphine/broken.png", "emotion": "broken", "variant": "broken" }
+  ],
+  "defaultPortrait": "seraphine_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 40,
+    "tension": 10,
+    "mysteryLevel": 50,
+    "corruptionLevel": 20,
+    "divineLevel": 70
+  },
+  "cgRefs": ["cg_seraphine_vigil", "cg_seraphine_bargain_revealed", "cg_seraphine_dawn"],
+  "secrets": [
+    {
+      "id": "seraphine_bargain_detail",
+      "hint": "She never speaks of what she gave.",
+      "revealCondition": "trust_seraphine >= 65 and faith >= 60",
+      "revealText": "She gave her future. All of it. She cannot die — but she also cannot live. She cannot love without that love being taken from her. She has watched everyone who has ever cared for her wither and vanish."
+    },
+    {
+      "id": "seraphine_the_way_out",
+      "hint": "She has been researching the Seeker's arrival for years.",
+      "revealCondition": "trust_seraphine >= 90",
+      "revealText": "She believes you are the key to dissolving the bargain. She has not told you because she is terrified — not that it won't work, but that you will agree to help her and she will have to watch you suffer for it."
+    }
+  ],
+  "themeColor": "#fbbf24",
+  "voiceSamplePath": null,
+  "tags": ["romance", "divine", "tragic", "chapter-2"]
+}

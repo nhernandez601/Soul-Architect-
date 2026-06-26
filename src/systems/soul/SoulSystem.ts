@@ -17,9 +17,9 @@ import type {
   SoulMilestone,
   HiddenVariables,
   SOUL_ATTRIBUTES,
-} from '@types/soul';
-import { ARCHETYPE_THRESHOLDS } from '@types/soul';
-import type { ConditionOperator } from '@types/soul';
+} from '@t/soul';
+import { ARCHETYPE_THRESHOLDS } from '@t/soul';
+import type { ConditionOperator } from '@t/soul';
 
 const DEFAULT_SOUL_STATS: SoulStats = {
   hope: 50,
@@ -209,6 +209,10 @@ export class SoulSystem extends BaseService {
     this.hidden = { ...state.hidden };
     this.history = [...state.history];
     this._currentArchetype = state.archetype;
+  }
+
+  getFlag(key: string): boolean | string | number | undefined {
+    return this.flags[key];
   }
 
   getStats(): Readonly<SoulStats> {

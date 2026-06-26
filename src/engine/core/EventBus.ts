@@ -6,10 +6,10 @@
  */
 
 import EventEmitter from 'eventemitter3';
-import type { CharacterID, EmotionTag } from '@types/character';
-import type { SoulAttribute, SoulDelta, SoulState } from '@types/soul';
-import type { ID, EngineState } from '@types/core';
-import type { SaveSlotMeta } from '@types/save';
+import type { CharacterID, EmotionTag } from '@t/character';
+import type { SoulAttribute, SoulDelta, SoulState } from '@t/soul';
+import type { ID, EngineState } from '@t/core';
+import type { SaveSlotMeta } from '@t/save';
 
 // ---------------------------------------------------------------------------
 // Engine Event Map — every event and its payload shape
@@ -96,6 +96,10 @@ export interface EngineEventMap {
   'gallery:scene_unlocked': { sceneId: ID };
   'achievement:unlocked': { achievementId: ID };
 
+  // Codex / quest events
+  'codex:unlocked': { entryId: ID };
+  'quest:activated': { questId: ID };
+
   // Flag / variable events
   'flag:set': { key: string; value: boolean | string | number };
   'variable:set': { key: string; value: boolean | string | number };
@@ -105,7 +109,7 @@ export interface EngineEventMap {
 // EventBus implementation
 // ---------------------------------------------------------------------------
 
-type Listener<T> = T extends void
+export type Listener<T> = T extends void
   ? () => void | Promise<void>
   : (payload: T) => void | Promise<void>;
 

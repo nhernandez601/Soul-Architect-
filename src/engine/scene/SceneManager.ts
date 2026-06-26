@@ -8,7 +8,7 @@
 
 import { BaseService } from '../core/BaseService';
 import { registry } from '../core/ServiceRegistry';
-import type { EngineConfig, ID } from '@types/core';
+import type { EngineConfig, ID } from '@t/core';
 import type {
   SceneDefinition,
   SceneNode,
@@ -32,8 +32,8 @@ import type {
   WeatherChangeNode,
   NarratorNode,
   CGShowNode,
-} from '@types/scene';
-import type { SoulCondition } from '@types/soul';
+} from '@t/scene';
+import type { SoulCondition } from '@t/soul';
 
 export class SceneManager extends BaseService {
   private scenes = new Map<ID, SceneDefinition>();

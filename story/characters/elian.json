@@ -1,0 +1,47 @@
+{
+  "id": "elian",
+  "displayName": "Elian",
+  "shortName": "Elian",
+  "pronouns": { "subject": "he", "object": "him", "possessive": "his" },
+  "biography": {
+    "age": "34",
+    "origin": "The Waking World (same as the Seeker)",
+    "occupation": "Former professor of comparative mythology; currently lost",
+    "personality": "Sardonic, deeply learned, uses humor as armor over considerable pain",
+    "background": "Elian crossed into the Abyss six months before you. He was researching it academically and got pulled through before he was ready. He has survived by being clever and making deals he regrets. He will tell you it's fine. It is not fine. He is slowly being unmade by what he has seen."
+  },
+  "portraits": [
+    { "id": "elian_default", "path": "/assets/characters/elian/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "elian_wry", "path": "/assets/characters/elian/wry.png", "emotion": "amused", "variant": "wry" },
+    { "id": "elian_haunted", "path": "/assets/characters/elian/haunted.png", "emotion": "afraid", "variant": "haunted" },
+    { "id": "elian_earnest", "path": "/assets/characters/elian/earnest.png", "emotion": "tender", "variant": "earnest" },
+    { "id": "elian_shattered", "path": "/assets/characters/elian/shattered.png", "emotion": "broken", "variant": "shattered" }
+  ],
+  "defaultPortrait": "elian_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 35,
+    "tension": 15,
+    "mysteryLevel": 40,
+    "corruptionLevel": 35,
+    "divineLevel": 5
+  },
+  "cgRefs": ["cg_elian_library", "cg_elian_unraveling"],
+  "secrets": [
+    {
+      "id": "elian_deal",
+      "hint": "He knows more about the Abyss Court than he should.",
+      "revealCondition": "trust_elian >= 60",
+      "revealText": "He made a deal with the Abyss Court in month two: information about the waking world in exchange for protection. He tells himself he gave them nothing important. He knows that is not true."
+    },
+    {
+      "id": "elian_purpose",
+      "hint": "He came here for a reason beyond research.",
+      "revealCondition": "trust_elian >= 85 and compassion >= 55",
+      "revealText": "His daughter vanished three years ago. The official verdict was an accident. He has reason to believe she was taken. He came here because someone told him this was where the taken go."
+    }
+  ],
+  "themeColor": "#f59e0b",
+  "voiceSamplePath": null,
+  "tags": ["romance", "ally", "waking-world-origin", "chapter-1", "chapter-2", "chapter-3"]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "shadow",
+  "displayName": "Shadow",
+  "shortName": "Shadow",
+  "pronouns": { "subject": "he", "object": "him", "possessive": "his" },
+  "biography": {
+    "age": "appears 30s; is as old as the Abyss",
+    "origin": "The Sunken Choir",
+    "occupation": "Embodiment of the unknown, patron of secrets and endings",
+    "personality": "Melancholic, honest in the way only darkness can be, does not lie because the truth is always worse",
+    "background": "Shadow is what remains when hope is extinguished — not evil, but absence. He and Light are halves of the same truth. He is tired. He has watched everything end for longer than he can remember. He keeps watching because he believes something, eventually, will not end. He has not told anyone this. He is afraid it is foolish."
+  },
+  "portraits": [
+    { "id": "shadow_default", "path": "/assets/characters/shadow/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "shadow_weary", "path": "/assets/characters/shadow/weary.png", "emotion": "sad", "variant": "weary" },
+    { "id": "shadow_knowing", "path": "/assets/characters/shadow/knowing.png", "emotion": "cold", "variant": "knowing" },
+    { "id": "shadow_rare_warmth", "path": "/assets/characters/shadow/warmth.png", "emotion": "tender", "variant": "rare_warmth" }
+  ],
+  "defaultPortrait": "shadow_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 30,
+    "tension": 30,
+    "mysteryLevel": 85,
+    "corruptionLevel": 60,
+    "divineLevel": 85
+  },
+  "cgRefs": ["cg_shadow_confession", "cg_shadow_and_light"],
+  "secrets": [
+    {
+      "id": "shadow_hope",
+      "hint": "He has watched the Seeker more carefully than he lets on.",
+      "revealCondition": "trust_shadow >= 80 and shadow >= 60 and light >= 40",
+      "revealText": "He thinks you might be the thing that does not end. He thinks — very quietly, because hope is a dangerous thing when you are as old as endings — that you might be why the Watcher broke its own rules."
+    }
+  ],
+  "themeColor": "#1f2937",
+  "voiceSamplePath": null,
+  "tags": ["divine", "antagonist", "ally", "shadow-affinity", "chapter-3", "ending-relevant"]
+}

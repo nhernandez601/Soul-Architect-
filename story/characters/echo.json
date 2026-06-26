@@ -1,0 +1,41 @@
+{
+  "id": "echo",
+  "displayName": "Echo",
+  "shortName": "Echo",
+  "pronouns": { "subject": "they", "object": "them", "possessive": "their" },
+  "biography": {
+    "age": "appears mid-20s; was assembled, not born",
+    "origin": "The Hall of Mirrors",
+    "occupation": "Resonance entity, memory keeper",
+    "personality": "Gentle, precise, incapable of lying — because they are made of reflections",
+    "background": "Echo is not a person so much as an impression — a crystallization of all the emotions felt in a single devastating moment of collective grief. They have existed long enough to grow a self around that origin. They are trying to understand what it means to want something for their own sake, not because they reflect it from someone else."
+  },
+  "portraits": [
+    { "id": "echo_default", "path": "/assets/characters/echo/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "echo_curious", "path": "/assets/characters/echo/curious.png", "emotion": "curious", "variant": "curious" },
+    { "id": "echo_sad", "path": "/assets/characters/echo/sad.png", "emotion": "sad", "variant": "sad" },
+    { "id": "echo_joyful", "path": "/assets/characters/echo/joyful.png", "emotion": "happy", "variant": "joyful" },
+    { "id": "echo_fractured", "path": "/assets/characters/echo/fractured.png", "emotion": "broken", "variant": "fractured" }
+  ],
+  "defaultPortrait": "echo_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 60,
+    "tension": 0,
+    "mysteryLevel": 70,
+    "corruptionLevel": 0,
+    "divineLevel": 30
+  },
+  "cgRefs": ["cg_echo_reflection", "cg_echo_origin"],
+  "secrets": [
+    {
+      "id": "echo_original_grief",
+      "hint": "They will not say what the original grief was.",
+      "revealCondition": "trust_echo >= 75 and memory >= 60",
+      "revealText": "A city full of people, watching the sky fall, and loving each other desperately in the last minutes. Echo is the memory of that love. The city is gone. They are all that survived of it."
+    }
+  ],
+  "themeColor": "#93c5fd",
+  "voiceSamplePath": null,
+  "tags": ["romance", "nonbinary", "memory-affinity", "chapter-2", "chapter-3"]
+}

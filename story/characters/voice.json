@@ -1,0 +1,40 @@
+{
+  "id": "voice",
+  "displayName": "The Voice",
+  "shortName": "Voice",
+  "pronouns": { "subject": "it", "object": "it", "possessive": "its" },
+  "biography": {
+    "age": "eternal",
+    "origin": "The Deep Abyss",
+    "occupation": "Narrator. Guide. Deceiver.",
+    "personality": "Silken, knowing, unsettling — alternately warm and terrifyingly vast",
+    "background": "The first thing you heard when you crossed. It knows your name. It says it called you here. Whether it is a god, a demon, your own subconscious made manifest, or something else entirely — the Voice will not say. It speaks in riddles wrapped in care."
+  },
+  "portraits": [
+    { "id": "voice_default", "path": "/assets/characters/voice/ripple.png", "emotion": "neutral", "variant": "default" },
+    { "id": "voice_pleased", "path": "/assets/characters/voice/pleased.png", "emotion": "happy", "variant": "pleased" },
+    { "id": "voice_cold", "path": "/assets/characters/voice/cold.png", "emotion": "cold", "variant": "cold" },
+    { "id": "voice_vast", "path": "/assets/characters/voice/vast.png", "emotion": "divine", "variant": "vast" }
+  ],
+  "defaultPortrait": "voice_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 20,
+    "tension": 30,
+    "mysteryLevel": 100,
+    "corruptionLevel": 0,
+    "divineLevel": 80
+  },
+  "cgRefs": ["cg_voice_reveal", "cg_voice_true_form"],
+  "secrets": [
+    {
+      "id": "voice_true_name",
+      "hint": "It has been called many things across many worlds.",
+      "revealCondition": "knowledge >= 80 and trust_voice >= 70",
+      "revealText": "Its true name is a sound the human throat cannot form. But it chose a name for your sake: Nyaroth. The Dreaming Tide."
+    }
+  ],
+  "themeColor": "#4a1d96",
+  "voiceSamplePath": null,
+  "tags": ["antagonist", "guide", "cosmic", "mystery"]
+}

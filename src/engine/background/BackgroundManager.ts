@@ -7,7 +7,7 @@ import { Container, Sprite, Graphics } from 'pixi.js';
 import { gsap } from 'gsap';
 import { BaseService } from '../core/BaseService';
 import { registry } from '../core/ServiceRegistry';
-import type { BackgroundSpec, TransitionType } from '@types/scene';
+import type { BackgroundSpec, TransitionType } from '@t/scene';
 
 export class BackgroundManager extends BaseService {
   private readonly stage: Container;

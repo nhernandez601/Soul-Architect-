@@ -7,7 +7,7 @@
 
 import { BaseService } from '../core/BaseService';
 import { registry } from '../core/ServiceRegistry';
-import type { ChoiceNode, Choice } from '@types/scene';
+import type { ChoiceNode, Choice } from '@t/scene';
 
 export class ChoiceManager extends BaseService {
   private resolveChoice: ((choice: Choice) => void) | null = null;
@@ -66,7 +66,7 @@ export class ChoiceManager extends BaseService {
     if (choice.relationshipDeltas) {
       const rel = registry.get<import('../../systems/relationship/RelationshipSystem').RelationshipSystem>('relationship');
       Object.entries(choice.relationshipDeltas).forEach(([charId, delta]) => {
-        rel.applyDelta(charId as import('@types/character').CharacterID, 'affinity', delta);
+        rel.applyDelta(charId as import('@t/character').CharacterID, 'affinity', delta);
       });
     }
 

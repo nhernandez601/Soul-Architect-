@@ -9,8 +9,8 @@
 import LZString from 'lz-string';
 import { BaseService } from '../core/BaseService';
 import { registry } from '../core/ServiceRegistry';
-import type { SaveConfig, SemVer } from '@types/core';
-import type { SaveData, SaveSlotMeta, SaveType, StoryProgress, GallerySaveData } from '@types/save';
+import type { SaveConfig, SemVer } from '@t/core';
+import type { SaveData, SaveSlotMeta, SaveType, StoryProgress, GallerySaveData } from '@t/save';
 
 const SAVE_VERSION: SemVer = '0.1.0';
 const STORAGE_PREFIX = 'soul_architect_save_';
@@ -153,7 +153,7 @@ export class SaveManager extends BaseService {
       meta,
       story: storyProgress,
       soul: soul.getState(),
-      characters: rel.getAllStats() as Record<string, import('@types/character').CharacterRuntimeState>,
+      characters: rel.getAllStats() as unknown as Record<string, import('@t/character').CharacterRuntimeState>,
       inventory: { items: {}, capacity: 50 },
       journal: { entries: [], memoryLog: [] },
       quests: { quests: {} },
@@ -171,7 +171,7 @@ export class SaveManager extends BaseService {
     const scene = registry.get<import('../scene/SceneManager').SceneManager>('scene');
 
     soul.loadState(data.soul);
-    rel.loadStats(data.characters as Record<string, import('@types/character').CharacterStats>);
+    rel.loadStats(data.characters as unknown as Record<string, import('@t/character').CharacterStats>);
 
     if (data.story.currentSceneId) {
       await scene.loadScene(data.story.currentSceneId, data.story.currentNodeId);
@@ -265,7 +265,7 @@ export class SaveManager extends BaseService {
   // Default settings fallback
   // ---------------------------------------------------------------------------
 
-  private getDefaultSettings(): import('@types/save').UserSettings {
+  private getDefaultSettings(): import('@t/save').UserSettings {
     return {
       textSpeed: 'normal',
       autoSpeed: 1500,

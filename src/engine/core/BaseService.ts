@@ -6,8 +6,8 @@
  * All managers (SceneManager, AudioManager, etc.) extend this class.
  */
 
-import { engineBus, type EventBus } from './EventBus';
-import type { Disposable } from '@types/core';
+import { engineBus, type EventBus, type EngineEventMap, type Listener } from './EventBus';
+import type { Disposable } from '@t/core';
 
 export type ServiceStatus = 'idle' | 'initializing' | 'ready' | 'paused' | 'destroyed' | 'error';
 
@@ -17,7 +17,7 @@ export abstract class BaseService implements Disposable {
   protected readonly serviceName: string;
   private readonly unsubscribers: Array<() => void> = [];
 
-  constructor(serviceName: string) {
+  constructor(serviceName = 'Service') {
     this.serviceName = serviceName;
   }
 
@@ -96,9 +96,9 @@ export abstract class BaseService implements Disposable {
   // ---------------------------------------------------------------------------
 
   /** Register an event bus listener that is auto-removed on dispose(). */
-  protected subscribe<K extends Parameters<EventBus['on']>[0]>(
+  protected subscribe<K extends keyof EngineEventMap>(
     event: K,
-    handler: Parameters<EventBus['on']<K>>[1]
+    handler: Listener<EngineEventMap[K]>
   ): void {
     const unsub = this.bus.on(event, handler);
     this.unsubscribers.push(unsub);

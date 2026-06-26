@@ -12,7 +12,7 @@
 
 import { engineBus } from './EventBus';
 import { registry } from './ServiceRegistry';
-import type { EngineConfig, EngineState } from '@types/core';
+import type { EngineConfig, EngineState } from '@t/core';
 
 export class Engine {
   private state: EngineState = 'uninitialized';
@@ -83,11 +83,24 @@ export class Engine {
     const { SaveManager } = await import('../save/SaveManager');
     const { SoulSystem } = await import('../../systems/soul/SoulSystem');
     const { RelationshipSystem } = await import('../../systems/relationship/RelationshipSystem');
+    // Phase 2 systems
+    const { CodexSystem } = await import('../../systems/codex/CodexSystem');
+    const { JournalSystem } = await import('../../systems/journal/JournalSystem');
+    const { MemoryLogSystem } = await import('../../systems/memory/MemoryLogSystem');
+    const { QuestSystem } = await import('../../systems/quest/QuestSystem');
+    const { AchievementSystem } = await import('../../systems/achievement/AchievementSystem');
+    const { InventorySystem } = await import('../../systems/inventory/InventorySystem');
+    const { GallerySystem } = await import('../../systems/gallery/GallerySystem');
+    const { TimelineSystem } = await import('../../systems/timeline/TimelineSystem');
+    const { NotificationSystem } = await import('../../systems/notification/NotificationSystem');
+    const { ModSystem } = await import('../../systems/mod/ModSystem');
+    const { LocalizationSystem } = await import('../../localization/LocalizationSystem');
+    const { DevConsole } = await import('../core/DevConsole');
 
     registry.register('asset', new AssetManager(this.config));
     registry.register('scene', new SceneManager(this.config));
     registry.register('character', new CharacterManager(this.config));
-    registry.register('background', new BackgroundManager(this.config));
+    registry.register('background', new BackgroundManager());
     registry.register('audio', new AudioManager(this.config.audio));
     registry.register('particle', new ParticleManager());
     registry.register('animation', new AnimationManager());
@@ -98,6 +111,21 @@ export class Engine {
     registry.register('save', new SaveManager(this.config.save));
     registry.register('soul', new SoulSystem());
     registry.register('relationship', new RelationshipSystem());
+    // Phase 2
+    registry.register('codex', new CodexSystem());
+    registry.register('journal', new JournalSystem());
+    registry.register('memory', new MemoryLogSystem());
+    registry.register('quest', new QuestSystem());
+    registry.register('achievement', new AchievementSystem());
+    registry.register('inventory', new InventorySystem());
+    registry.register('gallery', new GallerySystem());
+    registry.register('timeline', new TimelineSystem());
+    registry.register('notification', new NotificationSystem());
+    registry.register('mod', new ModSystem());
+    registry.register('localization', new LocalizationSystem());
+    if (import.meta.env.DEV) {
+      registry.register('devConsole', new DevConsole());
+    }
   }
 
   // ---------------------------------------------------------------------------

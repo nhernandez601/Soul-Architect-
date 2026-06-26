@@ -9,9 +9,9 @@ import { Container, Sprite } from 'pixi.js';
 import { gsap } from 'gsap';
 import { BaseService } from '../core/BaseService';
 import { registry } from '../core/ServiceRegistry';
-import type { EngineConfig, ID } from '@types/core';
-import type { CharacterID, EmotionTag, CharacterDefinition, CharacterRuntimeState, PortraitVariant } from '@types/character';
-import type { TransitionType } from '@types/scene';
+import type { EngineConfig, ID } from '@t/core';
+import type { CharacterID, EmotionTag, CharacterDefinition, CharacterRuntimeState, PortraitVariant } from '@t/character';
+import type { TransitionType } from '@t/scene';
 
 interface ActiveCharacter {
   definition: CharacterDefinition;

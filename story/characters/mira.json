@@ -1,0 +1,41 @@
+{
+  "id": "mira",
+  "displayName": "Mira",
+  "shortName": "Mira",
+  "pronouns": { "subject": "she", "object": "her", "possessive": "her" },
+  "biography": {
+    "age": "19",
+    "origin": "The Clockwork Reaches",
+    "occupation": "Archivist's apprentice, unlicensed dream-cartographer",
+    "personality": "Bright, relentlessly optimistic, secretly terrified of what she maps",
+    "background": "Mira charts the geography of the Abyss — its shifting corridors, its living architecture. She is brilliant and young and has not yet learned that some places are unmappable because they do not want to be found. She is going to learn."
+  },
+  "portraits": [
+    { "id": "mira_default", "path": "/assets/characters/mira/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "mira_excited", "path": "/assets/characters/mira/excited.png", "emotion": "excited", "variant": "excited" },
+    { "id": "mira_focused", "path": "/assets/characters/mira/focused.png", "emotion": "determined", "variant": "focused" },
+    { "id": "mira_scared", "path": "/assets/characters/mira/scared.png", "emotion": "afraid", "variant": "scared" },
+    { "id": "mira_proud", "path": "/assets/characters/mira/proud.png", "emotion": "happy", "variant": "proud" }
+  ],
+  "defaultPortrait": "mira_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 50,
+    "tension": 5,
+    "mysteryLevel": 25,
+    "corruptionLevel": 5,
+    "divineLevel": 15
+  },
+  "cgRefs": ["cg_mira_map_room", "cg_mira_discovery"],
+  "secrets": [
+    {
+      "id": "mira_map_anomaly",
+      "hint": "One corner of every map she draws is left blank.",
+      "revealCondition": "trust_mira >= 55 and knowledge >= 45",
+      "revealText": "She mapped something three years ago that she immediately burned. She has nightmares about what was in that blank corner. She draws blank corners now as a ward — to keep that shape from appearing again."
+    }
+  ],
+  "themeColor": "#34d399",
+  "voiceSamplePath": null,
+  "tags": ["ally", "scholar", "chapter-1", "chapter-2"]
+}

@@ -6,7 +6,7 @@
  */
 
 import { BaseService } from '../../engine/core/BaseService';
-import type { CharacterID, CharacterStats, RelationshipEvent } from '@types/character';
+import type { CharacterID, CharacterStats, RelationshipEvent } from '@t/character';
 
 type RelationshipStat = 'affinity' | 'trust' | 'tension' | 'mysteryLevel' | 'corruptionLevel' | 'divineLevel';
 

@@ -1,0 +1,41 @@
+{
+  "id": "light",
+  "displayName": "Light",
+  "shortName": "Light",
+  "pronouns": { "subject": "she", "object": "her", "possessive": "her" },
+  "biography": {
+    "age": "appears early 20s; is a concept given form",
+    "origin": "The Luminous Cradle",
+    "occupation": "Embodiment of hope, guide to lost souls",
+    "personality": "Warm, unwavering, occasionally naive — she believes every soul is worth saving",
+    "background": "Light is not a person born of flesh. She is the Abyss's own longing for illumination, given shape by the collective hope of every soul that has passed through. She is ancient in purpose, young in experience. The darkness she inhabits has never fully understood her. Neither has she ever fully understood it."
+  },
+  "portraits": [
+    { "id": "light_default", "path": "/assets/characters/light/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "light_radiant", "path": "/assets/characters/light/radiant.png", "emotion": "happy", "variant": "radiant" },
+    { "id": "light_sorrowful", "path": "/assets/characters/light/sorrowful.png", "emotion": "sad", "variant": "sorrowful" },
+    { "id": "light_fierce", "path": "/assets/characters/light/fierce.png", "emotion": "determined", "variant": "fierce" },
+    { "id": "light_dimming", "path": "/assets/characters/light/dimming.png", "emotion": "afraid", "variant": "dimming" }
+  ],
+  "defaultPortrait": "light_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 70,
+    "tension": 0,
+    "mysteryLevel": 60,
+    "corruptionLevel": 0,
+    "divineLevel": 90
+  },
+  "cgRefs": ["cg_light_sunrise", "cg_light_sacrifice"],
+  "secrets": [
+    {
+      "id": "light_diminishing",
+      "hint": "She is a little less bright each time you see her.",
+      "revealCondition": "trust_light >= 65 and light >= 60",
+      "revealText": "Every soul she saves costs her something. She is not infinite. She knows this. She has decided it does not matter. She will save every soul she can and burn herself out doing it and she has made her peace with that."
+    }
+  ],
+  "themeColor": "#fef3c7",
+  "voiceSamplePath": null,
+  "tags": ["divine", "ally", "hope-affinity", "chapter-2", "chapter-3"]
+}

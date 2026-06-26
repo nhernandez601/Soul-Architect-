@@ -6,7 +6,7 @@
  */
 
 import { BaseService } from '../core/BaseService';
-import type { InputConfig } from '@types/core';
+import type { InputConfig } from '@t/core';
 
 type ActionMap = Record<string, string>;
 

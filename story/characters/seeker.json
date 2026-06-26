@@ -1,0 +1,34 @@
+{
+  "id": "seeker",
+  "displayName": "The Seeker",
+  "shortName": "Seeker",
+  "pronouns": { "subject": "they", "object": "them", "possessive": "their" },
+  "biography": {
+    "age": "unknown",
+    "origin": "The Threshold",
+    "occupation": "Wanderer between worlds",
+    "personality": "Curious, introspective, haunted by half-remembered truths",
+    "background": "You. The player. A soul that has crossed the boundary between the waking world and the Abyss, drawn by a voice that may not exist. The Seeker's nature shifts with every choice — they are whatever you make them."
+  },
+  "portraits": [
+    { "id": "seeker_default", "path": "/assets/characters/seeker/default.png", "emotion": "neutral", "variant": "default" },
+    { "id": "seeker_determined", "path": "/assets/characters/seeker/determined.png", "emotion": "determined", "variant": "determined" },
+    { "id": "seeker_afraid", "path": "/assets/characters/seeker/afraid.png", "emotion": "afraid", "variant": "afraid" },
+    { "id": "seeker_wonder", "path": "/assets/characters/seeker/wonder.png", "emotion": "curious", "variant": "curious" },
+    { "id": "seeker_grief", "path": "/assets/characters/seeker/grief.png", "emotion": "sad", "variant": "sad" }
+  ],
+  "defaultPortrait": "seeker_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 50,
+    "tension": 0,
+    "mysteryLevel": 0,
+    "corruptionLevel": 0,
+    "divineLevel": 0
+  },
+  "cgRefs": [],
+  "secrets": [],
+  "themeColor": "#8b7cf6",
+  "voiceSamplePath": null,
+  "tags": ["protagonist", "player-character"]
+}

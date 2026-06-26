@@ -10,7 +10,7 @@ export default defineConfig({
       '@systems': resolve(__dirname, 'src/systems'),
       '@ui': resolve(__dirname, 'src/ui'),
       '@scripting': resolve(__dirname, 'src/scripting'),
-      '@types': resolve(__dirname, 'src/types'),
+      '@t': resolve(__dirname, 'src/types'),
       '@utils': resolve(__dirname, 'src/utils'),
       '@config': resolve(__dirname, 'src/config'),
       '@localization': resolve(__dirname, 'src/localization'),

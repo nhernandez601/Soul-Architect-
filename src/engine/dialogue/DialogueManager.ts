@@ -4,8 +4,8 @@
  */
 
 import { BaseService } from '../core/BaseService';
-import type { EngineConfig, TextSpeed, TEXT_SPEED_MS } from '@types/core';
-import type { DialogueNode, NarratorNode } from '@types/scene';
+import type { EngineConfig, TextSpeed, TEXT_SPEED_MS } from '@t/core';
+import type { DialogueNode, NarratorNode } from '@t/scene';
 
 export type DialogueState = 'idle' | 'typing' | 'complete' | 'skipped';
 

@@ -1,0 +1,39 @@
+{
+  "id": "watcher",
+  "displayName": "The Watcher",
+  "shortName": "Watcher",
+  "pronouns": { "subject": "it", "object": "it", "possessive": "its" },
+  "biography": {
+    "age": "older than the Abyss",
+    "origin": "The Obelisk at the Edge of the World",
+    "occupation": "Observer. Judge. The thing that records.",
+    "personality": "Utterly patient, utterly impartial — or so it says",
+    "background": "The Watcher has observed every soul that has crossed the Threshold. It does not intervene. It does not comfort. It records. When it speaks to you directly — which it almost never does — something has changed. Something unprecedented is happening. You are unprecedented."
+  },
+  "portraits": [
+    { "id": "watcher_default", "path": "/assets/characters/watcher/obelisk.png", "emotion": "neutral", "variant": "default" },
+    { "id": "watcher_attention", "path": "/assets/characters/watcher/attention.png", "emotion": "curious", "variant": "attention" },
+    { "id": "watcher_judgment", "path": "/assets/characters/watcher/judgment.png", "emotion": "cold", "variant": "judgment" }
+  ],
+  "defaultPortrait": "watcher_default",
+  "stats": {
+    "affinity": 0,
+    "trust": 0,
+    "tension": 50,
+    "mysteryLevel": 100,
+    "corruptionLevel": 0,
+    "divineLevel": 100
+  },
+  "cgRefs": ["cg_watcher_speaks", "cg_watcher_truth"],
+  "secrets": [
+    {
+      "id": "watcher_not_impartial",
+      "hint": "It said it does not intervene. It has already intervened.",
+      "revealCondition": "knowledge >= 90 and purpose >= 70",
+      "revealText": "It brought you here. It chose you specifically. The Voice did not call you — the Watcher did, and allowed the Voice to believe otherwise. The question it will not answer: why you."
+    }
+  ],
+  "themeColor": "#e5e7eb",
+  "voiceSamplePath": null,
+  "tags": ["cosmic", "antagonist", "mystery", "chapter-3", "ending-relevant"]
+}

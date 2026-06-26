@@ -8,9 +8,9 @@
 
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
-import type { SoulStats, SoulArchetype } from '@types/soul';
-import type { CharacterID } from '@types/character';
-import type { SaveSlotMeta, UserSettings } from '@types/save';
+import type { SoulStats, SoulArchetype } from '@t/soul';
+import type { CharacterID } from '@t/character';
+import type { SaveSlotMeta, UserSettings } from '@t/save';
 
 // ---------------------------------------------------------------------------
 // State shape
@@ -67,6 +67,13 @@ export interface GameUIState {
   settings: UserSettings;
   // Notifications
   notifications: Notification[];
+  // Phase 2 badge counts
+  newCodexCount: number;
+  newGalleryCount: number;
+  activeQuestCount: number;
+  newAchievementCount: number;
+  // Dev console
+  devConsoleVisible: boolean;
 }
 
 export interface Notification {
@@ -96,6 +103,12 @@ export interface GameUIActions {
   updateSettings(settings: Partial<UserSettings>): void;
   addNotification(message: string, type: Notification['type']): void;
   dismissNotification(id: string): void;
+  // Phase 2
+  setNewCodexCount(n: number): void;
+  setNewGalleryCount(n: number): void;
+  setActiveQuestCount(n: number): void;
+  setNewAchievementCount(n: number): void;
+  toggleDevConsole(): void;
 }
 
 // ---------------------------------------------------------------------------
@@ -146,6 +159,11 @@ export const useGameStore = create<GameUIState & GameUIActions>()(
     saveSlots: [],
     settings: defaultSettings,
     notifications: [],
+    newCodexCount: 0,
+    newGalleryCount: 0,
+    activeQuestCount: 0,
+    newAchievementCount: 0,
+    devConsoleVisible: false,
 
     setDialogue: (update) => set((s) => { Object.assign(s.dialogue, update); }),
     setChoice: (update) => set((s) => { Object.assign(s.choice, update); }),
@@ -178,5 +196,11 @@ export const useGameStore = create<GameUIState & GameUIActions>()(
     dismissNotification: (id) => set((s) => {
       s.notifications = s.notifications.filter((n) => n.id !== id);
     }),
+
+    setNewCodexCount: (n) => set((s) => { s.newCodexCount = n; }),
+    setNewGalleryCount: (n) => set((s) => { s.newGalleryCount = n; }),
+    setActiveQuestCount: (n) => set((s) => { s.activeQuestCount = n; }),
+    setNewAchievementCount: (n) => set((s) => { s.newAchievementCount = n; }),
+    toggleDevConsole: () => set((s) => { s.devConsoleVisible = !s.devConsoleVisible; }),
   }))
 );

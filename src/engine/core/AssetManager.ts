@@ -8,7 +8,7 @@
 import { Assets } from 'pixi.js';
 import type { Texture } from 'pixi.js';
 import { BaseService } from './BaseService';
-import type { EngineConfig, AssetRef, AssetType, FilePath } from '@types/core';
+import type { EngineConfig, AssetRef, AssetType, FilePath } from '@t/core';
 
 interface CacheEntry<T> {
   asset: T;

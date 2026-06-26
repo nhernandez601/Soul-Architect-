@@ -1,0 +1,84 @@
+scene forgotten_path_01:
+  title: "The Forgotten Path"
+  chapter: 1
+  act: 3
+  background: "abyss_corridor_deep"
+  music: "theme_quiet_threshold"
+
+  narrator: "A path you did not notice before. It was always there. You were not ready to see it until now."
+
+  narrator: "At the end of the corridor, someone is sitting on a stone that should not exist in this geometry. They look up when you approach."
+
+  show character echo position:center emotion:curious
+
+  dialogue echo: "You found this place. Most people walk past it seventeen times before they see it. Or they never do."
+
+  dialogue echo: "I come here when I need to remember that some things persist. The stone is one of them. It was here before the Abyss was shaped. It will be here after."
+
+  choice:
+    prompt: "What do you say?"
+    - "Ask about the stone" -> forgotten_path_stone
+    - "Ask why Echo is here" -> forgotten_path_why
+    - "Sit down beside them" -> forgotten_path_sit
+
+scene forgotten_path_stone:
+  title: "The Persistent Stone"
+  chapter: 1
+  act: 3
+
+  dialogue echo: "I don't know what it is. I know what it does: it remembers. Put your hand on it. Close your eyes. You'll feel it — everything that has ever touched it, a residue of presence."
+
+  soul_change: memory +10 knowledge +5
+
+  narrator: "You try it. They're right. It's like pressing your palm against a page covered in writing you can almost read."
+
+  dialogue echo: "You felt it. Good. Hold onto that feeling. The Abyss will try to make you doubt what you've experienced. The stone is proof that experience leaves marks."
+
+  goto: forgotten_path_end
+
+scene forgotten_path_why:
+  title: "Being Alone Together"
+  chapter: 1
+  act: 3
+
+  dialogue echo: "Solitude. Which is strange, because I am made of collective grief. You would think I would crave company. But sometimes being made of others means needing time away from them, to remember where I end and they begin."
+
+  soul_change: compassion +8 memory +5
+
+  narrator: "That makes a particular kind of sense."
+
+  dialogue echo: "You understand that. Something about the way you're listening — you know what it is to need to find your own edges."
+
+  soul_change: trust_echo +15
+
+  goto: forgotten_path_end
+
+scene forgotten_path_sit:
+  title: "Shared Silence"
+  chapter: 1
+  act: 3
+
+  narrator: "You sit. You don't say anything. Neither does Echo, for a long while."
+
+  wait: 2500
+
+  dialogue echo: "...Thank you. For not needing it to be something."
+
+  soul_change: compassion +10 trust_echo +20 memory +5
+
+  narrator: "The silence between you is comfortable. Rare, in a place like this. Precious."
+
+  goto: forgotten_path_end
+
+scene forgotten_path_end:
+  title: "A Path Remembered"
+  chapter: 1
+  act: 3
+
+  dialogue echo: "Come back if you find this place again. It will look different each time. But the stone will be the same."
+
+  hide character echo
+
+  narrator: "The path closes behind you — or you leave it, which amounts to the same thing. Something about the encounter settles in you, quiet and warm."
+
+  narrator: "You will remember this."

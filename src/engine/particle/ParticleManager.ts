@@ -8,8 +8,8 @@
 
 import { Container, Graphics } from 'pixi.js';
 import { BaseService } from '../core/BaseService';
-import type { WeatherSpec, WeatherType } from '@types/scene';
-import type { Dict } from '@types/core';
+import type { WeatherSpec, WeatherType } from '@t/scene';
+import type { Dict } from '@t/core';
 
 interface Particle {
   x: number;

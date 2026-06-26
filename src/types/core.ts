@@ -98,6 +98,7 @@ export interface AudioConfig {
 export interface SaveConfig {
   maxSlots: number;
   autoSaveIntervalMs: number;
+  autoSaveEnabled?: boolean;
   cloudEnabled: boolean;
   encryptionEnabled: boolean;
   compressionEnabled: boolean;
