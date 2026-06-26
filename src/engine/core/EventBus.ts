@@ -100,6 +100,19 @@ export interface EngineEventMap {
   'codex:unlocked': { entryId: ID };
   'quest:activated': { questId: ID };
 
+  // Ending events
+  'ending:reached': { endingId: ID; isNewEnding: boolean };
+  'ending:unlocked': { endingId: ID };
+
+  // Transition events
+  'transition:start': { style: 'fade' | 'flash' | 'iris'; durationMs: number; color?: number };
+  'transition:complete': { style: 'fade' | 'flash' | 'iris' };
+  'transition:midpoint': void;
+
+  // VFX / post-processing events
+  'postprocessing:preset': { preset: string };
+  'postprocessing:effect_change': { effect: string; enabled: boolean };
+
   // Flag / variable events
   'flag:set': { key: string; value: boolean | string | number };
   'variable:set': { key: string; value: boolean | string | number };

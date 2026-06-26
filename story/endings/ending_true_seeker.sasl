@@ -1,0 +1,189 @@
+// ending_true_seeker.sasl
+// TRUE ENDING: The Architect Remains
+// Conditions: soul.purpose >= 50, soul.compassion >= 40, soul.hope >= 35
+// Triggered by: reaching ending_check_true_seeker with sufficient soul stats
+
+scene ending_check_true_seeker
+  // This scene evaluates conditions before committing to the ending
+  if soul.purpose >= 50 and soul.compassion >= 40 and soul.hope >= 35
+    goto ending_true_seeker_prologue
+  end
+  if soul.purpose >= 50 and soul.compassion >= 40
+    goto ending_true_seeker_prologue
+  end
+  // Fallback to neutral ending if conditions not fully met
+  goto ending_neutral_threshold
+  end
+
+scene ending_true_seeker_prologue
+  background "sanctuary_chamber_deep"
+  music "ending_true_seeker_theme"
+  weather none
+
+  narrator
+    "The fracture in the Mirror District doesn't close on a single day.
+     It closes the way most things close — slowly, without announcement,
+     because someone kept returning to it."
+
+  narrator
+    "Someone kept returning to it."
+
+  narrator
+    "You."
+
+  fade_in duration:3000
+
+  soul purpose +10 hope +8 love +6
+  goto ending_true_seeker_main
+  end
+
+scene ending_true_seeker_main
+  background "sanctuary_exterior_dawn_final"
+  music "ending_true_seeker_theme_full"
+
+  narrator
+    "The last morning in the Mirror District arrives like all the others.
+     Broken light. Wrong angles. The particular beauty of a place that
+     can't agree with itself about what it is."
+
+  narrator
+    "But the fracture is sealed. Not patched — sealed. From the inside.
+     From the side that matters."
+
+  show nyx position:left emotion:moved
+  show echo position:right emotion:peaceful
+  show seeker position:center emotion:resolved
+
+  echo
+    "You know what you did, yes?"
+
+  seeker
+    "I stayed."
+
+  echo
+    "You stayed and you looked and you didn't look away.
+     Even when looking away would have been survivable.
+     That's not a small thing."
+
+  nyx
+    "Echo is rarely this complimentary. She must mean it."
+
+  echo
+    "I always mean what I say. I just don't always say things."
+
+  narrator
+    "The square is quiet. The mirror figures that had been
+     trapped on the other side are gone — not destroyed, released.
+     Aldric is restoring name carvings to the fragments.
+     Lira watches him with the focused attention of someone
+     learning a trade."
+
+  seeker
+    "What happens now? The fracture is closed but —
+     something made it. Something was pushing from the other side."
+
+  narrator
+    "Echo and Nyx exchange a look."
+
+  echo
+    "There's always something pushing. That's the nature of
+     a threshold — it has two sides, and pressure from both
+     directions is what makes it a threshold rather than a wall."
+
+  nyx
+    "We deal with what's on the other side. Eventually.
+     After we've made sure this side is stable."
+
+  seeker
+    "We."
+
+  nyx
+    "You didn't think you were going to do this alone."
+
+  narrator
+    "It's not a question. You're grateful for that."
+
+  soul love +6 hope +5
+  goto ending_true_seeker_mirror
+  end
+
+scene ending_true_seeker_mirror
+  background "sanctuary_chamber_mirror"
+  music "ending_true_seeker_theme_resolution"
+
+  narrator
+    "The Heart Mirror shows you yourself."
+
+  narrator
+    "Not the version with stars in its eyes — just you, as you are,
+     which is more than you came in with and not as much as
+     you're going to need."
+
+  narrator
+    "The reflection holds your gaze for a moment."
+
+  narrator
+    "Then it nods. One small, definitive nod."
+
+  narrator
+    "Like it's been waiting to see whether you'd show up,
+     and you did, and that's been noted."
+
+  narrator
+    "You nod back."
+
+  soul purpose +8 memory +6
+  goto ending_true_seeker_epilogue
+  end
+
+scene ending_true_seeker_epilogue
+  background "mirror_district_restored"
+  music "ending_true_seeker_credits"
+  weather none
+
+  narrator
+    "Months later, the Mirror District will have a new name
+     in the unofficial geography of the city. Not on maps.
+     Just in conversations, in the way people point when
+     they're trying to explain where they're going."
+
+  narrator
+    "They'll call it the Clear District. Not because the mirrors
+     are clear — they never reflect perfectly, and maybe
+     they never will — but because of the quality of the light there."
+
+  narrator
+    "Something was set right. It can be felt even by people
+     who don't know what it was."
+
+  narrator
+    "Echo said you'd leave a mark. You thought she meant
+     the endings — the things that close. You didn't understand
+     she meant the spaces in between. The places where
+     something that was going wrong can grow differently now."
+
+  narrator
+    "That's the Architect's work. Not construction. Not destruction.
+     The care of thresholds."
+
+  narrator
+    "You are still learning what that means."
+
+  narrator
+    "That's the point."
+
+  ending_title "The Architect Remains"
+  ending_subtitle "True Ending"
+  ending_category true
+  ending_art "ending_true_seeker.png"
+
+  soul purpose +12 hope +10 love +8 compassion +6 memory +6
+
+  codex unlock "true_nature_of_the_architect"
+  achievement unlock "threshold_keeper"
+  flag ending_true_seeker_seen true
+
+  credits_roll suffix:"The Mirror District was restored through patience, presence, and the refusal to look away."
+
+  end
+

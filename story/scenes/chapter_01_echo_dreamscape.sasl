@@ -1,0 +1,211 @@
+// chapter_01_echo_dreamscape.sasl
+// The Echo Dreamscape — first encounter with Echo between waking and sleep
+// Reached after the Nyx conversation on the Sanctuary steps
+
+scene chapter_01_echo_dreamscape
+  background "void_between"
+  music "echo_theme_distant"
+  weather none
+
+  narrator
+    "Sleep finds you faster than expected. Or perhaps this isn't sleep at all."
+
+  narrator
+    "The world between your eyes and the dark has a texture. You've never
+     noticed that before — the grain of the space between waking and dreaming."
+
+  narrator
+    "Someone is already here."
+
+  show echo position:center emotion:patient
+
+  narrator
+    "The figure is made of light and its absence in equal measure —
+     shifting, barely solid, like a candle flame that has learned
+     to stand upright and ask questions."
+
+  echo
+    "You're slower than I expected. Most Architects arrive running."
+
+  seeker
+    "What are you?"
+
+  echo
+    "Rude opening. But expected. I'm Echo. I've been waiting in this
+     particular pocket of your subconscious for approximately —"
+
+  narrator
+    "She glances at something that isn't a watch on an arm that isn't
+     quite there."
+
+  echo
+    "— a very long time. You kept almost arriving and then choosing to
+     stay distracted."
+
+  choice "Respond to Echo"
+    option "Are you real?" id:ask_real
+      soul knowledge +4 fear +2
+      goto echo01_ask_real
+    option "What's an Architect?" id:ask_architect
+      soul purpose +5 knowledge +4
+      goto echo01_ask_architect
+    option "I don't usually dream like this." id:unusual_dream
+      soul memory +4 shadow +3
+      goto echo01_unusual_dream
+    option "You said you've been waiting. Waiting for what?" id:ask_waiting
+      soul compassion +3 knowledge +5
+      relationship echo affinity +5
+      goto echo01_ask_waiting
+
+  end
+
+// ---- Branches ----
+
+scene echo01_ask_real
+  echo
+    "Real is a complicated word in a place like this. Real enough that
+     you can hear me. Real enough that what we discuss here will affect
+     what happens when you're awake."
+
+  seeker
+    "That's not a yes."
+
+  echo
+    "It's also not a no. You'll learn that I prefer precision over
+     comfort. This is something we have in common, whether you know
+     it yet or not."
+
+  soul knowledge +3
+  goto echo01_convergence
+
+scene echo01_ask_architect
+  echo
+    "Oh. Good. You asked the right question first."
+
+  narrator
+    "She settles — not sits, exactly, since the space between waking
+     and dreaming doesn't have chairs — but shifts into something
+     more deliberate."
+
+  echo
+    "An Architect is someone whose interior landscape shapes exterior
+     reality. Not metaphorically. Structurally. Your soul has load-bearing
+     walls. What you believe, what you carry, what you choose to face —
+     these things hold up parts of the world."
+
+  seeker
+    "The Voice said something like this."
+
+  echo
+    "The Voice witnesses. I explain. We have different assignments."
+
+  soul purpose +4 knowledge +5
+  flag echo_architect_explanation true
+  goto echo01_convergence
+
+scene echo01_unusual_dream
+  echo
+    "You don't, usually. No. This is the first time you've been
+     sufficiently — opened — to perceive this layer."
+
+  seeker
+    "What opened me?"
+
+  echo
+    "The Sanctuary. The Heart Mirror. The choice to let something through
+     instead of keeping it at glass-distance."
+
+  narrator
+    "She looks at you with something that reads like approval, though
+     her face isn't quite doing human expressions in the usual way."
+
+  echo
+    "Most people never get here. You got here on your first day.
+     That's either very good or very concerning. Probably both."
+
+  soul memory +5 shadow +2 hope +3
+  goto echo01_convergence
+
+scene echo01_ask_waiting
+  echo
+    "For you to be ready."
+
+  seeker
+    "Ready for what?"
+
+  echo
+    "To need me. Architects always arrive at a point where the situation
+     is more complicated than one person alone can navigate. I'm the part
+     that's been here longer. I remember things you haven't learned yet."
+
+  seeker
+    "You remember things I haven't learned."
+
+  echo
+    "Time works differently in here. It's not strange — or rather, it is
+     strange, but it becomes ordinary."
+
+  narrator
+    "She says this in the tone of someone who has given this explanation
+     many times and finds it less adequate each time."
+
+  soul compassion +4 knowledge +4
+  relationship echo trust +6
+  goto echo01_convergence
+
+// ---- Convergence ----
+
+scene echo01_convergence
+  background "void_between_lit"
+  music "echo_theme_full"
+
+  echo
+    "Here is what you need to understand before you wake up."
+
+  narrator
+    "The space brightens slightly. Not with light exactly — with attention."
+
+  echo
+    "Something is coming through the architecture. The Voice told you
+     this already, but the Voice tells you things at the level of
+     cosmic fact and you needed to hear it at a human scale."
+
+  seeker
+    "And the human scale is?"
+
+  echo
+    "There will be choices that feel impossible. They'll feel that way
+     because they are impossible — you can't preserve everything.
+     Some things will break. The question isn't how to prevent that."
+
+  seeker
+    "What's the question?"
+
+  echo
+    "Whether, when something has to break, it breaks in a way that
+     still leaves room for something to grow."
+
+  narrator
+    "The space between dreaming and waking begins to narrow.
+     Echo doesn't move toward you or away from you."
+
+  echo
+    "I'll be here when you need me. You won't always know you need me.
+     Come anyway."
+
+  narrator
+    "In the last moment before waking, you see her clearly —
+     not a figure made of light and absence, but something specific.
+     A person who has been waiting so long she's learned patience the
+     way stone learns to hold water. Slowly. Completely."
+
+  soul hope +5 purpose +4 memory +3
+  relationship echo affinity +8
+  relationship echo trust +6
+  flag echo_first_meeting true
+  codex unlock "echo"
+  codex unlock "the_void_between"
+
+  goto chapter_01_crossroads
+  end
+

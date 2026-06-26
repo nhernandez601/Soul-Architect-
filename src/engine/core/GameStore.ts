@@ -74,6 +74,14 @@ export interface GameUIState {
   newAchievementCount: number;
   // Dev console
   devConsoleVisible: boolean;
+  // Phase 3 — Ending & Transition
+  endingVisible: boolean;
+  currentEndingId: string | null;
+  transitionActive: boolean;
+  transitionColor: string;
+  transitionOpacity: number;
+  // Phase 3 — VFX
+  vfxPreset: string;
 }
 
 export interface Notification {
@@ -109,6 +117,11 @@ export interface GameUIActions {
   setActiveQuestCount(n: number): void;
   setNewAchievementCount(n: number): void;
   toggleDevConsole(): void;
+  // Phase 3
+  showEnding(endingId: string): void;
+  hideEnding(): void;
+  setTransition(active: boolean, color?: string, opacity?: number): void;
+  setVFXPreset(preset: string): void;
 }
 
 // ---------------------------------------------------------------------------
@@ -164,6 +177,12 @@ export const useGameStore = create<GameUIState & GameUIActions>()(
     activeQuestCount: 0,
     newAchievementCount: 0,
     devConsoleVisible: false,
+    endingVisible: false,
+    currentEndingId: null,
+    transitionActive: false,
+    transitionColor: '#000000',
+    transitionOpacity: 0,
+    vfxPreset: 'default',
 
     setDialogue: (update) => set((s) => { Object.assign(s.dialogue, update); }),
     setChoice: (update) => set((s) => { Object.assign(s.choice, update); }),
@@ -202,5 +221,22 @@ export const useGameStore = create<GameUIState & GameUIActions>()(
     setActiveQuestCount: (n) => set((s) => { s.activeQuestCount = n; }),
     setNewAchievementCount: (n) => set((s) => { s.newAchievementCount = n; }),
     toggleDevConsole: () => set((s) => { s.devConsoleVisible = !s.devConsoleVisible; }),
+
+    // Phase 3
+    showEnding: (endingId) => set((s) => {
+      s.endingVisible = true;
+      s.currentEndingId = endingId;
+      s.activeScreen = 'ending';
+    }),
+    hideEnding: () => set((s) => {
+      s.endingVisible = false;
+      s.currentEndingId = null;
+    }),
+    setTransition: (active, color = '#000000', opacity = 0) => set((s) => {
+      s.transitionActive = active;
+      s.transitionColor = color;
+      s.transitionOpacity = opacity;
+    }),
+    setVFXPreset: (preset) => set((s) => { s.vfxPreset = preset; }),
   }))
 );

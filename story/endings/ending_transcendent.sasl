@@ -1,0 +1,270 @@
+// ending_transcendent.sasl
+// SECRET ENDING: The Voice Itself
+// Conditions: NG+ only, ALL soul stats >= 40, ALL relationship trust >= 60, flag: all_codex_unlocked
+// The Seeker doesn't just seal the fracture — they understand what created it
+
+scene ending_transcendent_approach
+  background "void_between_lit"
+  music "ending_transcendent_theme"
+  weather none
+
+  // NG+ gate — enforce at runtime
+  require ng_plus true
+  require soul.purpose >= 40
+  require soul.compassion >= 40
+  require soul.hope >= 40
+  require soul.knowledge >= 40
+  require soul.love >= 40
+  require relationship.nyx.trust >= 60
+  require relationship.echo.trust >= 60
+  require flag.all_codex_unlocked true
+
+  narrator
+    "The second time through is different."
+
+  narrator
+    "Not because the events change — they don't. The Sanctuary
+     is still the Sanctuary. The Mirror District fractures
+     in the same pattern. The Voice says the same words."
+
+  narrator
+    "But you hear them differently. You carry more. The weight
+     of knowing what's coming doesn't slow you down —
+     it teaches you where to push."
+
+  fade_in duration:4000
+
+  goto ending_transcendent_main
+  end
+
+scene ending_transcendent_main
+  background "sanctuary_chamber_mirror_deep"
+  music "ending_transcendent_theme_full"
+
+  narrator
+    "The Heart Mirror, second time around, doesn't show you
+     the version with stars in its eyes. It shows you something
+     else — the mirror itself. The mechanism."
+
+  narrator
+    "You look at it long enough to understand what you're
+     actually looking at."
+
+  narrator
+    "The Heart Mirror isn't a mirror. It's a threshold."
+
+  narrator
+    "The Voice speaks from everywhere, but also from a
+     specific location — inside the mirror, on the other side,
+     looking out."
+
+  show voice position:center emotion:recognizing
+
+  voice
+    "You found the axis point. Again. Faster this time."
+
+  seeker
+    "I know what you are."
+
+  narrator
+    "A pause. Not hesitation. The pause of something recalibrating
+     how much to reveal."
+
+  voice
+    "What am I?"
+
+  seeker
+    "The last Architect. The one whose records stopped."
+
+  narrator
+    "The mirror surface moves. The Voice looks at you from the
+     other side with an expression that is very old and very tired
+     and not entirely sad."
+
+  voice
+    "You're the first person to say that out loud."
+
+  soul knowledge +15 purpose +10 memory +8
+  goto ending_transcendent_revelation
+  end
+
+scene ending_transcendent_revelation
+  background "void_between_true"
+  music "ending_transcendent_revelation"
+
+  narrator
+    "The Voice — the original Architect, the one who built the
+     Sanctuary and carved the first names and stood at the first
+     threshold — explains what the Heart Mirror really is."
+
+  narrator
+    "Not a record-keeper. Not an observer. A trap of their own
+     making — a way of staying present when their body couldn't
+     continue, of keeping watch over the threshold they built
+     and couldn't abandon."
+
+  voice
+    "I wasn't supposed to stay this long. There were meant to be
+     others. People who would take over the work. I was meant to
+     rest."
+
+  seeker
+    "What stopped you?"
+
+  voice
+    "Fear. That the next Architect wouldn't understand. That the
+     fracture would win. That all of this would end."
+
+  narrator
+    "You know this fear. You've had versions of it every day
+     since you walked through the Sanctuary gate."
+
+  seeker
+    "The fracture is sealed. The Mirror District is stable.
+     The work is being done."
+
+  voice
+    "I know."
+
+  seeker
+    "You can rest."
+
+  narrator
+    "The longest pause of the entire story."
+
+  soul love +10 compassion +10 hope +8
+  goto ending_transcendent_release
+  end
+
+scene ending_transcendent_release
+  background "sanctuary_chamber_mirror_final"
+  music "ending_transcendent_release"
+
+  narrator
+    "The mirror clears. Not to a reflection — to nothing.
+     A window, finally, with nothing on either side of it
+     that requires keeping watch."
+
+  narrator
+    "What was the Voice doesn't speak again. Not because
+     it's gone — but because speech was never the right mode.
+     It was always looking. And now what it was looking for
+     is done."
+
+  narrator
+    "You stand in the chamber alone."
+
+  narrator
+    "Then not alone."
+
+  show nyx position:left emotion:awed
+  show echo position:right emotion:peaceful
+
+  echo
+    "You knew."
+
+  seeker
+    "On the second pass, yes."
+
+  nyx
+    "You said 'you can rest' to the Voice."
+
+  seeker
+    "Someone should have said it two hundred years ago."
+
+  narrator
+    "Echo looks at you with an expression you haven't seen
+     on her face before — something like respect from an equal,
+     which is different from every other kind."
+
+  echo
+    "For what it's worth. The work was always going to end here.
+     With an Architect who understood it well enough to close
+     the loop."
+
+  seeker
+    "What happens to the Sanctuary now?"
+
+  echo
+    "What always happens when a good thing outlives the
+     crisis that created it. It becomes something else.
+     Something more ordinary. A place where people go
+     because it has good stone and a long memory,
+     not because the world is about to end."
+
+  narrator
+    "That sounds — fine, actually."
+
+  narrator
+    "Better than fine."
+
+  soul hope +12 love +8 purpose +8 memory +10
+  goto ending_transcendent_epilogue
+  end
+
+scene ending_transcendent_epilogue
+  background "sanctuary_exterior_golden_hour"
+  music "ending_transcendent_credits"
+  weather none
+
+  narrator
+    "The Sanctuary doesn't close. It changes."
+
+  narrator
+    "Nyx becomes its first named keeper in the records —
+     the first person whose name isn't carved by their own hand
+     into the walls as a record of being lost, but placed there
+     by others as a record of having helped."
+
+  narrator
+    "Echo doesn't disappear. She becomes what she always was —
+     the memory that the place carries. The intelligence of
+     its long accumulation. You can speak to her in the space
+     between waking and sleep, but the conversations are easier now.
+     She's not waiting for crisis. She's just present."
+
+  narrator
+    "The Mirror District calls itself the Clear District now,
+     officially. The city council voted on it. This sort of
+     thing rarely happens — the city rarely acknowledges its
+     own healing — and the moment it did, Aldric wept,
+     which he will deny to anyone who asks."
+
+  narrator
+    "You stay for a while."
+
+  narrator
+    "Then you leave — not because there is nowhere for you,
+     but because there are other places that need an Architect,
+     and you've learned enough to know when to keep walking."
+
+  narrator
+    "The last thing you do before leaving the Sanctuary is
+     add your name to the wall."
+
+  narrator
+    "Not as someone who was lost."
+
+  narrator
+    "As someone who came through."
+
+  ending_title "The Voice Itself"
+  ending_subtitle "Secret Ending — New Game Plus"
+  ending_category secret
+  ending_art "ending_transcendent.png"
+  ending_music "ending_transcendent_credits"
+
+  soul purpose +15 hope +12 love +12 compassion +12 knowledge +10 memory +10
+
+  codex unlock "the_first_architect"
+  codex unlock "the_heart_mirror_truth"
+  codex unlock "the_architecture_of_thresholds"
+  achievement unlock "the_loop_closes"
+  achievement unlock "voice_found"
+  flag ending_transcendent_seen true
+  flag true_history_known true
+
+  credits_roll suffix:"Every threshold needs someone who understands that the work is not to hold the door forever, but to find the one who can hold it next — and then to let go."
+
+  end
+

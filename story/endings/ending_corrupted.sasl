@@ -1,0 +1,161 @@
+// ending_corrupted.sasl
+// BAD ENDING: The Fracture Wins
+// Conditions: soul.shadow >= 60, soul.fear >= 40, OR soul.pride >= 50 + soul.compassion < 15
+// Triggered when the Seeker allows darkness to accumulate without integration
+
+scene ending_corrupted_approach
+  background "mirror_district_cracked"
+  music "ending_corrupted_theme"
+  weather "perpetual_dusk"
+
+  narrator
+    "The fracture has been widening for weeks."
+
+  narrator
+    "Not because no one was watching. Because the wrong
+     things were watching — the parts of you that wanted
+     it to widen. The parts that found the wrongness
+     more comfortable than the work of setting it right."
+
+  narrator
+    "You haven't spoken to Nyx in three days.
+     Echo stopped appearing in the spaces between sleep and waking.
+     The Sanctuary's stone walls, when you press your hand to them,
+     no longer feel warm."
+
+  fade_in duration:2000
+
+  show seeker position:center emotion:hollow
+  goto ending_corrupted_main
+  end
+
+scene ending_corrupted_main
+  background "mirror_district_fractured"
+  music "ending_corrupted_theme_dark"
+
+  narrator
+    "The center of the square is different now."
+
+  narrator
+    "The fracture is not a hairline crack. It is a door.
+     And the door is open."
+
+  narrator
+    "You stand before it and feel — not fear. Fear was
+     something you felt at the beginning, when your soul
+     was still oriented toward survival."
+
+  narrator
+    "You feel recognition."
+
+  narrator
+    "The thing on the other side recognizes you too.
+     It has been watching you accumulate shadow and not
+     integrate it. Collect pride and not temper it.
+     Let the distance between yourself and others grow
+     until each person you knew became an outline."
+
+  narrator
+    "It doesn't push through the fracture."
+
+  narrator
+    "It doesn't need to."
+
+  narrator
+    "You step forward."
+
+  soul shadow +15 fear +10 pride +8
+  goto ending_corrupted_crossing
+  end
+
+scene ending_corrupted_crossing
+  background "void_between_dark"
+  music "ending_corrupted_theme_fall"
+
+  narrator
+    "The other side isn't what you expected."
+
+  narrator
+    "It's quiet. It looks like the Mirror District, except
+     that every reflective surface shows you the same thing:
+     the version of yourself you might have been, doing the
+     work you didn't do, standing in rooms you chose not
+     to enter."
+
+  narrator
+    "It's not a punishment."
+
+  narrator
+    "That's what makes it devastating."
+
+  narrator
+    "It's just the record. The impartial, complete record
+     of choices made and unmade, of turnings away and
+     what was on the other side of the doors you passed."
+
+  narrator
+    "The Voice is not here. Echo is not here. Nyx is not here.
+     There is only you and the record."
+
+  narrator
+    "And something else — the thing that pushed the fracture open —
+     which moves through the Mirror District now, unchecked,
+     because the Architect who should have stood at the threshold
+     crossed to the other side instead."
+
+  soul shadow +10 memory +8
+  goto ending_corrupted_aftermath
+  end
+
+scene ending_corrupted_aftermath
+  background "mirror_district_overrun"
+  music "ending_corrupted_aftermath"
+  weather "fractured_sky"
+
+  narrator
+    "The Mirror District falls silent within a week."
+
+  narrator
+    "Not destroyed — worse than destroyed. Replaced.
+     Every surface now reflects only one thing: the fracture.
+     A wound in the architecture that no one is equipped to close,
+     because the only person equipped to close it chose
+     something else."
+
+  narrator
+    "Nyx finds the path you took. She stands at the edge
+     and doesn't cross. That's the difference between you,
+     at the end — she knows the value of not crossing."
+
+  narrator
+    "She rebuilds the Sanctuary's wards from memory.
+     She starts training the next Architect."
+
+  narrator
+    "This is how it works, apparently. Not every threshold
+     keeper completes the work. Some become cautionary records
+     in the Sanctuary walls — names carved in stone,
+     testament to the people who got close and couldn't hold."
+
+  narrator
+    "The work continues."
+
+  narrator
+    "Just not with you."
+
+  ending_title "The Fracture Wins"
+  ending_subtitle "Bad Ending"
+  ending_category bad
+  ending_art "ending_corrupted.png"
+
+  soul shadow +10 memory +6
+
+  achievement unlock "into_the_dark"
+  flag ending_corrupted_seen true
+  flag ng_plus_available true
+
+  credits_roll suffix:"What you could not face closed around you. The work continues in other hands. You were not the last."
+
+  ng_plus_unlock
+  end
+

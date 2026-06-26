@@ -1,0 +1,200 @@
+// chapter_01_nyx_01.sasl
+// First dedicated Nyx relationship scene — outside the Sanctuary, dusk
+
+scene chapter_01_nyx_01
+  background "sanctuary_exterior_dusk"
+  music "nyx_theme_soft"
+  weather none
+
+  narrator
+    "Outside the Sanctuary, the sky has turned the color of an old bruise —
+     purple and gold at the horizon, a deep gray-blue overhead."
+
+  show nyx position:center emotion:thoughtful
+
+  narrator
+    "Nyx sits on the stone steps. She hands you a cup of something warm
+     without looking up."
+
+  seeker
+    "Thank you."
+
+  nyx
+    "You're welcome. I didn't know how long you'd be in there."
+
+  seeker
+    "Not long enough, probably."
+
+  narrator
+    "She almost smiles at that."
+
+  nyx
+    "You're taking it remarkably well. Most people who meet the Voice
+     come out looking like they've been turned inside out."
+
+  choice "How do you want to talk about what happened?"
+    option "I'm still processing it" id:processing
+      soul memory +3
+      goto nyx01_processing
+    option "Tell me more about yourself" id:ask_nyx_about_self
+      soul love +4 knowledge +3
+      relationship nyx affinity +5
+      goto nyx01_ask_about_nyx
+    option "Ask about her missing shadow" id:ask_shadow
+      soul compassion +6 knowledge +4
+      relationship nyx trust +6
+      goto nyx01_ask_shadow
+    option "Sit in silence together" id:silence
+      soul memory +5 love +3 shadow +2
+      relationship nyx affinity +7
+      goto nyx01_silence
+
+  end
+
+scene nyx01_processing
+  nyx
+    "That's honest, at least."
+
+  seeker
+    "The Voice said I'm a threshold. Whatever that means."
+
+  nyx
+    "It means things pass through you. Through your choices, your perception.
+     You change the shape of what reaches the other side."
+
+  seeker
+    "That sounds like an enormous amount of responsibility for someone
+     who can't remember what they had for breakfast."
+
+  nyx
+    "Ha."
+    emotion:amused
+
+  narrator
+    "It's the first time you've made her laugh. It feels like finding
+     a door in a wall you'd assumed was solid."
+
+  soul hope +4
+  relationship nyx affinity +5
+  goto nyx01_end
+
+scene nyx01_ask_about_nyx
+  nyx
+    "Me?"
+    emotion:surprised
+
+  seeker
+    "You brought me to the Sanctuary. You've been calm through everything.
+     Who are you, actually?"
+
+  narrator
+    "She considers the question like it's one she hasn't been asked
+     in a long time. Maybe never."
+
+  nyx
+    "I was born in the Outer Districts — the places the city planners
+     stopped caring about three generations ago. Shadow Quarter, they
+     call it. Ironic, given my situation."
+
+  narrator
+    "She turns slightly so the fading light catches her silhouette.
+     Or doesn't, exactly — where her shadow should fall, there's simply
+     absence."
+
+  nyx
+    "I found the Sanctuary at fifteen. It was the first place that didn't
+     treat me like an omen."
+
+  relationship nyx trust +8
+  flag nyx_backstory_known true
+  goto nyx01_end
+
+scene nyx01_ask_shadow
+  seeker
+    "The Voice mentioned your shadow once. That you were born without one."
+
+  narrator
+    "A long pause. You wonder if you've overstepped."
+
+  nyx
+    "Most people don't bring it up directly."
+
+  seeker
+    "Should I not have?"
+
+  nyx
+    "No — I prefer it. The tiptoeing is worse."
+
+  narrator
+    "She looks down at the space beside her feet where darkness
+     should pool and doesn't."
+
+  nyx
+    "In some cultures, being shadowless means you've sold your soul. In
+     others it means you're favored by the light. In my neighborhood it
+     just meant kids crossed the street when they saw me coming."
+
+  seeker
+    "What does it mean to you?"
+
+  narrator
+    "The question lands differently than you expected it to. Her expression
+     opens, briefly, into something unguarded."
+
+  nyx
+    "That something in me is permanently between states. Neither here nor
+     there. Light and dark both refuse to claim me."
+
+  narrator
+    "She meets your eyes."
+
+  nyx
+    "I used to think that made me incomplete. I'm not so sure anymore."
+
+  soul compassion +4 shadow +3
+  relationship nyx trust +10
+  relationship nyx affinity +6
+  flag nyx_shadow_shared true
+  goto nyx01_end
+
+scene nyx01_silence
+  narrator
+    "You sit beside her on the steps. Neither of you speaks."
+
+  narrator
+    "The city below the Sanctuary hums with its usual indifferent noise.
+     Up here, it feels almost peaceful."
+
+  narrator
+    "After a long time, Nyx says quietly:"
+
+  nyx
+    "I'm glad you came through. Most people who get called by the Sanctuary
+     find reasons not to."
+
+  narrator
+    "You don't ask how she knows you were called. You already understand
+     that some knowledge doesn't require explanation."
+
+  soul memory +4 hope +3
+  relationship nyx affinity +9
+  goto nyx01_end
+
+// ---- Convergence ----
+
+scene nyx01_end
+  narrator
+    "The sky darkens fully. Neither of you moves to leave."
+
+  narrator
+    "Whatever comes next — and something is coming, the Voice made
+     that clear — you're not facing it alone."
+
+  narrator
+    "That's more than you expected when today began."
+
+  flag nyx_ch1_scene_complete true
+  soul hope +4
+
+  goto chapter_01_echo_dreamscape
+  end
