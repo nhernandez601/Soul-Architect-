@@ -1,0 +1,28 @@
+# Soul Architect — Prologue 02 (Branch: Ready)
+
+scene prologue_02_ready
+  title "The Willing Seeker"
+  background cathedral_dawn
+  music cathedral_theme
+
+  show seeker determined center
+  show aurelia smile right
+  show voice neutral left
+
+  dialogue aurelia "I knew you would say that."
+  dialogue aurelia "There is light already in how you carry yourself."
+
+  soul light +8 hope +5
+
+  dialogue voice "Light, yes. But the shadow is equally necessary."
+  dialogue voice "You cannot know yourself without knowing both."
+
+  narrator "Something shifts inside you. A door, long closed, opens just a crack."
+
+  soul memory +10 purpose +8
+
+  dialogue seeker "Then show me. All of it."
+
+  dialogue aurelia "That is exactly what we will do."
+
+  goto prologue_03

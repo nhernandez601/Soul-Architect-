@@ -1,0 +1,53 @@
+# Soul Architect — Prologue Scene 01
+# The Awakening
+
+scene prologue_01
+  title "The Awakening"
+  background void_space
+  music prologue_theme fade:3000
+
+  narrator "Before there was light, there was the sound of your own heartbeat."
+  narrator "You have always been here. And you have always been searching."
+
+  wait 2000
+
+  background cathedral_dawn
+  music cathedral_ambient fade:2000
+
+  show seeker neutral center
+
+  narrator "You stand in a cathedral made of forgotten prayers."
+  narrator "The stained glass windows show faces you almost recognize."
+
+  dialogue seeker "Where... am I?"
+
+  show voice neutral left
+
+  dialogue voice "You are where all seekers eventually arrive."
+  dialogue voice "At the beginning of yourself."
+
+  show aurelia smile right
+
+  dialogue aurelia "Don't be frightened."
+  dialogue aurelia "Fear is only the shape your potential takes before it knows what it is."
+
+  soul fear +5
+
+  choice "How do you respond?"
+    option "I'm not afraid. I'm ready."
+      soul hope +10 fear -5 pride +5
+      relationship aurelia affinity +5
+      goto prologue_02_ready
+
+    option "What is this place?"
+      soul knowledge +8 fear +2
+      relationship voice affinity +5
+      goto prologue_02_curious
+
+    option "..."
+      soul shadow +8 memory +5
+      goto prologue_02_silent
+
+    option "I want to leave."
+      soul fear +10 shadow +5
+      goto prologue_02_resist
