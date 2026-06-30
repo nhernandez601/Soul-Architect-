@@ -1,73 +1,107 @@
-scene prologue_02_resist:
-  title: "Against the Current"
-  chapter: 1
-  act: 1
-  background: "abyss_threshold_storm"
-  music: "theme_defiance"
+// prologue_02_resist.sasl
+// Prologue Branch: The Resistant Seeker
 
-  show character voice position:center emotion:cold
+scene prologue_02_resist
+  title "Against the Current"
+  background "abyss_threshold_storm"
+  music "theme_defiance"
 
-  narrator: "You push back. Against the voice, against the pull of the dark, against whatever force brought you here without asking your permission. It is the most honest thing you have done in years."
+  show voice position:center emotion:cold
 
-  soul_change: pride +8 fear +5 shadow -5
+  narrator
+    "You push back. Against the voice, against the pull of the dark,
+     against whatever force brought you here without asking your
+     permission. It is the most honest thing you have done in years."
 
-  dialogue voice: "There it is. I wondered if you had that in you."
+  soul pride +8 fear +5 shadow -5
 
-  narrator: "The Voice does not sound displeased. If anything, it sounds — satisfied."
+  voice
+    "There it is. I wondered if you had that in you."
 
-  dialogue voice: "Resistance means you have a self worth defending. Most who come here have already started to dissolve. You are remarkably intact. That will be useful. Or it will make everything harder. Possibly both."
+  narrator
+    "The Voice does not sound displeased. If anything, it sounds — satisfied."
 
-  choice:
-    prompt: "Your resistance takes a shape."
-    - "Demand answers — what is this place?" -> prologue_02r_demand
-    - "Declare you're finding your own way out" -> prologue_02r_independent
-    - "Resist but ask — why does my resistance please you?" -> prologue_02r_probe
+  voice
+    "Resistance means you have a self worth defending. Most who come here
+     have already started to dissolve. You are remarkably intact. That
+     will be useful. Or it will make everything harder. Possibly both."
 
-scene prologue_02r_demand:
-  title: "The Right to Know"
-  chapter: 1
-  act: 1
+  choice "Your resistance takes a shape."
+    option "Demand answers — what is this place?" id:demand
+      soul knowledge +5 pride +3
+      goto prologue_02r_demand
+    option "Declare you're finding your own way out" id:independent
+      soul purpose +5 pride +5
+      goto prologue_02r_independent
+    option "Resist but ask — why does my resistance please you?" id:probe
+      soul knowledge +5 shadow +3
+      goto prologue_02r_probe
 
-  dialogue voice: "You want to know what this place is. The Abyss. The space between the waking world and whatever comes after. A threshold that was never meant to be inhabited — and yet, here we both are."
+  end
 
-  soul_change: knowledge +8
+scene prologue_02r_demand
+  title "The Right to Know"
 
-  dialogue voice: "As for why you are here specifically — that is a better question than what this place is. And the answer is more complicated than either of us is ready for."
+  voice
+    "You want to know what this place is. The Abyss. The space between
+     the waking world and whatever comes after. A threshold that was
+     never meant to be inhabited — and yet, here we both are."
 
-  soul_change: purpose +5
+  soul knowledge +8
 
-  narrator: "The honesty of that lands strangely. You expected deflection. You got something else — the shape of a truth being carefully held back, not out of malice, but out of... consideration."
+  voice
+    "As for why you are here specifically — that is a better question
+     than what this place is. And the answer is more complicated than
+     either of us is ready for."
 
-  goto: prologue_03
+  soul purpose +5
 
-scene prologue_02r_independent:
-  title: "Your Own Compass"
-  chapter: 1
-  act: 1
+  narrator
+    "The honesty of that lands strangely. You expected deflection.
+     You got something else — the shape of a truth being carefully held
+     back, not out of malice, but out of... consideration."
 
-  dialogue voice: "Your own way out. Yes. That is — actually encouraging. Most come here and immediately look for someone to follow. The ones who decide to navigate by their own lights tend to survive longer."
+  goto prologue_03
 
-  soul_change: purpose +10 pride +5
+scene prologue_02r_independent
+  title "Your Own Compass"
 
-  narrator: "Survive. Not escape. The distinction seems important and you're not ready to ask about it."
+  voice
+    "Your own way out. Yes. That is — actually encouraging. Most come
+     here and immediately look for someone to follow. The ones who decide
+     to navigate by their own lights tend to survive longer."
 
-  dialogue voice: "I will not stop you from looking. I would only say: the Abyss is larger than you think, and your compass will tell you true — but the map you make with it will surprise you."
+  soul purpose +10 pride +5
 
-  goto: prologue_03
+  narrator
+    "Survive. Not escape. The distinction seems important and you're
+     not ready to ask about it."
 
-scene prologue_02r_probe:
-  title: "Reading the Reader"
-  chapter: 1
-  act: 1
+  voice
+    "I will not stop you from looking. I would only say: the Abyss is
+     larger than you think, and your compass will tell you true — but
+     the map you make with it will surprise you."
 
-  dialogue voice: "Because a soul that resists has not yet given up on itself. The ones who simply... accept everything, go along with everything — they tend to unravel. They become part of the ambient texture of this place."
+  goto prologue_03
 
-  soul_change: knowledge +5 fear -5
+scene prologue_02r_probe
+  title "Reading the Reader"
 
-  narrator: "There is something frightening and bracing in that. The Abyss keeps the ones who fight it. That is either a kindness or a warning."
+  voice
+    "Because a soul that resists has not yet given up on itself. The ones
+     who simply... accept everything, go along with everything — they tend
+     to unravel. They become part of the ambient texture of this place."
 
-  dialogue voice: "I have found that both are usually true at once."
+  soul knowledge +5 fear -5
 
-  soul_change: shadow +5 knowledge +3
+  narrator
+    "There is something frightening and bracing in that. The Abyss keeps
+     the ones who fight it. That is either a kindness or a warning."
 
-  goto: prologue_03
+  voice
+    "I have found that both are usually true at once."
+
+  soul shadow +5 knowledge +3
+
+  goto prologue_03
+
