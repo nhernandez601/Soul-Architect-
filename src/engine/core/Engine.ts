@@ -145,6 +145,10 @@ export class Engine {
     const { ENDING_DEFINITIONS } = await import('../../data/endingDefinitions');
     const ending = registry.get<import('../../systems/ending/EndingSystem').EndingSystem>('ending');
     ending.registerEndings(ENDING_DEFINITIONS);
+
+    const { CODEX_DEFINITIONS } = await import('../../data/codexDefinitions');
+    const codex = registry.get<import('../../systems/codex/CodexSystem').CodexSystem>('codex');
+    codex.registerEntries(CODEX_DEFINITIONS);
   }
 
   // ---------------------------------------------------------------------------
