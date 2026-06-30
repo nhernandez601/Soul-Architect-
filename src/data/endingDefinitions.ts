@@ -23,6 +23,28 @@ export const ENDING_DEFINITIONS: EndingDefinition[] = [
   },
 
   {
+    id: 'ending_good_guardian',
+    title: "The Guardian's Vigil",
+    subtitle: 'Good Ending',
+    description:
+      'You did not seal the Heart Mirror. You did not shatter it. You stayed. Through compassion, through presence, through the refusal to abandon those caught between worlds, you became the threshold itself.',
+    category: 'good',
+    conditions: {
+      soul: [
+        { attribute: 'compassion', operator: '>=', value: 50 },
+        { attribute: 'love', operator: '>=', value: 40 },
+        { attribute: 'fear', operator: '<=', value: 20 },
+      ],
+    },
+    triggerScene: 'ending_guardian_approach',
+    isSecret: false,
+    artPath: 'art/endings/ending_good_guardian.png',
+    musicId: 'ending_guardian_theme',
+    creditsSuffix:
+      'Someone has to stay. It might as well be someone who has already seen the worst of it — and stayed anyway.',
+  },
+
+  {
     id: 'ending_neutral_threshold',
     title: 'The Threshold Holds',
     subtitle: 'Neutral Ending',

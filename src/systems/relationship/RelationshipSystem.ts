@@ -6,6 +6,7 @@
  */
 
 import { BaseService } from '../../engine/core/BaseService';
+import { registry } from '../../engine/core/ServiceRegistry';
 import type { CharacterID, CharacterStats, RelationshipEvent } from '@t/character';
 
 type RelationshipStat = 'affinity' | 'trust' | 'tension' | 'mysteryLevel' | 'corruptionLevel' | 'divineLevel';
@@ -80,8 +81,8 @@ export class RelationshipSystem extends BaseService {
   // ---------------------------------------------------------------------------
 
   private checkEvents(characterId: CharacterID, entry: CharacterRelationshipData): void {
-    const { SoulSystem } = require('../../systems/soul/SoulSystem') as typeof import('../../systems/soul/SoulSystem');
-    const soul = require('../../engine/core/ServiceRegistry').registry.get('soul') as InstanceType<typeof SoulSystem>;
+    if (entry.events.length === 0) return;
+    const soul = registry.get<import('../../systems/soul/SoulSystem').SoulSystem>('soul');
 
     entry.events.forEach((event) => {
       if (entry.triggeredEvents.has(event.id)) return;

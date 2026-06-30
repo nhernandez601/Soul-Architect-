@@ -67,7 +67,7 @@ All events are in `EngineEventMap`. **Add new events there before emitting them*
 
 ## Soul System
 
-Soul stats (`src/types/soul.ts`): `purpose`, `compassion`, `hope`, `love`, `knowledge`, `memory`, `fear`, `shadow`, `pride`, `regret`.
+Soul stats (`src/types/soul.ts`): `purpose`, `compassion`, `hope`, `love`, `knowledge`, `memory`, `fear`, `shadow`, `pride`, `regret`, `light`, `faith`. (12 total — defaults vary; see `SoulSystem.ts` `DEFAULT_SOUL_STATS`.)
 
 - `soul.applyDelta(delta, source)` — `source` arg is required
 - `soul.getFlag(key)` — returns `boolean | string | number | undefined`
@@ -158,8 +158,17 @@ goto chapter_02_start
 | ID | Category | Trigger Scene | Key Conditions |
 |----|----------|--------------|----------------|
 | `ending_true_seeker` | true | `ending_check_true_seeker` | purpose ≥ 50, compassion ≥ 40 |
+| `ending_good_guardian` | good | `ending_guardian_approach` | compassion ≥ 50, love ≥ 40, fear ≤ 20 |
+| `ending_neutral_threshold` | neutral | `ending_neutral_threshold` | (none — fallback) |
 | `ending_corrupted` | bad | `ending_corrupted_approach` | shadow ≥ 60 |
 | `ending_transcendent` | secret | `ending_transcendent_approach` | NG+, all stats ≥ 40, all_codex_unlocked |
+
+## Codex Entries (registered)
+
+10 entries in `src/data/codexDefinitions.ts`, loaded via `Engine.loadGameData()`:
+`the_voice`, `echo`, `the_void_between`, `the_fracture`, `the_heart_mirror_truth`,
+`the_first_architect`, `true_nature_of_the_architect`, `the_architecture_of_thresholds`,
+`the_shattered_mirror_district`, `the_mirror_naming`.
 
 ## UI Screens
 

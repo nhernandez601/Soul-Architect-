@@ -18,6 +18,7 @@ const STORY_DIR = join(__dirname, '../../story');
 const VALID_SOUL_STATS = new Set([
   'purpose', 'compassion', 'hope', 'love', 'knowledge',
   'memory', 'fear', 'shadow', 'pride', 'regret',
+  'light', 'faith',
 ]);
 
 // ---------------------------------------------------------------------------

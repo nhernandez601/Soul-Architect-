@@ -1,0 +1,115 @@
+// Good Ending — "The Guardian's Vigil"
+// Triggered when the player has high compassion and has protected those they met
+// Conditions: compassion >= 50, love >= 40, fear <= 20
+
+scene ending_guardian_approach
+  background mirror_district_dawn
+  music ending_guardian_theme
+
+  narrator "The Mirror District at dawn. Fractures still glitter along the walls — not wounds now, but scars that tell a story."
+
+  narrator "The Voice does not speak. But you feel it the way you feel the moment before sleep: present, warm, just beyond reach."
+
+  narrator "You have not sealed the Heart Mirror. You have not shattered it."
+
+  narrator "You have chosen to stay."
+
+  nyx "The others are asking about you."
+
+  goto ending_guardian_vigil
+
+scene ending_guardian_vigil
+  background sanctuary_morning
+  music ending_guardian_theme
+
+  show nyx neutral left
+
+  nyx "The Fracture still pulses. Smaller now. Whatever you did at the crossroads — it held."
+
+  narrator "You did not fix everything. You could not have. But you kept the worst from happening."
+
+  nyx "Are you going to tell me what the Voice said? The last thing it showed you?"
+
+  choice "What do you share with Nyx?"
+    option "Everything — the weight of it, the beauty."
+      soul love +5 compassion +3
+      goto ending_guardian_share_all
+
+    option "Enough to help her protect the Mirror."
+      soul purpose +5 knowledge +3
+      goto ending_guardian_share_purpose
+
+    option "Only that it asked me to stay."
+      soul memory +5
+      goto ending_guardian_share_stay
+
+scene ending_guardian_share_all
+  show nyx moved left
+
+  nyx "That's... a lot to carry alone."
+
+  narrator "She doesn't look away."
+
+  nyx "Then we carry it together. That's what we do here."
+
+  soul compassion +5 hope +5
+  goto ending_guardian_resolution
+
+scene ending_guardian_share_purpose
+  show nyx determined left
+
+  nyx "Then we build protocols. Watches. A network of people who know what to look for."
+
+  narrator "Already thinking ahead. Already planning how to protect what you've protected."
+
+  soul knowledge +5 purpose +3
+  goto ending_guardian_resolution
+
+scene ending_guardian_share_stay
+  show nyx quiet left
+
+  nyx "That's enough."
+
+  narrator "She means it."
+
+  soul love +5 memory +5
+  goto ending_guardian_resolution
+
+scene ending_guardian_resolution
+  background sanctuary_morning
+
+  narrator "The days pass. The nights pass. The Heart Mirror pulses, steady as a heartbeat."
+
+  narrator "You do not ascend. You do not burn. You do not leave."
+
+  narrator "You become the threshold — the space between the world that is and the world that could shatter it."
+
+  narrator "The Voice calls it guardianship. Nyx calls it stubbornness. Echo calls it love."
+
+  narrator "You call it home."
+
+  goto ending_guardian_epilogue
+
+scene ending_guardian_epilogue
+  background mirror_district_dusk
+  music ending_guardian_credits
+
+  narrator "Weeks later, a child — not Lira, but another — stops at the edge of the Mirror District and watches the lights inside the fractures."
+
+  narrator "She turns to you, not afraid."
+
+  child "Why do you stay here?"
+
+  narrator "You think of Nyx. Of Echo. Of the Voice that trusted you with the weight of itself."
+
+  narrator "You smile."
+
+  narrator "Because someone has to."
+
+  narrator "And it might as well be someone who has already seen the worst of it — and stayed anyway."
+
+  ending_title "The Guardian's Vigil"
+  ending_subtitle "Good Ending"
+  ending_category good
+
+  end

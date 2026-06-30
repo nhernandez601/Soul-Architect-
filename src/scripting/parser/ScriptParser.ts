@@ -228,6 +228,7 @@ export class ScriptParser {
 
   private parseScene(): SceneDefinition {
     this.nodeCounter = 0;
+    this.advance(); // consume 'scene'
     const sceneId = this.expectIdentifier();
     this.sceneId = sceneId;
 
@@ -239,9 +240,11 @@ export class ScriptParser {
 
     while (!this.isEOF() && !this.match('KEYWORD', 'scene')) {
       if (this.match('KEYWORD', 'title')) {
+        this.advance(); // consume 'title'
         title = this.expectString();
         this.skipToNewline();
       } else if (this.match('KEYWORD', 'background')) {
+        this.advance(); // consume 'background'
         backgroundId = this.expectIdentifier();
         this.skipToNewline();
       } else if (this.match('KEYWORD', 'music')) {
@@ -303,6 +306,7 @@ export class ScriptParser {
   // ---------------------------------------------------------------------------
 
   private parseShowCharacter(): CharacterShowNode {
+    this.advance(); // consume 'show'
     const id = this.nextNodeId();
     const characterId = this.expectIdentifier() as CharacterID;
     const emotion = (this.peekIdentifier() ? this.expectIdentifier() : 'neutral') as EmotionTag;
@@ -321,6 +325,7 @@ export class ScriptParser {
   }
 
   private parseHideCharacter(): SceneNode {
+    this.advance(); // consume 'hide'
     const id = this.nextNodeId();
     const characterId = this.expectIdentifier() as CharacterID;
     this.skipToNewline();
@@ -335,6 +340,7 @@ export class ScriptParser {
   }
 
   private parseDialogue(): DialogueNode {
+    this.advance(); // consume 'dialogue'
     const id = this.nextNodeId();
     const speakerRaw = this.expectIdentifier();
     const speaker = (CHARACTER_IDS as readonly string[]).includes(speakerRaw)
@@ -353,6 +359,7 @@ export class ScriptParser {
   }
 
   private parseNarrator(): NarratorNode {
+    this.advance(); // consume 'narrator'
     const id = this.nextNodeId();
     const text = this.expectString();
     this.skipToNewline();
@@ -366,6 +373,7 @@ export class ScriptParser {
   }
 
   private parseChoice(): ChoiceNode {
+    this.advance(); // consume 'choice'
     const id = this.nextNodeId();
     const prompt = this.peekString() ? this.expectString() : undefined;
     this.skipToNewline();
@@ -374,6 +382,7 @@ export class ScriptParser {
     const choices: Choice[] = [];
 
     while (this.match('KEYWORD', 'option')) {
+      this.advance(); // consume 'option'
       const optionText = this.expectString();
       this.skipToNewline();
       this.skipNewlines();
@@ -417,6 +426,7 @@ export class ScriptParser {
   }
 
   private parseMusicChange(): MusicChangeNode {
+    this.advance(); // consume 'music'
     const id = this.nextNodeId();
     const trackId = this.expectIdentifier();
     let fadeInMs = 1000;
@@ -438,6 +448,7 @@ export class ScriptParser {
   }
 
   private parseSoulChange(): SoulChangeNode {
+    this.advance(); // consume 'soul'
     const id = this.nextNodeId();
     const delta: SoulDelta = {};
 
@@ -453,6 +464,7 @@ export class ScriptParser {
   }
 
   private parseGoto(): GotoNode {
+    this.advance(); // consume 'goto'
     const id = this.nextNodeId();
     const targetSceneId = this.expectIdentifier();
     this.skipToNewline();
@@ -460,6 +472,7 @@ export class ScriptParser {
   }
 
   private parseWait(): WaitNode {
+    this.advance(); // consume 'wait'
     const id = this.nextNodeId();
     const ms = parseFloat(this.expectNumber());
     this.skipToNewline();
