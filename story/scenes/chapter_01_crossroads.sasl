@@ -1,0 +1,892 @@
+// chapter_01_crossroads.sasl
+// Chapter 1 Crossroads — The Shattered Mirror District
+// Major branch point: defines early-game soul trajectory
+// Reached after the Echo dreamscape; dawn of the second day
+
+scene chapter_01_crossroads
+  background "mirror_district_dawn"
+  music "city_theme_uneasy"
+  weather "light_fog"
+  title "The Shattered Mirror District"
+
+  narrator
+    "Morning arrives with the particular cruelty of mornings that
+     follow nights full of too much truth."
+
+  narrator
+    "Nyx meets you at the Sanctuary gate. She's been awake longer than
+     you. It shows in the shadows under her eyes — not literal ones,
+     you remind yourself, since that's not how she works."
+
+  show nyx position:left emotion:serious
+  show seeker position:right emotion:tired
+
+  nyx
+    "The Voice was right. There's something in the Mirror District.
+     I felt it overnight — the way you feel a door opening in a room
+     two floors up."
+
+  seeker
+    "Echo said the same thing. In different words."
+
+  narrator
+    "Nyx goes very still."
+
+  nyx
+    "You spoke with Echo."
+
+  seeker
+    "In a dream. Or something like one."
+
+  nyx
+    "That's — faster than usual. She doesn't make contact until
+     she's sure someone can handle the information."
+
+  narrator
+    "She studies you with a different quality of attention than before.
+     Recalibrating."
+
+  nyx
+    "All right. Then you know more than I expected you to by now.
+     The Mirror District is where I grew up. And it's where the fracture
+     the Voice showed you is widening."
+
+  soul knowledge +3 purpose +3
+  goto chapter_01_crossroads_choice
+
+scene chapter_01_crossroads_choice
+  background "mirror_district_street"
+  music "mirror_district_theme"
+
+  narrator
+    "The Shattered Mirror District earns its name. Every window, every
+     surface, every puddle in the broken streets reflects imperfectly —
+     angles wrong, proportions shifted. People here move through a city
+     that can't quite agree with itself about what it looks like."
+
+  show nyx position:left emotion:tense
+  show seeker position:center emotion:neutral
+
+  narrator
+    "At the center of the district: a square where, three generations
+     ago, a tower of mirrors was built as a monument to the founding
+     of the city. It shattered during an event no one fully
+     documented. The fragments still lie there."
+
+  narrator
+    "Something pulses from the direction of the square. Not sound.
+     Not light. A wrongness that the city is pretending not to notice."
+
+  nyx
+    "There are three things happening simultaneously. There usually are,
+     in places like this."
+
+  narrator
+    "She points to three locations in the square."
+
+  nyx
+    "East: a child who's been standing in the same spot for six hours.
+     People walk around her. Nobody is talking to her."
+
+  nyx
+    "West: the old keeper of the mirrors — Aldric. He's trying to
+     board up a specific fragment, and he can't. Something keeps
+     undoing his work."
+
+  nyx
+    "Center: the source. But going straight there without understanding
+     what's feeding it would be going in blind."
+
+  seeker
+    "Which one first?"
+
+  nyx
+    "That's the question. I'll follow your lead. I know this district
+     better, but this is an Architect's work."
+
+  choice "Where do you go first?"
+    option "The child in the east" id:go_east_child
+      soul compassion +7 love +5
+      relationship nyx trust +3
+      goto crossroads_east_child
+    option "Aldric and the mirror fragment" id:go_west_aldric
+      soul knowledge +6 purpose +4
+      relationship nyx affinity +3
+      goto crossroads_west_aldric
+    option "Straight to the source" id:go_center
+      soul purpose +8 pride +5 fear +3
+      goto crossroads_center_direct
+    option "Ask Nyx what she thinks you should do" id:ask_nyx_advice
+      soul love +4 compassion +3 pride -2
+      relationship nyx trust +7
+      relationship nyx affinity +4
+      goto crossroads_ask_nyx
+
+  end
+
+// ---- Branch: East — The Child ----
+
+scene crossroads_east_child
+  background "mirror_district_east"
+  music "mirror_district_theme_quiet"
+
+  narrator
+    "The child is perhaps eight years old. She stands perfectly still
+     in a ring of mirror fragments, looking at something only she can
+     see. Her shadow stretches the wrong direction."
+
+  show nyx position:right emotion:alarmed
+  show seeker position:left emotion:cautious
+
+  nyx
+    "Her shadow —"
+
+  seeker
+    "I see it."
+
+  narrator
+    "You approach slowly. The child doesn't startle. She speaks
+     without turning her head."
+
+  child
+    "You see it too. The other side."
+
+  seeker
+    "What are you looking at?"
+
+  child
+    "The people on the other side of the mirrors. They've been there
+     since last night. They're looking for something they lost."
+
+  narrator
+    "You crouch to her eye level and look in the direction she's looking.
+     At first: nothing. Then — a shimmer. Movement in a reflection
+     that shouldn't have any. Figures pressed against the glass from
+     the wrong side."
+
+  soul fear +4 knowledge +6
+
+  choice "How do you handle this?"
+    option "Speak to the figures in the mirror" id:speak_mirrors
+      soul purpose +5 shadow +4 knowledge +5
+      goto crossroads_east_speak_mirrors
+    option "Focus on getting the child safe first" id:child_first
+      soul compassion +8 love +6
+      relationship nyx trust +4
+      goto crossroads_east_child_safe
+    option "Ask what they lost" id:ask_what_lost
+      soul compassion +6 knowledge +5 shadow +3
+      goto crossroads_east_ask_lost
+
+  end
+
+scene crossroads_east_speak_mirrors
+  narrator
+    "You speak to the reflection. Your voice comes out steadier
+     than you expected."
+
+  seeker
+    "What do you need?"
+
+  narrator
+    "The figures still. One moves closer — presses a hand flat
+     against the inside of the glass. Letters appear in condensation."
+
+  narrator
+    "PASSAGE."
+
+  seeker
+    "I can't open a door in the glass."
+
+  narrator
+    "The child speaks quietly."
+
+  child
+    "You don't have to open a door. You just have to choose to
+     acknowledge that they exist. Sometimes that's all a soul
+     needs — to be seen."
+
+  narrator
+    "You look at the figures until you can clearly make out
+     their faces. You hold their gaze. You don't look away."
+
+  narrator
+    "One by one, they begin to release. Not disappearing —
+     settling. The wrongness in the square diminishes by degrees."
+
+  soul purpose +5 compassion +6 shadow +4
+  relationship nyx affinity +5
+  flag mirror_figures_acknowledged true
+  goto crossroads_east_resolved
+
+scene crossroads_east_child_safe
+  narrator
+    "First things first."
+
+  seeker
+    "What's your name?"
+
+  child
+    "Lira."
+
+  seeker
+    "Lira. Can you step back with me? Away from the glass?"
+
+  narrator
+    "She finally turns and looks at you. Her eyes have a quality
+     you recognize from the Heart Mirror — something behind them
+     that sees more than the surface of things."
+
+  child
+    "If I stop watching them, will they still be there when I look again?"
+
+  seeker
+    "I don't know. But I'm going to help them. I promise you that."
+
+  narrator
+    "She considers this with the gravity that children use when
+     they're deciding whether to trust an adult."
+
+  child
+    "Okay."
+
+  narrator
+    "She takes your hand. Her grip is surprisingly firm."
+
+  narrator
+    "With her out of the ring of fragments, you can see the full
+     scope of what's happening. The mirror figures aren't trapped.
+     They're anchored — something is holding them in place."
+
+  soul love +6 compassion +4
+  relationship nyx trust +5
+  flag lira_safe true
+  goto crossroads_east_resolved
+
+scene crossroads_east_ask_lost
+  narrator
+    "You look directly at the figures."
+
+  seeker
+    "What did you lose?"
+
+  narrator
+    "The child translates without being asked — she's been listening
+     to them all night."
+
+  child
+    "Their names. Something took their names out of the mirror.
+     Without names, they can't find the way through."
+
+  nyx
+    "Names are tethers. In the old tradition of the Mirror District,
+     you carved your name into a mirror fragment as a way of
+     establishing that you had existed. If those carvings were
+     destroyed or erased —"
+
+  seeker
+    "They'd be adrift."
+
+  nyx
+    "On both sides."
+
+  narrator
+    "You look at the fragments around the child's feet.
+     Some have carvings. Some have had their carvings ground
+     down — deliberately."
+
+  soul knowledge +5 shadow +4
+  flag mirror_names_lost true
+  flag mirror_cause_known true
+  goto crossroads_east_resolved
+
+scene crossroads_east_resolved
+  narrator
+    "Whatever you did, something in the east of the square shifts.
+     The wrongness is not gone — but it's no longer growing."
+
+  soul purpose +3
+  flag east_resolved true
+  goto crossroads_middle_report
+
+// ---- Branch: West — Aldric and the Fragment ----
+
+scene crossroads_west_aldric
+  background "mirror_district_west"
+  music "mirror_district_theme_low"
+
+  narrator
+    "The old keeper moves like someone who has accepted that his
+     body is no longer interested in his ambitions. He's perhaps
+     seventy. He holds a board and a hammer and is attempting,
+     for the fourth or fifth time, to nail the board across
+     a specific mirror fragment."
+
+  narrator
+    "Each time, the nails fall out on their own."
+
+  show nyx position:right emotion:concerned
+  show aldric position:left emotion:frustrated
+
+  aldric
+    "Don't help. Or help, actually — I don't care anymore, I just
+     need this covered before sundown."
+
+  seeker
+    "Why this one specifically?"
+
+  aldric
+    "Because this one is the source fragment. The original. When the
+     tower fell, this is the piece that the tower fell around —
+     it didn't shatter. Everything else did. This one just sat there,
+     standing upright, while the whole structure came down."
+
+  nyx
+    "The anchor piece."
+
+  aldric
+    "She knows. Of course she knows — she grew up three streets over."
+
+  narrator
+    "He looks at Nyx with an expression that contains decades
+     of complicated history."
+
+  aldric
+    "You left."
+
+  nyx
+    "I found the Sanctuary."
+
+  aldric
+    "You could have brought the Sanctuary back here."
+
+  narrator
+    "The silence between them is old and specific. You've walked
+     into someone else's wound."
+
+  soul compassion +4 knowledge +4
+
+  choice "How do you respond?"
+    option "Give them a moment — don't intervene" id:give_space
+      soul compassion +5 love +4
+      relationship nyx affinity +4
+      goto crossroads_west_give_space
+    option "Redirect to the mirror problem" id:redirect
+      soul purpose +6 knowledge +5
+      goto crossroads_west_redirect
+    option "Gently ask Aldric about the fragment" id:ask_aldric
+      soul knowledge +6 compassion +4
+      relationship nyx trust +3
+      goto crossroads_west_ask_aldric
+
+  end
+
+scene crossroads_west_give_space
+  narrator
+    "You step back and look at the mirror fragment while they
+     have whatever conversation has been waiting three years."
+
+  narrator
+    "The fragment is unremarkable by appearance — about the size
+     of a door, slightly greenish, old glass from before
+     modern manufacture. But looking into it is wrong in a
+     precise way: your reflection is always doing something
+     different than you are."
+
+  narrator
+    "Not dramatically. Just — your reflection blinks a half-second
+     later. Or turns its head when you don't. Small divergences."
+
+  narrator
+    "Behind you, voices drop to murmurs. Then go quiet.
+     You hear Nyx say: 'I know. I'm sorry I didn't come back sooner.'"
+
+  narrator
+    "When Aldric speaks again, some of the rust is out of his voice."
+
+  aldric
+    "All right. The fragment. Here's what you need to understand."
+
+  soul love +4 compassion +5
+  relationship nyx trust +5
+  flag aldric_nyx_reconciliation true
+  goto crossroads_west_aldric_explains
+
+scene crossroads_west_redirect
+  seeker
+    "I'm sorry to interrupt. But what's happening with the mirror
+     is connected to something larger and getting worse. Can we
+     deal with the immediate problem first?"
+
+  narrator
+    "Aldric and Nyx both look at you. Then at each other.
+     Something passes between them — acknowledgment that
+     the interrupted conversation will need to wait."
+
+  aldric
+    "Fine. Yes. The fragment."
+
+  soul purpose +4
+  goto crossroads_west_aldric_explains
+
+scene crossroads_west_ask_aldric
+  seeker
+    "Aldric — can you tell me what makes this fragment different?
+     Why is covering it the goal, and why won't it let you?"
+
+  narrator
+    "He looks at you as if recalibrating whether you're worth
+     the explanation."
+
+  aldric
+    "You're the new Architect."
+
+  seeker
+    "Apparently."
+
+  aldric
+    "Fine. The fragment is original. The other pieces of the tower
+     are copies — the tower was rebuilt six times over the centuries,
+     each time using new glass. This piece is from the first
+     construction. That makes it a memory carrier."
+
+  goto crossroads_west_aldric_explains
+
+scene crossroads_west_aldric_explains
+  aldric
+    "Memory carriers are unstable when the surrounding architecture
+     is damaged. They start to bleed — show things that happened
+     near them, echo sounds from past events. And this one is
+     bleeding something specific."
+
+  narrator
+    "He points to a faint image moving in the fragment —
+     a recurring loop. A figure, standing exactly where you are,
+     placing their hand on the glass."
+
+  seeker
+    "Who is that?"
+
+  aldric
+    "The first Architect. The one who founded the Sanctuary.
+     Who carved the original name-grid that held the mirror district
+     together for two hundred years."
+
+  nyx
+    "Until someone started erasing the names."
+
+  aldric
+    "Last three months. Deliberately. Systematically. Whoever
+     is doing it knows exactly what they're removing."
+
+  soul knowledge +8 purpose +5
+  flag aldric_briefing true
+  flag name_erasure_known true
+  flag first_architect_image true
+  flag west_resolved true
+  goto crossroads_middle_report
+
+// ---- Branch: Direct Center ----
+
+scene crossroads_center_direct
+  background "mirror_district_center"
+  music "mirror_district_theme_dark"
+
+  narrator
+    "Nyx says nothing about the choice, but her jaw tightens fractionally."
+
+  narrator
+    "The center of the square is both empty and crowded.
+     Empty of people — they've all given it a wide berth,
+     the particular unconscious clearance humans give to
+     spaces that feel wrong. Crowded with something else."
+
+  show nyx position:right emotion:tense
+  show seeker position:center emotion:alert
+
+  narrator
+    "The wrongness is visible here. Not to normal sight —
+     but to whatever the Voice and the Heart Mirror opened
+     in you. The air has an architecture problem.
+     Fractures in something structural."
+
+  seeker
+    "The fracture the Voice showed me."
+
+  nyx
+    "You can see it?"
+
+  seeker
+    "Not exactly. I can feel where it is. Like knowing
+     where a wall is in a dark room."
+
+  narrator
+    "You move toward the center. The fracture doesn't hide."
+
+  narrator
+    "It's a tear in — you don't have the word for it.
+     In the agreed-upon fabric of things. In the shared
+     understanding that this is a square and those are buildings
+     and there is a ground and a sky."
+
+  narrator
+    "Through the tear: nothing specific. Just the sense
+     of something on the other side that has noticed
+     it's been noticed."
+
+  soul fear +6 purpose +6 shadow +5
+
+  choice "What do you do at the fracture?"
+    option "Try to close it" id:close_fracture
+      soul purpose +8 pride +5 fear +5
+      goto crossroads_center_close
+    option "Study it — understand before acting" id:study_fracture
+      soul knowledge +8 shadow +5
+      goto crossroads_center_study
+    option "Call to the Voice for guidance" id:call_voice
+      soul purpose +5 memory +4 love +3
+      goto crossroads_center_call_voice
+    option "Back away and deal with the edges first" id:back_away
+      soul compassion +3 fear -3 knowledge +4
+      relationship nyx trust +4
+      goto crossroads_center_retreat
+
+  end
+
+scene crossroads_center_close
+  narrator
+    "You try. You're not sure what you're trying exactly —
+     you don't have instructions for closing tears in reality."
+
+  narrator
+    "But you are an Architect. And architecture means knowing
+     that some things are held together by attention."
+
+  narrator
+    "You hold the fracture in your full attention. You don't
+     look away. You don't interpret it. You simply see it
+     completely."
+
+  narrator
+    "It doesn't close. But it stops widening."
+
+  narrator
+    "The thing on the other side that has been watching
+     watches differently now. Like something that has
+     been treated as scenery and has been suddenly
+     perceived as a subject."
+
+  narrator
+    "You don't stay long. But you've made contact —
+     whatever that means — and the contact is not hostile."
+
+  soul purpose +6 shadow +6 fear -3
+  flag fracture_contact_made true
+  flag fracture_stable true
+  goto crossroads_center_aftermath
+
+scene crossroads_center_study
+  narrator
+    "You circle the fracture at a careful distance.
+     Looking at it from every angle. Asking it questions
+     the way Nyx asks questions — at the level of
+     structure, not emotion."
+
+  narrator
+    "What you learn:"
+
+  narrator
+    "First: the fracture isn't accidental. The pattern of
+     the tearing has direction — it was initiated from one
+     side. Something pushed."
+
+  narrator
+    "Second: the pushing started approximately when the name
+     erasures started. Correlation is not causation but this
+     is not a coincidence."
+
+  narrator
+    "Third: the fracture is reactive. It responds to being
+     looked at. Not aggressively. Curiously."
+
+  nyx
+    "That's unusual."
+
+  seeker
+    "Is it?"
+
+  nyx
+    "Things that are trying to get through something usually
+     don't care whether they're being studied. This one does."
+
+  soul knowledge +8 purpose +5 shadow +4
+  flag fracture_cause_known true
+  flag fracture_reactive_known true
+  goto crossroads_center_aftermath
+
+scene crossroads_center_call_voice
+  narrator
+    "You close your eyes. You think of the Heart Mirror.
+     The sound that was not quite music and not quite voice."
+
+  seeker
+    "I'm here. And I need to understand what I'm looking at."
+
+  narrator
+    "Silence. Then, very faintly, the tone that precedes
+     the Voice speaking."
+
+  voice
+    "You're looking at a threshold. Not a door — a threshold.
+     The difference matters."
+
+  seeker
+    "How?"
+
+  voice
+    "A door is a mechanism. A threshold is a condition.
+     This is not a place where something passes through.
+     It is a place that is becoming passable."
+
+  seeker
+    "How do I stop it becoming passable?"
+
+  voice
+    "You don't stop a threshold. You decide what it's
+     a threshold to."
+
+  narrator
+    "The voice withdraws. The faint tone fades."
+
+  soul purpose +6 knowledge +7 memory +3
+  flag voice_threshold_guidance true
+  goto crossroads_center_aftermath
+
+scene crossroads_center_retreat
+  narrator
+    "You stop walking before you reach the center."
+
+  nyx
+    "Good."
+
+  seeker
+    "There are other things happening in the square.
+     I want to understand the edges before I go near
+     the center."
+
+  nyx
+    "Also good."
+
+  narrator
+    "As you turn back, you notice: the fracture's width
+     has not changed in the time you've been watching it.
+     It's stable. Not growing. That gives you time."
+
+  soul knowledge +4 purpose +3 compassion +2
+  flag fracture_stable true
+  goto crossroads_middle_report
+
+scene crossroads_center_aftermath
+  soul purpose +4
+  flag center_investigated true
+  goto crossroads_middle_report
+
+// ---- Branch: Ask Nyx ----
+
+scene crossroads_ask_nyx
+  nyx
+    "You're asking me."
+
+  seeker
+    "You know this district. I don't. And you have
+     good instincts."
+
+  narrator
+    "She considers."
+
+  nyx
+    "Lira first. The child in the east. Whatever else
+     is happening, she's been standing there alone
+     for six hours and that's not acceptable."
+
+  seeker
+    "Agreed."
+
+  narrator
+    "There's a quality to Nyx's expression when you agree
+     that's hard to name. Like she expected an argument
+     and is recalibrating."
+
+  soul love +4 compassion +3
+  relationship nyx trust +8
+  relationship nyx affinity +6
+  flag deferred_to_nyx true
+  goto crossroads_east_child
+
+// ---- Middle Report (convergence after any primary branch) ----
+
+scene crossroads_middle_report
+  background "mirror_district_street"
+  music "mirror_district_theme"
+
+  show nyx position:left emotion:serious
+  show seeker position:right emotion:focused
+
+  narrator
+    "You regroup in the middle of the square. The sun has
+     climbed high enough to make the mirror fragments
+     dangerous to look at directly."
+
+  nyx
+    "Whatever is happening here is deliberate. The name erasures,
+     the mirror figures, the fracture — someone planned this."
+
+  seeker
+    "Or something."
+
+  nyx
+    "Either way, we're not going to resolve it today. But we can
+     slow it down."
+
+  narrator
+    "She's right. You've changed the shape of the situation —
+     stabilized some of what was destabilizing — but the source
+     is still present. Still pushing."
+
+  nyx
+    "The Sanctuary has records of the original mirror-naming ceremonies.
+     If we can find out which names were erased and reinstate them —"
+
+  seeker
+    "We give the stranded souls their tethers back."
+
+  nyx
+    "Assuming that's the whole problem. Which it may not be."
+
+  soul knowledge +4 purpose +5
+
+  goto chapter_01_resolution
+
+// ---- Resolution ----
+
+scene chapter_01_resolution
+  background "mirror_district_dusk"
+  music "chapter_resolution_theme"
+  weather "clearing_fog"
+
+  narrator
+    "Evening. The Mirror District is quieter than morning —
+     whatever you did has, at minimum, stopped the escalation."
+
+  narrator
+    "You and Nyx sit on a fragment of old wall near the district
+     boundary. The city beyond is lit and indifferent and alive."
+
+  show nyx position:right emotion:tired
+  show seeker position:left emotion:thoughtful
+
+  nyx
+    "You did well today."
+
+  seeker
+    "I didn't fix anything."
+
+  nyx
+    "You didn't make it worse. On a first day, that's the
+     same as fixing something."
+
+  narrator
+    "The understatement is kind. You understand that it's kind
+     and accept it accordingly."
+
+  seeker
+    "The thing that's coming through. The fracture. Is it —
+     dangerous?"
+
+  nyx
+    "I don't know yet. Probably. But 'dangerous' is a wide word.
+     A lot of important things are dangerous. The Sanctuary was
+     dangerous to build. The first Architect put themselves at
+     risk every day for twenty years."
+
+  seeker
+    "What happened to them?"
+
+  narrator
+    "A long pause. The kind that holds something specific inside it."
+
+  nyx
+    "Nobody knows. They simply — stopped leaving records.
+     One day they were here, and then they weren't.
+     The Sanctuary stayed. What happened to them didn't."
+
+  narrator
+    "You watch the broken mirrors in the square catch the
+     last light and scatter it everywhere —
+     small bright fragments that don't belong to any one surface."
+
+  narrator
+    "It occurs to you that this might be what a soul looks like
+     from the outside. Scattered. Belonging to everywhere at once.
+     Throwing light without knowing where it lands."
+
+  soul hope +5 purpose +5 memory +4
+  flag chapter_01_complete true
+
+  goto chapter_01_end
+
+scene chapter_01_end
+  background "sanctuary_exterior_night"
+  music "sanctuary_theme_soft"
+
+  narrator
+    "The Sanctuary at night holds its breath differently than
+     during the day. More watchful. More itself."
+
+  narrator
+    "You return to it not because you have nowhere else to go —
+     you probably have somewhere else to go, although you're
+     not sure where anymore — but because it's where the
+     next part of the story is going to happen."
+
+  narrator
+    "And you've become someone who goes toward what happens next
+     rather than waiting for it to find you."
+
+  narrator
+    "This is new. You're not sure when it started."
+
+  nyx
+    "I'll see you in the morning."
+
+  seeker
+    "Good night."
+
+  narrator
+    "She almost says something else. Doesn't. Goes inside."
+
+  narrator
+    "You stand in the dark for a moment, under a sky that is
+     ordinary and vast and completely indifferent to what you
+     learned today."
+
+  narrator
+    "You're still here."
+
+  narrator
+    "That seems like a good starting point for what comes next."
+
+  soul hope +6 love +3 purpose +4
+  relationship nyx affinity +5
+  codex unlock "the_mirror_naming"
+  codex unlock "the_fracture"
+
+  // Branch to true ending path if soul aligned
+  if soul.purpose >= 30 and soul.compassion >= 20
+    goto ending_check_true_seeker
+  end
+
+  // Default: continue to chapter 2
+  goto chapter_02_start
+  end
+

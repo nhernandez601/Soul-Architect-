@@ -1,0 +1,138 @@
+// chapter_01_start.sasl
+// Chapter 1: The Sanctuary of Echoes — Entry
+// Follows directly from prologue_03.sasl
+// The Seeker has arrived at the threshold of the Sanctuary.
+
+scene chapter_01_start
+  title "The Sanctuary of Echoes"
+  chapter 1
+  act 1
+
+  background "sanctuary_exterior_dawn"
+  music "sanctuary_theme_soft"
+  weather none
+
+  narrator
+    "The air here is different. Thicker. As if every breath draws in
+     something older than memory."
+
+  show nyx position:left emotion:composed
+  show seeker position:right emotion:neutral
+
+  nyx
+    "You can feel it, can't you? The Sanctuary remembers everyone who
+     ever passed through. Every soul that sought shelter here left
+     something behind."
+
+  narrator
+    "The stone archway before you pulses faintly with silver light — not
+     threatening, but aware."
+
+  choice "How do you respond?"
+    option "Ask about the light" id:ask_light
+      soul knowledge +4
+      goto chapter_01_ask_light
+    option "Step through without hesitation" id:step_through
+      soul purpose +5 fear -3
+      flag brave_entry true
+      goto chapter_01_brave_entry
+    option "Hesitate at the threshold" id:hesitate
+      soul fear +4 memory +3
+      goto chapter_01_hesitate_entry
+    option "Ask Nyx to go first" id:ask_nyx
+      soul love +3 pride -2
+      relationship nyx affinity +4
+      goto chapter_01_ask_nyx
+
+  end
+
+// ----
+
+scene chapter_01_ask_light
+  nyx
+    "Clever question. The light is... a record. The Sanctuary imprints
+     itself on every visitor. What you see glowing isn't magic —
+     it's accumulated presence."
+  narrator
+    "She pauses, as though choosing her next words with great care."
+  nyx
+    "Some people who pass through never quite leave. Parts of them stay
+     here, woven into the stone. The Sanctuary is a living archive."
+  soul knowledge +3
+  goto chapter_01_enter
+
+scene chapter_01_brave_entry
+  narrator
+    "You walk through the archway without slowing. The silver light washes
+     over you — warm, questioning, like a gaze that sees more than your
+     face."
+  nyx
+    "Oh. You're braver than I expected."
+  narrator
+    "Or perhaps not brave at all. Perhaps you simply stopped being
+     afraid of what you couldn't name."
+  goto chapter_01_enter
+
+scene chapter_01_hesitate_entry
+  narrator
+    "You stop at the threshold. Your feet refuse to move without
+     your permission."
+  nyx
+    "It's all right to be afraid."
+  seeker
+    "It's not fear. It's... recognition. I've been here before. I know
+     I've never been here, but I know this place."
+  nyx
+    "That's how it starts."
+  soul memory +4
+  goto chapter_01_enter
+
+scene chapter_01_ask_nyx
+  seeker
+    "After you."
+  nyx
+    "No. The Sanctuary chooses its moment with each person. I've already
+     had mine. This crossing is yours alone."
+  narrator
+    "She steps to the side. You are suddenly, entirely, alone at the
+     threshold."
+  goto chapter_01_enter
+
+// ---- Convergence ----
+
+scene chapter_01_enter
+  background "sanctuary_interior_amber"
+  music "sanctuary_theme_full"
+
+  narrator
+    "The inside of the Sanctuary is vast beyond any outside impression
+     of it. The walls are carved with thousands of names — not inscribed,
+     but grown, as if the stone itself decided to remember them."
+
+  show nyx position:right emotion:peaceful
+  hide seeker
+
+  nyx
+    "The names are everyone who was ever truly lost — and found something
+     here instead of a way back."
+
+  narrator
+    "You walk to the nearest wall and trace a name with one finger.
+     The stone is warm."
+
+  choice "You feel..."
+    option "A profound sense of belonging" id:belong
+      soul love +5 hope +4 shadow +2
+      goto chapter_01_sanctuary_belonging
+    option "A deep, aching sadness" id:sad
+      soul regret +5 compassion +4
+      goto chapter_01_sanctuary_sorrow
+    option "Unsettled by the implications" id:unsettle
+      soul fear +3 knowledge +4 pride +2
+      goto chapter_01_sanctuary_unease
+    option "Nothing. Complete numbness." id:numb
+      soul memory +7 shadow +5
+      flag numbness_awakened true
+      goto chapter_01_sanctuary_void
+
+  end

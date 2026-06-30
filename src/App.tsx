@@ -11,6 +11,8 @@ import { initStoreSync } from './engine/core/StoreSync';
 import { useGameStore } from './engine/core/GameStore';
 import { NotificationToast } from './ui/components/NotificationToast';
 import { PauseMenu } from './ui/components/PauseMenu';
+import { ScreenTransition, VFXOverlay } from './ui/components/ScreenTransition';
+import { EndingScreen } from './ui/screens/EndingScreen';
 import MainMenuScreen from './ui/screens/MainMenuScreen';
 import GameScreen from './ui/screens/GameScreen';
 import LoadingScreen from './ui/screens/LoadingScreen';
@@ -86,6 +88,15 @@ export default function App(): React.ReactElement {
           )}
         </div>
       )}
+
+      {/* Phase 3 — Ending screen (full takeover) */}
+      {activeScreen === 'ending' && <EndingScreen />}
+
+      {/* Phase 3 — Screen transition overlay (z-50, above everything except ending) */}
+      <ScreenTransition />
+
+      {/* Phase 3 — CSS VFX (vignette + film grain) */}
+      <VFXOverlay />
 
       {/* Global notification toasts — always on top */}
       <NotificationToast />

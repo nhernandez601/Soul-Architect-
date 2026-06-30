@@ -155,6 +155,27 @@ export function initStoreSync(): void {
       store.setNewAchievementCount(Math.max(0, useGameStore.getState().newAchievementCount - 1));
     }, 10000);
   });
+
+  // ---------------------------------------------------------------------------
+  // Phase 3 — Ending / Transition / VFX
+  // ---------------------------------------------------------------------------
+
+  engineBus.on('ending:reached', ({ endingId }) => {
+    store.showEnding(endingId);
+  });
+
+  engineBus.on('transition:start', ({ color }) => {
+    const cssColor = color !== undefined ? `#${color.toString(16).padStart(6, '0')}` : '#000000';
+    store.setTransition(true, cssColor, 1);
+  });
+
+  engineBus.on('transition:complete', () => {
+    store.setTransition(false);
+  });
+
+  engineBus.on('postprocessing:preset', ({ preset }) => {
+    store.setVFXPreset(preset);
+  });
 }
 
 function resolveDisplayName(speaker: string | null): string {

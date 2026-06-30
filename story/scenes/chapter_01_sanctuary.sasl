@@ -1,0 +1,186 @@
+// chapter_01_sanctuary.sasl
+// The Sanctuary of Echoes — interior exploration and Nyx relationship deepening
+
+scene chapter_01_sanctuary_belonging
+  background "sanctuary_interior_amber"
+
+  narrator
+    "You feel as though a door inside you — one you never knew was closed —
+     swings open on rusted hinges."
+
+  show nyx position:center emotion:moved
+  nyx
+    "You're one of them. People who the Sanctuary claims. Not everyone who
+     comes here gets that feeling."
+
+  seeker
+    "Is that good?"
+
+  nyx
+    "It means you've been looking for something a long time. And something
+     here knows your face."
+
+  soul hope +3 love +3
+  relationship nyx trust +6
+  goto chapter_01_the_chamber
+
+scene chapter_01_sanctuary_sorrow
+  background "sanctuary_interior_amber"
+
+  narrator
+    "Grief rises in you without a source. Not grief for something lost —
+     grief for something you never got to have."
+
+  show nyx position:left emotion:quiet_pain
+
+  nyx
+    "The wall does that. Shows you the shape of what's missing."
+
+  seeker
+    "I don't even know what it is."
+
+  nyx
+    "That's the hardest kind of loss."
+
+  narrator
+    "She doesn't try to comfort you further. She simply stands close enough
+     that you know you aren't alone."
+
+  soul compassion +4 regret +2
+  relationship nyx affinity +5
+  goto chapter_01_the_chamber
+
+scene chapter_01_sanctuary_unease
+  background "sanctuary_interior_amber"
+
+  show nyx position:right emotion:curious
+  seeker
+    "How many of these people — the ones on the wall — are still alive?"
+
+  nyx
+    "About half. The Sanctuary doesn't only record the dead."
+
+  seeker
+    "Then where are the living ones?"
+
+  nyx
+    "Living their lives. Carrying what they found here. Some of them don't
+     even remember the crossing anymore. It fades, for some people."
+
+  seeker
+    "Will it fade for me?"
+
+  narrator
+    "Nyx considers this longer than you'd like."
+
+  nyx
+    "I don't think so."
+
+  soul knowledge +4 fear +2
+  goto chapter_01_the_chamber
+
+scene chapter_01_sanctuary_void
+  background "sanctuary_interior_dark"
+  music "sanctuary_theme_low"
+
+  narrator
+    "Nothing. You feel the warmth of the stone, see the light, hear Nyx's
+     voice — and feel none of it reach you. Like glass between you and
+     the world."
+
+  show nyx position:center emotion:concerned
+
+  nyx
+    "Are you —"
+
+  seeker
+    "I'm fine."
+
+  narrator
+    "The words come automatically. You've said them so many times they've
+     worn grooves in you."
+
+  nyx
+    "You don't have to be fine here."
+
+  narrator
+    "For a long moment, you consider telling her the truth."
+
+  choice
+    option "Tell her the truth" id:truth_numb
+      soul memory +6 shadow +3 love +4
+      relationship nyx trust +8
+      flag told_nyx_truth true
+      goto chapter_01_truth_told
+    option "Keep the distance" id:keep_distance
+      soul shadow +6 pride +3
+      goto chapter_01_the_chamber
+
+  end
+
+scene chapter_01_truth_told
+  seeker
+    "I haven't felt much of anything in a long time. It comes and goes.
+     But mostly... the world is very far away."
+
+  nyx
+    "How long?"
+
+  seeker
+    "I'm not sure. Long enough that I stopped noticing when it started."
+
+  narrator
+    "Nyx looks at you with an expression you haven't seen before on her
+     face. Not pity. Recognition."
+
+  nyx
+    "My shadow — the one I was born without — left a hollow in exactly
+     that shape. I know what the inside of that hollow feels like."
+
+  narrator
+    "Something shifts in the room. Not dramatically — just a half-degree
+     turn of something that had been frozen for a long time."
+
+  soul memory +4 love +6 hope +4 shadow -3
+  goto chapter_01_the_chamber
+
+// ---- Main convergence ----
+
+scene chapter_01_the_chamber
+  background "sanctuary_chamber_deep"
+  music "sanctuary_chamber_theme"
+
+  narrator
+    "Nyx leads you deeper into the Sanctuary, through corridors where the
+     names grow denser, to a circular chamber at the heart of it all."
+
+  narrator
+    "In the center: a mirror, floor to ceiling. But the reflection is wrong."
+
+  show nyx position:right emotion:serious
+
+  nyx
+    "The Heart Mirror. This is why I brought you here."
+
+  narrator
+    "In the mirror, you don't see yourself as you are. You see yourself
+     as something older — and something that hasn't happened yet."
+
+  narrator
+    "Your reflection's eyes are full of stars."
+
+  seeker
+    "What is this?"
+
+  nyx
+    "The Sanctuary thinks you're important. I wanted to know why."
+
+  narrator
+    "A low sound fills the room — not quite music, not quite voice —
+     and the mirror begins to show you something."
+
+  flag heart_mirror_seen true
+  soul knowledge +8 purpose +6 memory +5
+
+  goto chapter_01_voice_return
+  end

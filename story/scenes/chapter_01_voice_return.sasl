@@ -1,0 +1,167 @@
+// chapter_01_voice_return.sasl
+// The Voice returns through the Heart Mirror — first true warning
+
+scene chapter_01_voice_return
+  background "sanctuary_chamber_mirror"
+  music "voice_theme_distant"
+
+  narrator
+    "The reflection in the Heart Mirror ripples. Your double's expression
+     changes — something behind the eyes that wasn't there before."
+
+  show nyx position:right emotion:alert
+  show voice position:center emotion:distant
+
+  narrator
+    "When the Voice speaks, it comes from everywhere and nowhere.
+     Nyx goes very still."
+
+  voice
+    "You found the axis point. Faster than most."
+
+  seeker
+    "The Voice."
+
+  voice
+    "You say that as if you know me. You don't. What you know is an
+     impression — the shape a stone leaves in water long after
+     you've pulled it out."
+
+  choice "Respond to the Voice"
+    option "Why are you appearing now?" id:ask_why
+      soul knowledge +5
+      goto chapter_01_voice_why
+    option "What am I supposed to do here?" id:ask_purpose
+      soul purpose +6
+      goto chapter_01_voice_purpose
+    option "Don't trust it. Ignore it." id:ignore
+      soul pride +5 fear +3
+      relationship nyx trust +4
+      goto chapter_01_voice_ignored
+    option "Ask Nyx to leave before speaking" id:protect_nyx
+      soul love +5 compassion +4
+      relationship nyx affinity +6
+      goto chapter_01_protect_nyx
+
+  end
+
+scene chapter_01_voice_why
+  voice
+    "You've reached the place where choices calcify into fate. I appear
+     at these junctures. Not to guide you. To witness."
+
+  seeker
+    "Then what are you witnessing right now?"
+
+  voice
+    "Whether you're someone who can survive knowing the truth of what
+     you are. Most can't."
+
+  soul fear +3 knowledge +5 purpose +3
+  goto chapter_01_voice_convergence
+
+scene chapter_01_voice_purpose
+  voice
+    "Purpose. A very human word for a very non-human situation."
+
+  narrator
+    "The reflection in the mirror shifts — for a moment you see
+     something vast and cold behind your own face."
+
+  voice
+    "You're a threshold, not a traveler. The question isn't what you're
+     supposed to do. The question is what you'll allow to pass through you."
+
+  soul purpose +6 fear +4 memory +3
+  goto chapter_01_voice_convergence
+
+scene chapter_01_voice_ignored
+  narrator
+    "You turn deliberately away from your reflection."
+
+  nyx
+    "Seeker —"
+
+  seeker
+    "Whatever it is, it can wait."
+
+  narrator
+    "The Voice makes no sound of offense. But the room temperature drops
+     exactly three degrees, and doesn't rise again for the rest of your
+     time in the Sanctuary."
+
+  voice
+    "Noted."
+
+  narrator
+    "Then silence. But not the comfortable kind."
+
+  soul pride +4 shadow +4
+  goto chapter_01_voice_convergence
+
+scene chapter_01_protect_nyx
+  seeker
+    "Nyx — could you wait outside?"
+
+  nyx
+    "You're sure?"
+
+  seeker
+    "I don't want you in the room for whatever this is."
+
+  narrator
+    "Something crosses Nyx's face — surprise, then something warmer and
+     more complicated."
+
+  nyx
+    "All right. I'll be just outside."
+
+  narrator
+    "When you're alone with the mirror, the Voice speaks more openly."
+
+  voice
+    "You protected her. Interesting. Most people reaching this juncture
+     only think about themselves. It suggests you might be worth the
+     complication."
+
+  soul love +6 compassion +5
+  relationship nyx affinity +8
+  flag protected_nyx true
+  goto chapter_01_voice_convergence
+
+// ---- Main convergence ----
+
+scene chapter_01_voice_convergence
+  background "sanctuary_chamber_mirror_deep"
+  music "voice_theme_revelation"
+
+  voice
+    "There is something coming through the fabric of things. Not here.
+     Not yet. But approaching."
+
+  narrator
+    "The mirror shows you a crack — a hairline fracture in something
+     you can't name but recognize by its wrongness."
+
+  voice
+    "You are the only one currently equipped to perceive it. Not to stop
+     it. Simply to perceive it. That may be enough, or it may not."
+
+  seeker
+    "And if it isn't enough?"
+
+  voice
+    "Then we find out together what happens when the Architect is
+     absent from the architecture."
+
+  narrator
+    "The Voice withdraws like a tide. The mirror shows only your face again —
+     but your eyes, for just a moment, still hold stars."
+
+  flag voice_chapter1_seen true
+  soul purpose +8 knowledge +6 shadow +3
+  codex unlock "the_voice"
+  codex unlock "the_shattered_mirror_district"
+
+  goto chapter_01_nyx_01
+  end

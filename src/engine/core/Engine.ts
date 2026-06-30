@@ -38,6 +38,7 @@ export class Engine {
       await this.registerServices();
       await registry.initAll();
       await registry.startAll();
+      await this.loadGameData();
       this.bindWindowEvents();
       this.setState('ready');
       engineBus.emit('engine:ready');
@@ -96,6 +97,10 @@ export class Engine {
     const { ModSystem } = await import('../../systems/mod/ModSystem');
     const { LocalizationSystem } = await import('../../localization/LocalizationSystem');
     const { DevConsole } = await import('../core/DevConsole');
+    // Phase 3 systems
+    const { EndingSystem } = await import('../../systems/ending/EndingSystem');
+    const { PostProcessingManager } = await import('../postprocessing/PostProcessingManager');
+    const { TransitionManager } = await import('../transition/TransitionManager');
 
     registry.register('asset', new AssetManager(this.config));
     registry.register('scene', new SceneManager(this.config));
@@ -123,9 +128,23 @@ export class Engine {
     registry.register('notification', new NotificationSystem());
     registry.register('mod', new ModSystem());
     registry.register('localization', new LocalizationSystem());
+    // Phase 3
+    registry.register('ending', new EndingSystem());
+    registry.register('postprocessing', new PostProcessingManager());
+    registry.register('transition', new TransitionManager());
     if (import.meta.env.DEV) {
       registry.register('devConsole', new DevConsole());
     }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Game data loading (endings, quests, codex, etc.)
+  // ---------------------------------------------------------------------------
+
+  private async loadGameData(): Promise<void> {
+    const { ENDING_DEFINITIONS } = await import('../../data/endingDefinitions');
+    const ending = registry.get<import('../../systems/ending/EndingSystem').EndingSystem>('ending');
+    ending.registerEndings(ENDING_DEFINITIONS);
   }
 
   // ---------------------------------------------------------------------------
