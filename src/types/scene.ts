@@ -150,6 +150,8 @@ export type SceneNode =
   | NarratorNode
   | CGShowNode
   | VideoPlayNode
+  | CodexUnlockNode
+  | AchievementUnlockNode
   | CustomNode;
 
 export type NodeType =
@@ -174,6 +176,8 @@ export type NodeType =
   | 'narrator'
   | 'show_cg'
   | 'play_video'
+  | 'codex_unlock'
+  | 'achievement_unlock'
   | 'custom';
 
 interface BaseNode {
@@ -377,6 +381,18 @@ export interface VideoPlayNode extends BaseNode {
   type: 'play_video';
   videoPath: string;
   skippable: boolean;
+  nextNodeId?: ID;
+}
+
+export interface CodexUnlockNode extends BaseNode {
+  type: 'codex_unlock';
+  entryId: ID;
+  nextNodeId?: ID;
+}
+
+export interface AchievementUnlockNode extends BaseNode {
+  type: 'achievement_unlock';
+  achievementId: ID;
   nextNodeId?: ID;
 }
 

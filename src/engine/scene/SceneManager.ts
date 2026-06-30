@@ -32,6 +32,8 @@ import type {
   WeatherChangeNode,
   NarratorNode,
   CGShowNode,
+  CodexUnlockNode,
+  AchievementUnlockNode,
 } from '@t/scene';
 import type { SoulCondition } from '@t/soul';
 
@@ -165,6 +167,8 @@ export class SceneManager extends BaseService {
       case 'weather_change':     return this.execWeatherChange(node as WeatherChangeNode);
       case 'narrator':           return this.execNarrator(node as NarratorNode);
       case 'show_cg':            return this.execShowCG(node as CGShowNode);
+      case 'codex_unlock':       return this.execCodexUnlock(node as CodexUnlockNode);
+      case 'achievement_unlock': return this.execAchievementUnlock(node as AchievementUnlockNode);
       default:
         this.warn(`Unknown node type: ${(node as SceneNode).type}`);
         return this.getNextNodeId(node);
@@ -185,7 +189,11 @@ export class SceneManager extends BaseService {
   private async execChoice(node: ChoiceNode): Promise<ID | undefined> {
     const choice = registry.get<import('../choice/ChoiceManager').ChoiceManager>('choice');
     const selected = await choice.present(node);
-    return selected.gotoNodeId;
+    if (selected.gotoSceneId) {
+      await this.loadScene(selected.gotoSceneId, selected.gotoNodeId || undefined);
+      return undefined; // loadScene takes over
+    }
+    return selected.gotoNodeId || (node as { nextNodeId?: ID }).nextNodeId;
   }
 
   private async execShowCharacter(node: CharacterShowNode): Promise<ID | undefined> {
@@ -304,6 +312,18 @@ export class SceneManager extends BaseService {
     this.bus.emit('gallery:cg_unlocked', { cgId: node.cgId });
     this.awaitingInput = true;
     // CG display is handled by the UI layer via the event bus
+    return node.nextNodeId;
+  }
+
+  private async execCodexUnlock(node: CodexUnlockNode): Promise<ID | undefined> {
+    const codex = registry.get<import('../../systems/codex/CodexSystem').CodexSystem>('codex');
+    codex.unlock(node.entryId);
+    return node.nextNodeId;
+  }
+
+  private async execAchievementUnlock(node: AchievementUnlockNode): Promise<ID | undefined> {
+    const achievement = registry.get<import('../../systems/achievement/AchievementSystem').AchievementSystem>('achievement');
+    achievement.unlock(node.achievementId);
     return node.nextNodeId;
   }
 

@@ -226,7 +226,7 @@ describe('ScriptParser', () => {
       expect(choice?.choices[0]?.soulDelta?.pride).toBe(5);
     });
 
-    it('captures gotoNodeId for each option', () => {
+    it('captures the option goto target as a scene id', () => {
       const src = [
         'scene s1',
         '  choice "Decide"',
@@ -235,9 +235,24 @@ describe('ScriptParser', () => {
       ].join('\n');
       const scenes = parser.parse(src);
       const choice = scenes[0]?.nodes.find((n) => n.type === 'choice') as
-        | { choices: { gotoNodeId: string }[] }
+        | { choices: { gotoSceneId?: string }[] }
         | undefined;
-      expect(choice?.choices[0]?.gotoNodeId).toBe('path_a');
+      expect(choice?.choices[0]?.gotoSceneId).toBe('path_a');
+    });
+
+    it('captures flagsSet inside an option', () => {
+      const src = [
+        'scene s1',
+        '  choice "Pick"',
+        '    option "Set it"',
+        '      flag brave_entry true',
+        '      goto s2',
+      ].join('\n');
+      const scenes = parser.parse(src);
+      const choice = scenes[0]?.nodes.find((n) => n.type === 'choice') as
+        | { choices: { flagsSet?: Record<string, unknown> }[] }
+        | undefined;
+      expect(choice?.choices[0]?.flagsSet?.brave_entry).toBe(true);
     });
   });
 
@@ -257,5 +272,169 @@ describe('ScriptParser', () => {
       const nodes = scenes[0]?.nodes ?? [];
       expect((nodes[0] as { nextNodeId?: string }).nextNodeId).toBe(nodes[1]?.id);
     });
+  });
+
+  // -------------------------------------------------------------------------
+  // State directives (parser parity)
+  // -------------------------------------------------------------------------
+
+  describe('flag directive', () => {
+    it('parses a boolean flag into a flag_set node', () => {
+      const scenes = parser.parse('scene s1\n  flag chapter_01_complete true');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'flag_set') as
+        | { flags: Record<string, unknown> } | undefined;
+      expect(node?.flags.chapter_01_complete).toBe(true);
+    });
+
+    it('parses a string flag value', () => {
+      const scenes = parser.parse('scene s1\n  flag path_taken shadow');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'flag_set') as
+        | { flags: Record<string, unknown> } | undefined;
+      expect(node?.flags.path_taken).toBe('shadow');
+    });
+  });
+
+  describe('relationship directive', () => {
+    it('parses a positive relationship change', () => {
+      const scenes = parser.parse('scene s1\n  relationship nyx trust +8');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'relationship_change') as
+        | { characterId: string; stat: string; delta: number } | undefined;
+      expect(node?.characterId).toBe('nyx');
+      expect(node?.stat).toBe('trust');
+      expect(node?.delta).toBe(8);
+    });
+
+    it('parses a negative relationship change', () => {
+      const scenes = parser.parse('scene s1\n  relationship nyx trust -5');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'relationship_change') as
+        | { delta: number } | undefined;
+      expect(node?.delta).toBe(-5);
+    });
+  });
+
+  describe('codex / achievement directives', () => {
+    it('parses codex unlock with a quoted id', () => {
+      const scenes = parser.parse('scene s1\n  codex unlock "the_voice"');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'codex_unlock') as
+        | { entryId: string } | undefined;
+      expect(node?.entryId).toBe('the_voice');
+    });
+
+    it('parses achievement unlock with a quoted id', () => {
+      const scenes = parser.parse('scene s1\n  achievement unlock "voice_found"');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'achievement_unlock') as
+        | { achievementId: string } | undefined;
+      expect(node?.achievementId).toBe('voice_found');
+    });
+  });
+
+  describe('weather directive', () => {
+    it('maps a fog-like label to the fog weather type', () => {
+      const scenes = parser.parse('scene s1\n  weather "morning_mist"');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'weather_change') as
+        | { weatherSpec: { type: string } } | undefined;
+      expect(node?.weatherSpec.type).toBe('fog');
+    });
+
+    it('maps "none" to clear with zero intensity', () => {
+      const scenes = parser.parse('scene s1\n  weather none');
+      const node = scenes[0]?.nodes.find((n) => n.type === 'weather_change') as
+        | { weatherSpec: { type: string; intensity: number } } | undefined;
+      expect(node?.weatherSpec.type).toBe('clear');
+      expect(node?.weatherSpec.intensity).toBe(0);
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // Conditional (if) blocks
+  // -------------------------------------------------------------------------
+
+  describe('if conditional', () => {
+    it('tags a body goto with parsed conditions and skipOnConditionFail', () => {
+      const src = [
+        'scene s1',
+        '  if soul.purpose >= 50 and soul.compassion >= 40',
+        '    goto true_path',
+        '  end',
+        '  goto fallback_path',
+      ].join('\n');
+      const scenes = parser.parse(src);
+      const gotos = scenes[0]?.nodes.filter((n) => n.type === 'goto') as
+        | Array<{ targetSceneId?: string; conditions?: Array<{ attribute: string; operator: string; value: number }>; skipOnConditionFail?: boolean }>
+        | undefined;
+
+      const conditional = gotos?.find((g) => g.targetSceneId === 'true_path');
+      expect(conditional?.skipOnConditionFail).toBe(true);
+      expect(conditional?.conditions).toHaveLength(2);
+      expect(conditional?.conditions?.[0]).toMatchObject({ attribute: 'purpose', operator: '>=', value: 50 });
+      expect(conditional?.conditions?.[1]).toMatchObject({ attribute: 'compassion', operator: '>=', value: 40 });
+
+      const fallback = gotos?.find((g) => g.targetSceneId === 'fallback_path');
+      expect(fallback?.conditions).toBeUndefined();
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // Prose format: multi-line strings, own-line speakers, comments
+  // -------------------------------------------------------------------------
+
+  describe('prose formatting', () => {
+    it('joins a string authored across multiple physical lines', () => {
+      const src = [
+        'scene s1',
+        '  narrator',
+        '    "The air here is different. Thicker. As if every breath',
+        '     draws in something older than memory."',
+      ].join('\n');
+      const scenes = parser.parse(src);
+      const node = scenes[0]?.nodes.find((n) => n.type === 'narrator') as
+        | { text: string } | undefined;
+      expect(node?.text).toContain('different');
+      expect(node?.text).toContain('older than memory');
+      expect(node?.text).not.toContain('\n');
+    });
+
+    it('parses an own-line speaker followed by an indented string', () => {
+      const src = [
+        'scene s1',
+        '  nyx',
+        '    "You can feel it, can\'t you?"',
+      ].join('\n');
+      const scenes = parser.parse(src);
+      const node = scenes[0]?.nodes.find((n) => n.type === 'dialogue') as
+        | { speaker: string | null; text: string } | undefined;
+      expect(node?.speaker).toBe('nyx');
+      expect(node?.text).toContain('feel it');
+    });
+
+    it('does not treat an apostrophe in a // comment as a string', () => {
+      const src = [
+        "// The Threshold Holds — reached when conditions aren't fully met",
+        'scene s1',
+        '  narrator "ok"',
+        'scene s2',
+        '  narrator "second"',
+      ].join('\n');
+      const scenes = parser.parse(src);
+      expect(scenes.map((s) => s.id)).toEqual(['s1', 's2']);
+    });
+  });
+});
+
+// ---------------------------------------------------------------------------
+// ScriptLexer — comparison operators
+// ---------------------------------------------------------------------------
+
+describe('ScriptLexer operators', () => {
+  it('tokenizes >= as a single OPERATOR token', () => {
+    const tokens = new ScriptLexer('if soul.purpose >= 50').tokenize();
+    const op = tokens.find((t) => t.type === 'OPERATOR');
+    expect(op?.value).toBe('>=');
+  });
+
+  it('tokenizes != as a single OPERATOR token', () => {
+    const tokens = new ScriptLexer('if fear != 10').tokenize();
+    const op = tokens.find((t) => t.type === 'OPERATOR');
+    expect(op?.value).toBe('!=');
   });
 });

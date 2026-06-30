@@ -111,7 +111,16 @@ await tm.run({ style: 'iris', durationMs: 600 }, onMidpoint);
 
 ## SASL Scripting
 
-Story files live in `story/`. Parsed by `src/scripting/ScriptParser.ts`.
+Story files live in `story/`. Parsed by `src/scripting/parser/ScriptParser.ts` (lexer + recursive-descent parser → `SceneDefinition[]`). Executed at runtime by `src/engine/scene/SceneManager.ts`.
+
+**Parser features (all wired to runtime node executors):**
+- Comments: `//` and `#` (skipped by both lexer and the multi-line-string collapse pass).
+- Multi-line strings: a quoted string may span several physical lines; continuation-line indentation is collapsed to a single space.
+- Speaker forms: same-line `nyx "..."`, own-line `nyx` then an indented string, and explicit `dialogue nyx "..."` / `narrator "..."`.
+- Directives → nodes: `soul`, `relationship` → `relationship_change`, `flag` → `flag_set`, `codex unlock` → `codex_unlock`, `achievement unlock` → `achievement_unlock`, `weather` → `weather_change` (atmospheric label mapped onto `WeatherType`), `music`, `show`/`hide`, `wait`, `goto`.
+- `if <expr> ... end`: each body statement is tagged with the parsed `SoulCondition[]` + `skipOnConditionFail` so a conditional `goto` falls through when conditions aren't met (chained `if` blocks + a trailing unconditional `goto` = an if/elif/else dispatcher). Operators: `>= <= == != > <`, joined by `and`; optional `soul.` prefix.
+- Choice options carry `soulDelta`, `relationshipDeltas`, `flagsSet`, and `gotoSceneId` (option `goto` targets a scene; `SceneManager.execChoice` calls `loadScene`).
+- Unrecognized directive lines (e.g. `require`, `fade_in`, `ending_title`) are skipped at line granularity.
 
 ```sasl
 scene scene_id
@@ -151,7 +160,18 @@ goto chapter_02_start
 | `story/scenes/chapter_01_voice_return.sasl` | `chapter_01_voice_return` + 4 branches → `chapter_01_voice_convergence` | Voice through mirror |
 | `story/scenes/chapter_01_nyx_01.sasl` | `chapter_01_nyx_01` + 4 branches → `nyx01_end` | Nyx relationship scene |
 | `story/scenes/chapter_01_echo_dreamscape.sasl` | `chapter_01_echo_dreamscape` + 4 branches → `echo01_convergence` | Echo first contact |
-| `story/scenes/chapter_01_crossroads.sasl` | `chapter_01_crossroads` + east/west/center/delegate branches → `chapter_01_end` | Mirror District |
+| `story/scenes/chapter_01_crossroads.sasl` | `chapter_01_crossroads` + east/west/center/delegate branches → `chapter_01_end` | Mirror District; `chapter_01_end` → `chapter_02_start` |
+
+## Chapter 2 Scenes (complete)
+
+"The Name Below the Names." Chapter 1 (`chapter_01_end`) now always flows into Chapter 2; **all endings are reached through the Chapter 2 finale dispatcher**, not from Chapter 1.
+
+| File | Scene IDs | Notes |
+|------|-----------|-------|
+| `story/scenes/chapter_02_start.sasl` | `chapter_02_start` + name branches → `chapter_02_first_steps` | The recurring dream-name |
+| `story/scenes/chapter_02_the_name.sasl` | `chapter_02_descent` (companion branches) → `chapter_02_the_first_room` → `chapter_02_the_inscription` → `chapter_02_confrontation` → `chapter_02_finale` | Descent, the First Architect's chamber, the climax, and the ending dispatcher |
+
+`chapter_02_finale` is an `if`-dispatcher (most-specific first): transcendent (NG+ + all stats ≥ 40) → corrupted (shadow ≥ 60) → `ending_check_true_seeker` (purpose ≥ 50, compassion ≥ 40) → guardian (compassion ≥ 50, love ≥ 40, fear ≤ 20) → neutral fallback. Each branch's conditions mirror the `EndingSystem` definitions so the reached scene triggers its ending.
 
 ## Endings (registered)
 
