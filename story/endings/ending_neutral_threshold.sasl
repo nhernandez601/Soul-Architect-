@@ -1,0 +1,88 @@
+// ending_neutral_threshold.sasl
+// NEUTRAL ENDING: The Threshold Holds
+// Reached when conditions for the True Ending aren't fully met but
+// the player has shown enough purpose/compassion to avoid the Bad Ending
+
+scene ending_neutral_threshold
+  background "mirror_district_dusk"
+  music "ending_neutral_theme"
+  weather none
+
+  narrator
+    "The fracture doesn't close."
+
+  narrator
+    "Not because you failed — because closing was never the whole
+     of what was needed. You stabilized it. You stood at the edge of
+     something enormous and you held your ground."
+
+  narrator
+    "That's not nothing. It's not everything. It's a particular kind
+     of achievement that doesn't have a ceremony."
+
+  show nyx position:left emotion:tired
+  show seeker position:right emotion:thoughtful
+
+  nyx
+    "It's holding."
+
+  seeker
+    "For now."
+
+  nyx
+    "For now is all any threshold ever manages."
+
+  narrator
+    "She's right. You know she's right. The fracture is stable, not sealed.
+     The mirror figures have passage, but the root cause remains — whatever
+     is pushing from the other side hasn't retreated, only paused."
+
+  narrator
+    "In the city below, life continues with its usual magnificent
+     indifference to the structural problems of the spaces between things."
+
+  soul purpose +5 knowledge +4
+  goto ending_neutral_epilogue
+  end
+
+scene ending_neutral_epilogue
+  background "sanctuary_exterior_morning"
+  music "ending_neutral_credits"
+
+  narrator
+    "The Sanctuary records your name in its walls."
+
+  narrator
+    "Not among the lost — among the ones who stayed. Who stood at
+     the fracture and didn't let it widen."
+
+  narrator
+    "The work isn't done."
+
+  narrator
+    "But neither are you."
+
+  nyx
+    "Get some sleep. The fracture will still be there tomorrow.
+     So will we."
+
+  narrator
+    "Tomorrow. The word lands with unexpected weight."
+
+  narrator
+    "You have somewhere to be tomorrow. That's more than you started with."
+
+  ending_title "The Threshold Holds"
+  ending_subtitle "Neutral Ending"
+  ending_category neutral
+  ending_art "art/endings/ending_neutral.png"
+
+  soul hope +5 purpose +4 memory +3
+
+  achievement unlock "the_work_continues"
+  flag ending_neutral_seen true
+
+  credits_roll suffix:"The fracture held. The work continues. You will be back tomorrow."
+
+  end
+

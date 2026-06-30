@@ -1,119 +1,147 @@
-scene prologue_03:
-  title: "The First Step In"
-  chapter: 1
-  act: 1
-  background: "abyss_wide_vista"
-  music: "theme_the_abyss_opens"
+// prologue_03.sasl
+// Prologue: The First Step In — meeting Nyx, entering the Abyss
 
-  show character voice position:center emotion:vast
+scene prologue_03
+  title "The First Step In"
+  background "abyss_wide_vista"
+  music "theme_the_abyss_opens"
 
-  narrator: "The Abyss opens before you. Not a corridor now, but a sky — an inverted sky, made of something darker than space, populated with lights that are not stars but eyes. All of them, you suspect, are watching you."
+  show voice position:center emotion:vast
 
-  wait: 1500
+  narrator
+    "The Abyss opens before you. Not a corridor now, but a sky — an
+     inverted sky, made of something darker than space, populated with
+     lights that are not stars but eyes. All of them, you suspect,
+     are watching you."
 
-  dialogue voice: "Welcome, Seeker. Whatever you came looking for — purpose, answers, escape, or something you haven't named yet — this is where the search begins."
+  wait 1500
 
-  narrator: "A shape emerges from the dark at the periphery. A woman with no shadow. She's watching you with the particular attention of someone who has been waiting and is surprised they bothered."
+  voice
+    "Welcome, Seeker. Whatever you came looking for — purpose, answers,
+     escape, or something you haven't named yet — this is where the
+     search begins."
 
-  show character nyx position:right emotion:neutral
+  narrator
+    "A shape emerges from the dark at the periphery. A woman with no
+     shadow. She's watching you with the particular attention of someone
+     who has been waiting and is surprised they bothered."
 
-  dialogue nyx: "You're the one the Voice has been making all that noise about. Hm. You don't look like the answer to a cosmic mystery."
+  show nyx position:right emotion:neutral
 
-  dialogue voice: "Nyx."
+  nyx
+    "You're the one the Voice has been making all that noise about. Hm.
+     You don't look like the answer to a cosmic mystery."
 
-  dialogue nyx: "I'm just saying. The last three 'chosen ones' the Abyss sent up were absolutely useless. Don't take it personally, I'm applying pessimistic priors."
+  voice
+    "Nyx."
 
-  soul_change: knowledge +5
+  nyx
+    "I'm just saying. The last three 'chosen ones' the Abyss sent up
+     were absolutely useless. Don't take it personally, I'm applying
+     pessimistic priors."
 
-  choice:
-    prompt: "How do you respond to Nyx?"
-    - "Agree with her pessimism" -> prologue_03a_agree
-    - "Prove her wrong by being capable" -> prologue_03a_capable
-    - "Ask what happened to the last three" -> prologue_03a_last_three
-    - "Ignore her and address the Voice" -> prologue_03a_ignore
+  soul knowledge +5
 
-scene prologue_03a_agree:
-  title: "Calibrated Expectations"
-  chapter: 1
-  act: 1
+  choice "How do you respond to Nyx?"
+    option "Agree with her pessimism" id:agree
+      soul regret +3 compassion +5
+      goto prologue_03a_agree
+    option "Prove her wrong by being capable" id:capable
+      soul purpose +5 pride +3
+      goto prologue_03a_capable
+    option "Ask what happened to the last three" id:last_three
+      soul knowledge +5 fear +3
+      goto prologue_03a_last_three
+    option "Ignore her and address the Voice" id:ignore_nyx
+      soul pride +5
+      relationship nyx trust -5
+      goto prologue_03a_ignore
 
-  narrator: "You agree. It's a reasonable position. You have no idea what you're doing."
+  end
 
-  soul_change: regret +3 compassion +5
+scene prologue_03a_agree
+  title "Calibrated Expectations"
 
-  dialogue nyx: "...Huh. Okay. I respect that. The delusionally confident ones are exhausting. Come on then, probably-useless Seeker. I know where the safe ground is. Try not to fall into anything."
+  narrator
+    "You agree. It's a reasonable position. You have no idea what you're
+     doing."
 
-  soul_change: trust_nyx +10
+  soul regret +3 compassion +5
 
-  goto: chapter_01_start
+  nyx
+    "...Huh. Okay. I respect that. The delusionally confident ones are
+     exhausting. Come on then, probably-useless Seeker. I know where the
+     safe ground is. Try not to fall into anything."
 
-scene prologue_03a_capable:
-  title: "A Thing to Prove"
-  chapter: 1
-  act: 1
+  relationship nyx trust +10
+  goto chapter_01_start
 
-  narrator: "You don't argue. You simply look at her with the quiet certainty of someone who has decided to make something true."
+scene prologue_03a_capable
+  title "A Thing to Prove"
 
-  soul_change: purpose +8 pride +5
+  narrator
+    "You don't argue. You simply look at her with the quiet certainty
+     of someone who has decided to make something true."
 
-  dialogue nyx: "Oh, that face. I've seen that face. Either you're actually competent or you're very good at performing it, and I won't know which until I need to rely on you. Fair warning: I will need to rely on you. Whether I'll admit it in advance — that's different."
+  soul purpose +8 pride +5
 
-  soul_change: trust_nyx +8
+  nyx
+    "Oh, that face. I've seen that face. Either you're actually competent
+     or you're very good at performing it, and I won't know which until
+     I need to rely on you. Fair warning: I will need to rely on you.
+     Whether I'll admit it in advance — that's different."
 
-  goto: chapter_01_start
+  relationship nyx trust +8
+  goto chapter_01_start
 
-scene prologue_03a_last_three:
-  title: "The Ones Before You"
-  chapter: 1
-  act: 1
+scene prologue_03a_last_three
+  title "The Ones Before You"
 
-  dialogue nyx: "Two of them dissolved. The Abyss takes you apart if you're not careful. The third..." She pauses. "Made a deal. I don't know what they traded. I know they didn't come back the way they went in."
+  nyx
+    "Two of them dissolved. The Abyss takes you apart if you're not
+     careful. The third..."
 
-  soul_change: knowledge +8 fear +5
+  narrator
+    "She pauses."
 
-  narrator: "This is your introduction to a pattern you'll come to recognize: information in the Abyss is always both more and less than you needed."
+  nyx
+    "Made a deal. I don't know what they traded. I know they didn't come
+     back the way they went in."
 
-  dialogue nyx: "Still want to be here?"
+  soul knowledge +8 fear +5
 
-  soul_change: purpose +5
+  narrator
+    "This is your introduction to a pattern you'll come to recognize:
+     information in the Abyss is always both more and less than you needed."
 
-  goto: chapter_01_start
+  nyx
+    "Still want to be here?"
 
-scene prologue_03a_ignore:
-  title: "First Principles"
-  chapter: 1
-  act: 1
+  soul purpose +5
+  relationship nyx trust +6
+  goto chapter_01_start
 
-  narrator: "You turn back to the Voice, deliberately, with the particular rudeness of someone who has decided this is the more important conversation."
+scene prologue_03a_ignore
+  title "First Principles"
 
-  soul_change: pride +5
+  narrator
+    "You turn back to the Voice, deliberately, with the particular rudeness
+     of someone who has decided this is the more important conversation."
 
-  dialogue voice: "I would recommend not dismissing Nyx. She knows this place better than most who survive it long enough to know anything."
+  soul pride +5
 
-  dialogue nyx: "See, even the cosmic eldritch entity knows I'm useful. Embarrassing for you."
+  voice
+    "I would recommend not dismissing Nyx. She knows this place better
+     than most who survive it long enough to know anything."
 
-  soul_change: trust_nyx -5
+  nyx
+    "See, even the cosmic eldritch entity knows I'm useful.
+     Embarrassing for you."
 
-  narrator: "She falls into step behind you anyway. You suspect she will continue to do so regardless of what you think of her. You are not sure if this is reassuring."
+  narrator
+    "She falls into step behind you anyway. You suspect she will continue
+     to do so regardless of what you think of her. You are not sure if
+     this is reassuring."
 
-  goto: chapter_01_start
+  goto chapter_01_start
 
-scene chapter_01_start:
-  title: "Into the Abyss"
-  chapter: 1
-  act: 2
-  background: "abyss_streets_first"
-  music: "theme_chapter_01"
-
-  hide character voice
-  show character nyx position:left emotion:serious
-
-  narrator: "Chapter One: The Shattered Mirror District."
-
-  narrator: "Nyx leads. You follow. The Abyss breathes around you, its architecture shifting the way memory shifts — almost right, almost familiar, never quite solid enough to trust."
-
-  dialogue nyx: "First rule: don't look at anything directly for more than ten seconds. It starts looking back. Second rule: if I say run, you run. Ask questions while running."
-
-  narrator: "Somewhere in the dark, enormous and patient, the Voice watches you walk into its world. And somewhere further still, something older watches too."
-
-  narrator: "The story is beginning."

@@ -12,7 +12,7 @@ scene prologue_02_ready
   dialogue aurelia "I knew you would say that."
   dialogue aurelia "There is light already in how you carry yourself."
 
-  soul light +8 hope +5
+  soul hope +8 love +5
 
   dialogue voice "Light, yes. But the shadow is equally necessary."
   dialogue voice "You cannot know yourself without knowing both."

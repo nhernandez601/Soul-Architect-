@@ -1,67 +1,89 @@
-scene prologue_02_curious:
-  title: "What Lies Beneath"
-  chapter: 1
-  act: 1
-  background: "abyss_corridor_deep"
-  music: "theme_curious_descent"
+// prologue_02_curious.sasl
+// Prologue Branch: The Curious Seeker
 
-  show character voice position:center emotion:pleased
+scene prologue_02_curious
+  title "What Lies Beneath"
+  background "abyss_corridor_deep"
+  music "theme_curious_descent"
 
-  narrator: "You step forward — toward the voice, toward the unknown. Curiosity has always been your compass, even when it points into the dark."
+  show voice position:center emotion:pleased
 
-  dialogue voice: "Ah. I thought it might be you. The ones who walk toward the voice rather than away — they are always the most interesting."
+  narrator
+    "You step forward — toward the voice, toward the unknown. Curiosity
+     has always been your compass, even when it points into the dark."
 
-  soul_change: knowledge +5 fear -3
+  voice
+    "Ah. I thought it might be you. The ones who walk toward the voice
+     rather than away — they are always the most interesting."
 
-  dialogue voice: "I will tell you something true, as a gift for your courage: you are not the first to come here. But you may be the last who matters."
+  soul knowledge +5 fear -3
 
-  narrator: "The darkness around you breathes — slowly, steadily, like something vast and patient."
+  voice
+    "I will tell you something true, as a gift for your courage: you are
+     not the first to come here. But you may be the last who matters."
 
-  choice:
-    prompt: "How do you respond?"
-    - "Ask why you matter" -> prologue_02c_why_me
-    - "Ask about the others who came before" -> prologue_02c_others
-    - "Stay silent and listen" -> prologue_02c_silent_listen
+  narrator
+    "The darkness around you breathes — slowly, steadily, like something
+     vast and patient."
 
-scene prologue_02c_why_me:
-  title: "The Weight of Why"
-  chapter: 1
-  act: 1
+  choice "How do you respond?"
+    option "Ask why you matter" id:why_me
+      soul purpose +5
+      goto prologue_02c_why_me
+    option "Ask about the others who came before" id:others
+      soul knowledge +5 compassion +3
+      goto prologue_02c_others
+    option "Stay silent and listen" id:silent_listen
+      soul memory +5 shadow +3
+      goto prologue_02c_silent_listen
 
-  dialogue voice: "Why do you matter? A question that assumes mattering is given rather than made. I don't know yet. But I intend to find out. That, I think, is why we are both here."
+  end
 
-  soul_change: purpose +8
+scene prologue_02c_why_me
+  voice
+    "Why do you matter? A question that assumes mattering is given
+     rather than made. I don't know yet. But I intend to find out.
+     That, I think, is why we are both here."
 
-  narrator: "The answer settles in you like a stone in still water — disturbing the surface, sinking slowly toward something you can't yet see."
+  soul purpose +8
 
-  goto: prologue_03
+  narrator
+    "The answer settles in you like a stone in still water — disturbing
+     the surface, sinking slowly toward something you can't yet see."
 
-scene prologue_02c_others:
-  title: "The Ones Before"
-  chapter: 1
-  act: 1
+  goto prologue_03
 
-  dialogue voice: "The others. Yes. They came frightened, most of them. Or angry. Or broken. They found what they were looking for — or what was looking for them. Whether that was a gift or a curse, I leave to your interpretation."
+scene prologue_02c_others
+  voice
+    "The others. Yes. They came frightened, most of them. Or angry.
+     Or broken. They found what they were looking for — or what was
+     looking for them. Whether that was a gift or a curse, I leave
+     to your interpretation."
 
-  soul_change: knowledge +8 regret +3
+  soul knowledge +8 regret +3
 
-  dialogue voice: "You want to know if they made it. That tells me something important about you."
+  voice
+    "You want to know if they made it. That tells me something
+     important about you."
 
-  narrator: "You are not sure you want to know what it tells them."
+  narrator
+    "You are not sure you want to know what it tells them."
 
-  goto: prologue_03
+  goto prologue_03
 
-scene prologue_02c_silent_listen:
-  title: "The Listening Dark"
-  chapter: 1
-  act: 1
+scene prologue_02c_silent_listen
+  narrator
+    "You say nothing. The Voice pauses — and in that pause, you hear
+     something beneath the silence: a low, harmonic hum, as though
+     the darkness itself is thinking."
 
-  narrator: "You say nothing. The Voice pauses — and in that pause, you hear something beneath the silence: a low, harmonic hum, as though the darkness itself is thinking."
+  soul memory +5 knowledge +3
 
-  soul_change: memory +5 knowledge +3
+  voice
+    "...You hear it, don't you. Most don't, not this early.
+     The Abyss is speaking. It speaks to everyone. Very few listen."
 
-  dialogue voice: "...You hear it, don't you. Most don't, not this early. The Abyss is speaking. It speaks to everyone. Very few listen."
+  soul knowledge +5
 
-  soul_change: knowledge +5
+  goto prologue_03
 
-  goto: prologue_03

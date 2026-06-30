@@ -1,0 +1,248 @@
+// chapter_02_start.sasl
+// Chapter 2: The Name Below the Names
+// Picks up after Chapter 1 ends; the fracture is stable, the Seeker has
+// established their relationship with Nyx and Echo, and something new stirs.
+
+scene chapter_02_start
+  background "sanctuary_morning"
+  music "chapter_02_theme_soft"
+  weather "morning_mist"
+  title "The Name Below the Names"
+  chapter 2
+  act 1
+
+  narrator
+    "Three days after the Mirror District."
+
+  narrator
+    "The fracture holds. Aldric has restored seventeen of the erased names.
+     The mirror figures are quiet. Lira visits the square every morning to
+     check, which nobody asked her to do and everyone is grateful for."
+
+  show nyx position:left emotion:serious
+  show seeker position:right emotion:alert
+
+  narrator
+    "But something else has started."
+
+  nyx
+    "You've been having the same dream."
+
+  narrator
+    "It's not a question."
+
+  seeker
+    "Every night since the district stabilized."
+
+  nyx
+    "Describe it."
+
+  seeker
+    "A room I haven't been in. Walls made of names — like the Sanctuary,
+     but older. And one name in the center, written in a different hand.
+     Larger. Like it was the first name carved and everything else grew
+     around it."
+
+  narrator
+    "Nyx goes very still."
+
+  nyx
+    "What language?"
+
+  seeker
+    "I don't recognize it. But I can read it anyway."
+
+  soul knowledge +5 memory +4
+
+  choice "What does the name say?"
+    option "Tell her: it says 'The Architect'" id:says_architect
+      soul purpose +6 knowledge +5
+      relationship nyx trust +4
+      goto chapter_02_name_architect
+    option "Tell her: it says something in a language that predates the city" id:ancient_name
+      soul knowledge +7 shadow +4
+      goto chapter_02_name_ancient
+    option "Tell her: it says your own name" id:says_own_name
+      soul memory +8 fear +5 shadow +4
+      relationship nyx trust +5
+      goto chapter_02_name_self
+    option "Say you couldn't read it after all" id:withheld
+      soul shadow +5 pride +3
+      goto chapter_02_name_withheld
+
+  end
+
+// ---- Name branches ----
+
+scene chapter_02_name_architect
+  nyx
+    "That's what I was afraid of."
+
+  seeker
+    "Why?"
+
+  nyx
+    "Because the first name in the Sanctuary wall — the name the entire
+     archive grew around — has been illegible for two hundred years.
+     Whatever made it unreadable is the same thing that made the fracture."
+
+  narrator
+    "She sits down. The kind of sitting that means something just became
+     more serious."
+
+  nyx
+    "If you can read it now, something has changed. Either in you,
+     or in whatever is keeping it hidden."
+
+  soul purpose +5 fear +3
+  flag chapter_02_architect_name_path true
+  goto chapter_02_convergence
+
+scene chapter_02_name_ancient
+  nyx
+    "Before the city."
+
+  seeker
+    "Yes. The letters aren't letters — they're more like... marks. The way
+     you'd mark something to say 'this was here before anything else.'"
+
+  nyx
+    "The Architect's original inscription. The one they carved the night
+     the Sanctuary was founded, before they had a language for what they
+     were building."
+
+  narrator
+    "She stands and goes to the window. The city below is beginning its
+     ordinary morning."
+
+  nyx
+    "Whatever erased the mirror names didn't just start with the district.
+     It started there. With the first name. Working outward."
+
+  soul knowledge +8 shadow +5
+  flag chapter_02_ancient_name_path true
+  goto chapter_02_convergence
+
+scene chapter_02_name_self
+  narrator
+    "The words come out steadier than you expected."
+
+  seeker
+    "It says my name."
+
+  narrator
+    "Silence."
+
+  nyx
+    "Your name."
+
+  seeker
+    "Written in that first hand. In that language that predates the city.
+     My name, as if it was always there."
+
+  narrator
+    "Nyx looks at you for a long time."
+
+  nyx
+    "Then whatever we've been dealing with isn't something that found you
+     because you happened to be here. It's something that has been waiting
+     specifically for you. For a long time."
+
+  soul fear +6 memory +8 purpose +5
+  flag chapter_02_self_name_path true
+  flag seeker_name_in_wall true
+  goto chapter_02_convergence
+
+scene chapter_02_name_withheld
+  narrator
+    "You don't tell her."
+
+  narrator
+    "The name sits in your chest like something you swallowed and
+     can't quite digest. It's yours and you're not ready to say it
+     out loud, which is different from not knowing what it is."
+
+  nyx
+    "All right."
+
+  narrator
+    "She doesn't push. She's learned when not to."
+
+  nyx
+    "Whatever you're carrying — you'll know when it's time to share it."
+
+  soul shadow +6 pride +3 memory +4
+  relationship nyx trust +3
+  flag chapter_02_withheld_name true
+  goto chapter_02_convergence
+
+// ---- Convergence ----
+
+scene chapter_02_convergence
+  background "sanctuary_chamber_deep"
+  music "chapter_02_theme_rising"
+
+  narrator
+    "The Sanctuary has started doing something new."
+
+  narrator
+    "The names in the walls — all of them, thousands — are slowly
+     rearranging. Not dramatically. Just a letter here, a position there.
+     As though something is being spelled out across all of them at once,
+     in a message too large for any single wall to contain."
+
+  show nyx position:right emotion:alert
+  show echo position:left emotion:certain
+
+  echo
+    "I've been trying to read it for two days."
+
+  nyx
+    "And?"
+
+  echo
+    "It's a location. Somewhere in the city. A place the original Architect
+     went in the last days before their records stopped."
+
+  narrator
+    "The three of you stand in the chamber where you first looked into
+     the Heart Mirror. The mirror is dark now — not reflecting, simply
+     present."
+
+  echo
+    "Whatever happened to the first Architect — the answer is there.
+     And so is whatever is responsible for the fracture."
+
+  soul purpose +6 knowledge +5 hope +4
+  flag chapter_02_location_known true
+
+  goto chapter_02_first_steps
+  end
+
+scene chapter_02_first_steps
+  background "sanctuary_exterior_morning"
+  music "chapter_02_theme_full"
+
+  narrator
+    "You leave the Sanctuary into morning light."
+
+  narrator
+    "The Mirror District catches the sun and scatters it at wrong angles,
+     the way it always has, the way it may always will. It is broken
+     and it is beautiful and it holds its ground."
+
+  narrator
+    "You understand now that this is what you're learning to do."
+
+  narrator
+    "The city is vast. The name below the names is waiting.
+     Something two hundred years old is finally ready to be found."
+
+  narrator
+    "You're ready to go find it."
+
+  soul purpose +5 hope +5 love +3
+  flag chapter_02_begun true
+
+  end
+

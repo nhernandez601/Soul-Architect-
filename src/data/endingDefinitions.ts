@@ -23,6 +23,22 @@ export const ENDING_DEFINITIONS: EndingDefinition[] = [
   },
 
   {
+    id: 'ending_neutral_threshold',
+    title: 'The Threshold Holds',
+    subtitle: 'Neutral Ending',
+    description:
+      'The fracture didn\'t close. But you held it. You stood at the edge of something enormous and didn\'t let it widen. The work continues — and so do you.',
+    category: 'neutral',
+    conditions: {},
+    triggerScene: 'ending_neutral_threshold',
+    isSecret: false,
+    artPath: 'art/endings/ending_neutral.png',
+    musicId: 'ending_neutral_theme',
+    creditsSuffix:
+      'The fracture held. The work continues. You will be back tomorrow.',
+  },
+
+  {
     id: 'ending_corrupted',
     title: 'The Fracture Wins',
     subtitle: 'Bad Ending',

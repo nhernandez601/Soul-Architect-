@@ -1,67 +1,97 @@
-scene prologue_02_silent:
-  title: "Words Unsaid"
-  chapter: 1
-  act: 1
-  background: "abyss_threshold_liminal"
-  music: "theme_quiet_threshold"
+// prologue_02_silent.sasl
+// Prologue Branch: The Silent Seeker
 
-  show character voice position:center emotion:neutral
+scene prologue_02_silent
+  title "Words Unsaid"
+  background "abyss_threshold_liminal"
+  music "theme_quiet_threshold"
 
-  narrator: "You say nothing. You stand at the edge of the Abyss and offer the dark your silence — a gift, or a refusal, or simply the only honest response to something this enormous."
+  show voice position:center emotion:neutral
 
-  wait: 2000
+  narrator
+    "You say nothing. You stand at the edge of the Abyss and offer
+     the dark your silence — a gift, or a refusal, or simply the only
+     honest response to something this enormous."
 
-  dialogue voice: "..."
+  wait 2000
 
-  narrator: "The Voice, for a long moment, does not speak either. When it does, there is something different in it. Something that might be respect."
+  voice
+    "..."
 
-  dialogue voice: "You are quieter than I expected. I have been speaking to souls for a very long time. The silent ones are rarer than you would think. And they always see things the loud ones miss."
+  narrator
+    "The Voice, for a long moment, does not speak either. When it does,
+     there is something different in it. Something that might be respect."
 
-  soul_change: memory +5 shadow +5
+  voice
+    "You are quieter than I expected. I have been speaking to souls for
+     a very long time. The silent ones are rarer than you would think.
+     And they always see things the loud ones miss."
 
-  narrator: "Something shifts in the darkness — a subtle current, as though the Abyss has turned its attention slightly, the way a vast sleeping creature might shift in its dreams."
+  soul memory +5 shadow +5
 
-  choice:
-    prompt: "Break the silence?"
-    - "Ask: what do you want from me?" -> prologue_02s_what_you_want
-    - "Ask: what do I miss, that the loud ones miss?" -> prologue_02s_what_we_see
-    - "Stay silent still" -> prologue_02s_pure_silence
+  narrator
+    "Something shifts in the darkness — a subtle current, as though the
+     Abyss has turned its attention slightly, the way a vast sleeping
+     creature might shift in its dreams."
 
-scene prologue_02s_what_you_want:
-  title: "The Weight of Wanting"
-  chapter: 1
-  act: 1
+  choice "Break the silence?"
+    option "Ask: what do you want from me?" id:what_you_want
+      soul purpose +4 knowledge +3
+      goto prologue_02s_what_you_want
+    option "Ask: what do the silent ones see?" id:what_we_see
+      soul knowledge +6 memory +3
+      goto prologue_02s_what_we_see
+    option "Stay silent still" id:pure_silence
+      soul shadow +6 memory +5 fear -3
+      goto prologue_02s_pure_silence
 
-  dialogue voice: "What do I want from you. An honest question. I want to know what you are. I have theories. But you are — unexpectedly — difficult to read. That has not happened before."
+  end
 
-  soul_change: purpose +5 knowledge +3
+scene prologue_02s_what_you_want
+  title "The Weight of Wanting"
 
-  narrator: "Being unreadable to something ancient feels like a particular kind of power. Or a particular kind of danger."
+  voice
+    "What do I want from you. An honest question. I want to know what
+     you are. I have theories. But you are — unexpectedly — difficult
+     to read. That has not happened before."
 
-  goto: prologue_03
+  soul purpose +5 knowledge +3
 
-scene prologue_02s_what_we_see:
-  title: "The Quiet Truth"
-  chapter: 1
-  act: 1
+  narrator
+    "Being unreadable to something ancient feels like a particular kind
+     of power. Or a particular kind of danger."
 
-  dialogue voice: "The loud ones are listening to themselves. Narrating their fear, their bravery, their confusion. It drowns out the frequency of this place. The silent ones — they hear the Abyss answer back."
+  goto prologue_03
 
-  soul_change: knowledge +8 memory +5
+scene prologue_02s_what_we_see
+  title "The Quiet Truth"
 
-  narrator: "And there it is again — that hum beneath the silence. Not threatening. Curious. You are being studied as much as you are studying."
+  voice
+    "The loud ones are listening to themselves. Narrating their fear,
+     their bravery, their confusion. It drowns out the frequency of this
+     place. The silent ones — they hear the Abyss answer back."
 
-  goto: prologue_03
+  soul knowledge +8 memory +5
 
-scene prologue_02s_pure_silence:
-  title: "What Silence Says"
-  chapter: 1
-  act: 1
+  narrator
+    "And there it is again — that hum beneath the silence. Not threatening.
+     Curious. You are being studied as much as you are studying."
 
-  narrator: "You maintain the silence. The Voice seems to accept this. It simply... waits with you. And in the waiting, something passes between you that has no words — a mutual acknowledgment of the difficulty of this moment."
+  goto prologue_03
 
-  soul_change: shadow +8 memory +8 fear -5
+scene prologue_02s_pure_silence
+  title "What Silence Says"
 
-  dialogue voice: "When you are ready. There is no hurry here. Time moves differently in the Abyss. Or perhaps it does not move at all."
+  narrator
+    "You maintain the silence. The Voice seems to accept this. It simply...
+     waits with you. And in the waiting, something passes between you that
+     has no words — a mutual acknowledgment of the difficulty of this moment."
 
-  goto: prologue_03
+  soul shadow +8 memory +8 fear -5
+
+  voice
+    "When you are ready. There is no hurry here. Time moves differently
+     in the Abyss. Or perhaps it does not move at all."
+
+  goto prologue_03
+
