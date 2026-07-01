@@ -149,6 +149,10 @@ export class Engine {
     const { CODEX_DEFINITIONS } = await import('../../data/codexDefinitions');
     const codex = registry.get<import('../../systems/codex/CodexSystem').CodexSystem>('codex');
     codex.registerEntries(CODEX_DEFINITIONS);
+
+    const { ACHIEVEMENT_DEFINITIONS } = await import('../../data/achievementDefinitions');
+    const achievement = registry.get<import('../../systems/achievement/AchievementSystem').AchievementSystem>('achievement');
+    achievement.registerAchievements(ACHIEVEMENT_DEFINITIONS);
   }
 
   // ---------------------------------------------------------------------------
