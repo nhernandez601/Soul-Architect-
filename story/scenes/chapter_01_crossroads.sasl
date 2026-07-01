@@ -880,13 +880,10 @@ scene chapter_01_end
   relationship nyx affinity +5
   codex unlock "the_mirror_naming"
   codex unlock "the_fracture"
+  flag chapter_01_complete true
 
-  // Branch to true ending path if soul aligned
-  if soul.purpose >= 30 and soul.compassion >= 20
-    goto ending_check_true_seeker
-  end
-
-  // Default: continue to chapter 2
+  // Chapter 1 always leads into Chapter 2 — the endings are reached
+  // through the finale of "The Name Below the Names."
   goto chapter_02_start
   end
 

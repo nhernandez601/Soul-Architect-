@@ -1,0 +1,251 @@
+// chapter_02_the_name.sasl
+// Chapter 2: The Name Below the Names — descent, discovery, and finale
+// Continues from chapter_02_first_steps and routes into every ending.
+
+// ---------------------------------------------------------------------------
+// The descent into the old city
+// ---------------------------------------------------------------------------
+
+scene chapter_02_descent
+  background "old_city_undercroft"
+  music "chapter_02_theme_descent"
+  weather "light_fog"
+  chapter 2
+  act 2
+
+  narrator
+    "The location the names spelled is not on any current map. It sits
+     beneath the oldest district, where the streets stop pretending to
+     be straight and the stone remembers being something other than
+     stone."
+
+  narrator
+    "A stairwell descends past the point where lamplight should fail —
+     and does not. Something below is providing its own light."
+
+  show seeker position:center emotion:resolute
+
+  narrator
+    "You do not have to go down alone. The question is who walks the
+     last distance with you — and whether anyone should."
+
+  choice "Who comes with you?"
+    option "Nyx — she has earned the truth of this" id:descent_nyx
+      soul love +5 compassion +4
+      relationship nyx trust +6
+      flag descent_with_nyx true
+      goto chapter_02_descent_nyx
+    option "Echo — she was born for the spaces between" id:descent_echo
+      soul knowledge +6 hope +3
+      relationship echo affinity +6
+      flag descent_with_echo true
+      goto chapter_02_descent_echo
+    option "No one — this is yours to carry" id:descent_alone
+      soul purpose +5 shadow +4 pride +3
+      flag descent_alone true
+      goto chapter_02_descent_alone
+  end
+
+scene chapter_02_descent_nyx
+  show nyx position:left emotion:serious
+  show seeker position:right emotion:resolute
+
+  nyx
+    "If your name is down there in that first hand, then I'm not letting
+     you read it by yourself. That's not bravery. That's just sense."
+
+  narrator
+    "She takes the first step down without waiting for permission. You
+     follow. The light rises to meet you both."
+
+  soul hope +4 love +3
+  goto chapter_02_the_first_room
+
+scene chapter_02_descent_echo
+  show echo position:left emotion:certain
+  show seeker position:right emotion:resolute
+
+  echo
+    "I've stood at the edge of this place in every dream I've ever had.
+     I never knew it was real. I never knew it had a bottom."
+
+  narrator
+    "Echo moves through the descending dark the way a fish moves through
+     water — like it is the medium she was always meant for."
+
+  soul knowledge +4 hope +3
+  goto chapter_02_the_first_room
+
+scene chapter_02_descent_alone
+  show seeker position:center emotion:resolute
+
+  narrator
+    "You go down alone. Each step takes something from you and gives
+     back something heavier. By the time the stairwell ends, you are
+     not sure how much of what you carry is yours."
+
+  narrator
+    "But you are still walking. That has started to mean more to you
+     than it used to."
+
+  soul purpose +4 shadow +3
+  goto chapter_02_the_first_room
+
+// ---------------------------------------------------------------------------
+// The first room — the chamber from the dream, made real
+// ---------------------------------------------------------------------------
+
+scene chapter_02_the_first_room
+  background "first_architect_chamber"
+  music "chapter_02_theme_revelation"
+  weather none
+
+  narrator
+    "The room from your dream. Walls of names, older than the Sanctuary,
+     older than the city, curving inward like the inside of a shell."
+
+  narrator
+    "And in the center, written larger than all the rest, in a hand that
+     predates every language you know: the first name. The one the entire
+     archive grew around."
+
+  narrator
+    "You can read it. You have always been able to read it. That is the
+     part that frightens you."
+
+  soul knowledge +6 memory +5 fear +4
+  codex unlock "the_first_architect"
+  codex unlock "the_architecture_of_thresholds"
+
+  goto chapter_02_the_inscription
+
+scene chapter_02_the_inscription
+  background "first_architect_chamber"
+
+  narrator
+    "As you approach, the Voice is here — not through a mirror this time,
+     but directly, the way a memory is direct."
+
+  voice
+    "You found the place where I began. Where I carved the first
+     threshold and named it, before I understood that to name a thing
+     is to take responsibility for it forever."
+
+  voice
+    "I am the First Architect. I did not leave. I became the boundary
+     I built, and I have held it for three hundred years, alone,
+     because there was no one I trusted to hold it next."
+
+  narrator
+    "The truth of it settles over the room like dust finally allowed
+     to land."
+
+  choice "What do you say to the one who has held the threshold alone?"
+    option "You don't have to hold it alone anymore." id:inscription_share
+      soul compassion +8 love +6 hope +5
+      relationship voice affinity +6
+      flag offered_to_share_burden true
+      goto chapter_02_confrontation
+    option "Then teach me. Show me how it's done." id:inscription_learn
+      soul purpose +8 knowledge +6
+      flag asked_to_learn true
+      goto chapter_02_confrontation
+    option "You made this. You can end it." id:inscription_blame
+      soul shadow +9 pride +5 fear +4
+      relationship voice tension +6
+      flag blamed_the_architect true
+      goto chapter_02_confrontation
+    option "Say nothing. Just listen." id:inscription_listen
+      soul memory +6 knowledge +4
+      goto chapter_02_confrontation
+  end
+
+// ---------------------------------------------------------------------------
+// The confrontation — the source of the fracture
+// ---------------------------------------------------------------------------
+
+scene chapter_02_confrontation
+  background "first_architect_chamber_fracturing"
+  music "chapter_02_theme_climax"
+  weather "fractured_sky"
+
+  narrator
+    "The first name begins to come apart at its edges — the same erasure
+     that took the Mirror District, here at its source. The fracture is
+     not an attack on the threshold."
+
+  voice
+    "It is me. Letting go. Three hundred years is a long time to hold a
+     door, and I am so tired, and a thing that is tired enough will
+     unmake itself just to rest."
+
+  voice
+    "If no one takes the threshold, the boundary fails. The reflected
+     and the real collapse into each other. Not with violence. With
+     forgetting."
+
+  narrator
+    "The choice that has been coming since you first looked into the
+     Heart Mirror is finally, simply, here."
+
+  codex unlock "true_nature_of_the_architect"
+  codex unlock "the_heart_mirror_truth"
+
+  choice "What do you do at the source of the fracture?"
+    option "Take the threshold. Become what holds the door." id:confront_take
+      soul purpose +10 compassion +6 hope +5 love +4
+      flag took_the_threshold true
+      goto chapter_02_finale
+    option "Hold it with the Voice — neither of you alone." id:confront_share
+      soul compassion +10 love +8 hope +6
+      soul fear -6
+      relationship voice affinity +8
+      flag shared_the_threshold true
+      goto chapter_02_finale
+    option "Let it fall. Some doors are meant to close." id:confront_release
+      soul shadow +10 fear +6 regret +5
+      flag let_it_fall true
+      goto chapter_02_finale
+    option "Refuse the choice. Walk back up the stairs." id:confront_refuse
+      soul fear +4 regret +4 pride +3
+      flag refused_the_choice true
+      goto chapter_02_finale
+  end
+
+// ---------------------------------------------------------------------------
+// Finale dispatcher — routes to the appropriate ending
+// Order: most specific first. Each branch's conditions mirror the
+// EndingSystem definitions so the reached scene triggers its ending.
+// ---------------------------------------------------------------------------
+
+scene chapter_02_finale
+  background "threshold_between_worlds"
+  music "chapter_02_theme_resolution"
+
+  narrator
+    "Everything you have become arrives at this single point — the sum
+     of every choice, every stat, every name you let yourself read."
+
+  // Secret ending (New Game Plus, fully realized soul)
+  if ng_plus == true and soul.purpose >= 40 and soul.compassion >= 40 and soul.hope >= 40 and soul.knowledge >= 40 and soul.love >= 40
+    goto ending_transcendent_approach
+  end
+
+  // Bad ending — the shadow has won
+  if soul.shadow >= 60
+    goto ending_corrupted_approach
+  end
+
+  // True ending check (this scene further splits true vs. neutral)
+  if soul.purpose >= 50 and soul.compassion >= 40
+    goto ending_check_true_seeker
+  end
+
+  // Good ending — the guardian who stays out of love, not fear
+  if soul.compassion >= 50 and soul.love >= 40 and soul.fear <= 20
+    goto ending_guardian_approach
+  end
+
+  // Fallback — the threshold holds, the work continues
+  goto ending_neutral_threshold
+  end

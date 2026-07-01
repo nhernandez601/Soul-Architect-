@@ -244,5 +244,6 @@ scene chapter_02_first_steps
   soul purpose +5 hope +5 love +3
   flag chapter_02_begun true
 
+  goto chapter_02_descent
   end
 
