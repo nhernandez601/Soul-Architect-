@@ -190,6 +190,20 @@ goto chapter_02_start
 `the_first_architect`, `true_nature_of_the_architect`, `the_architecture_of_thresholds`,
 `the_shattered_mirror_district`, `the_mirror_naming`.
 
+## Achievements (registered)
+
+10 definitions in `src/data/achievementDefinitions.ts`, loaded via `Engine.loadGameData()`.
+
+**Ending-triggered** (fire on `ending:reached`): `threshold_keeper` (true), `the_work_continues` (neutral), `into_the_dark` (bad), `voice_found` + `the_loop_closes` (transcendent).
+
+**Story-triggered** (fire on `scene:end`): `first_awakening`, `the_name_below`.
+
+**Soul-condition** (fire on `soul:attribute_change`): `compassion_bearer`, `shadow_touched`.
+
+**Flag-triggered**: `archivist` (unlocks with `all_codex_unlocked`).
+
+`AchievementSystem` listens for `ending:reached` and unlocks any definition whose `triggerEnding` matches.
+
 ## UI Screens
 
 All screens are in `src/ui/screens/`. Mounted in `App.tsx` based on `activeScreen` (Zustand).

@@ -47,6 +47,15 @@ export class AchievementSystem extends BaseService {
     this.subscribe('soul:milestone', ({ milestoneId }) => {
       this.unlock(milestoneId);
     });
+    this.subscribe('ending:reached', ({ endingId }) => {
+      this.checkEndingTriggers(endingId);
+    });
+  }
+
+  private checkEndingTriggers(endingId: ID): void {
+    this.definitions.forEach((def, id) => {
+      if (def.triggerEnding === endingId) this.unlock(id);
+    });
   }
 
   protected async onStart(): Promise<void> { /* nothing */ }
